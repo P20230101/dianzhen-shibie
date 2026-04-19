@@ -1,0 +1,13 @@
+raw_material,material_canonical,material_family,mapping_notes
+Aluminium,Aluminum,aluminum_alloy,UK spelling
+Aluminum,Aluminum,aluminum_alloy,US spelling
+316L,316L,stainless_steel,
+304L,304L,stainless_steel,
+304 SS,304 SS,stainless_steel,
+Ti-6Al-4V,Ti-6Al-4V,titanium_alloy,
+Ti–6Al–4V,Ti-6Al-4V,titanium_alloy,unicode hyphen normalized
+Nylon 12,PA12,polymer,
+Nylon-12,PA12,polymer,
+PA12,PA12,polymer,
+PA-12,PA12,polymer,
+Polyamide 12,PA12,polymer,

@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/evidence/schema_v1.json",
+  "title": "Lattice Evidence Schema v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evidence_id",
+    "sample_id",
+    "field_name",
+    "source_priority",
+    "source_type",
+    "verified_by_human"
+  ],
+  "properties": {
+    "evidence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sample_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "field_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "field_value": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_priority": {
+      "type": "string",
+      "enum": [
+        "T1",
+        "T2",
+        "T3",
+        "manual"
+      ]
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "text",
+        "table",
+        "figure",
+        "derived",
+        "manual"
+      ]
+    },
+    "page_no": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "figure_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "table_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "text_snippet": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "extractor": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "extract_confidence": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "verified_by_human": {
+      "type": "boolean"
+    }
+  }
+}

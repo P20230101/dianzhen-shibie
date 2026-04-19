@@ -1,0 +1,9 @@
+raw_design,raw_structure,raw_type,structure_main_class,structure_subtype_list_json,is_hierarchical,is_graded,mapping_notes
+Gyroid,,TPMS,tpms,"[""gyroid""]",false,false,
+Diamond,,TPMS,tpms,"[""diamond""]",false,false,
+,BCC,Truss,truss_lattice,"[""bcc""]",false,false,
+,BCCZ,Truss,truss_lattice,"[""bccz""]",false,false,
+,Octet,Truss,truss_lattice,"[""octet""]",false,false,
+,Hexagonal,General 2D,honeycomb_2d,"[""hexagonal""]",false,false,
+,Re-entrant,General 2D,honeycomb_2d,"[""reentrant""]",false,false,
+Bioinspired,,Bioinspired,bioinspired,[],false,false,canonical spelling
