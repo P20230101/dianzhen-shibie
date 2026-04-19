@@ -8,12 +8,12 @@
 5. Commit the dispatch record on `dispatch/tasks`.
 6. Create the dev branch from `dispatch/tasks`.
 
-A task is formally started only after steps 1-4 are complete.
+A task is formally started only after steps 1-6 are complete.
 
 ## 2. Execute A Task
 1. Switch to the dev branch.
 2. Implement and test on the dev branch only.
-3. When task status changes, update the task card and `tasks/board.md` on `dispatch/tasks`.
+3. When task status changes, update the task card, `tasks/board.md`, and `tasks/branches.md` on `dispatch/tasks`.
 4. Keep `Integration Method` limited to `rebase --onto` or `cherry-pick`.
 
 ## 3. Finish A Task

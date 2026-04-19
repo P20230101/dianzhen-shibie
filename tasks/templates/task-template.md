@@ -1,11 +1,11 @@
 # Task Card
 
-- Task ID: `TASK-001`
+- Task ID: `TASK-001` (example; replace)
 - Title: `<one-line task title>`
 - Goal: `<result only>`
-- Dispatch Branch: `dispatch/tasks`
-- Dev Branch: `feat/task-001-example-topic`
-- Integration Method: `rebase --onto`
+- Dispatch Branch: `dispatch/tasks` (example; replace if needed)
+- Dev Branch: `feat/task-001-example-topic` (example; replace)
+- Integration Method: `rebase --onto` (example; replace)
 - Dependencies: `None`
 
 ## Acceptance Criteria
