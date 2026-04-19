@@ -16,4 +16,10 @@
 - `<command or review evidence>`
 
 ## Status Log
+Append one line for every state change. Minimum lifecycle entries: `Created`, `Started`, `Blocked` (if any), `Resumed` (if any), `Done`, and `Archived`.
 - `YYYY-MM-DD HH:MM | Created on dispatch/tasks`
+- `YYYY-MM-DD HH:MM | Started on <dev-branch>`
+- `YYYY-MM-DD HH:MM | Blocked | <reason>`
+- `YYYY-MM-DD HH:MM | Resumed | <reason cleared>`
+- `YYYY-MM-DD HH:MM | Done | <verification summary>`
+- `YYYY-MM-DD HH:MM | Archived to tasks/archive/`
