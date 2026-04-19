@@ -3,7 +3,7 @@
 - Task ID: `TASK-001` (example; replace)
 - Title: `<one-line task title>`
 - Goal: `<result only>`
-- Dispatch Branch: `dispatch/tasks` (example; replace if needed)
+- Dispatch Branch: `dispatch/tasks`
 - Dev Branch: `feat/task-001-example-topic` (example; replace)
 - Integration Method: `rebase --onto` (example; replace)
 - Dependencies: `None`
