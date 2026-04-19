@@ -24,19 +24,20 @@
 
 ## Startup Gate
 1. Assign a task ID.
-2. Create `tasks/assignments/TASK-xxx.md`.
-3. Add the task entry to `tasks/board.md`.
-4. Add the mapping row to `tasks/branches.md`.
-5. Only then create the dev branch.
+2. Create `tasks/assignments/TASK-xxx.md` from `tasks/templates/task-template.md`.
+3. Add the task entry to `tasks/board.md` under `## To Do`.
+4. Add the branch mapping row to `tasks/branches.md`.
+5. Commit the dispatch record on `dispatch/tasks`.
+6. Only then create the dev branch from `dispatch/tasks`.
 
 ## Completion Gate
-1. Record verification in the task card.
+1. Record verification evidence in the task card.
 2. Move the board entry to `## Done`.
 3. Move the task card to `tasks/archive/`.
-4. Keep integration limited to `rebase --onto` or `cherry-pick`.
+4. Keep the branch mapping row and mark `Status` as `Done`.
 
 ## Branch Flow
-1. Update task records on `dispatch/tasks`.
+1. Update and commit task records on `dispatch/tasks`.
 2. Create the dev branch from `dispatch/tasks`.
 3. Implement and test on the dev branch.
 4. Bring code to `main` using `rebase --onto` or `cherry-pick`.
