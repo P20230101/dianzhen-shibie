@@ -8,7 +8,8 @@
 5. Commit the dispatch record on `dispatch/tasks`.
 6. Create the dev branch from `dispatch/tasks`.
 
-A task is formally started only after steps 1-6 are complete.
+A task is formally started only after steps 1-4 are complete.
+Steps 5-6 must still be completed before implementation starts.
 
 ## 2. Execute A Task
 1. Switch to the dev branch.
