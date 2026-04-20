@@ -23,12 +23,18 @@ def test_external_retrieval_to_kg_smoke(tmp_path: Path) -> None:
     evidence_path = tmp_path / "verified_evidence.json"
 
     samples = json.loads((ROOT / "outputs/p1/extracted/samples_v1.json").read_text(encoding="utf-8"))
-    samples[0]["review_status"] = "accepted"
-    samples[0]["needs_manual_review"] = False
+    sample_row = next(row for row in samples if row["paper_id"] == "10-1016-j-compositesb-2019-107565")
+    sample_row["review_status"] = "accepted"
+    sample_row["needs_manual_review"] = False
     samples_path.write_text(json.dumps(samples, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     evidence = json.loads((ROOT / "outputs/p1/extracted/evidence_v1.json").read_text(encoding="utf-8"))
-    evidence[0]["verified_by_human"] = True
+    evidence_row = next(
+        row
+        for row in evidence
+        if row["sample_id"] == sample_row["sample_id"] and row["field_name"] == "raw_design"
+    )
+    evidence_row["verified_by_human"] = True
     evidence_path.write_text(json.dumps(evidence, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     _run(
@@ -68,9 +74,14 @@ def test_external_retrieval_to_kg_smoke(tmp_path: Path) -> None:
     )
 
     assert corpus_path.exists()
+    assert corpus_manifest_path.exists()
     assert candidates_path.exists()
     assert graph_path.exists()
 
+    corpus_manifest = json.loads(corpus_manifest_path.read_text(encoding="utf-8"))
+    candidates = json.loads(candidates_path.read_text(encoding="utf-8"))
     graph = json.loads(graph_path.read_text(encoding="utf-8"))
+    assert corpus_manifest["chunk_count"] > 0
+    assert len(candidates["candidates"]) > 0
     assert len(graph["nodes"]) > 0
     assert len(graph["edges"]) > 0
