@@ -1,0 +1,32 @@
+[
+  {
+    "paper_id": "10_1016_j_compositesb_2019_107565",
+    "chunk_id": "10_1016_j_compositesb_2019_107565:text:001",
+    "source_type": "text",
+    "text": "Crushing behavior and optimization of sheet-based 3D periodic cellular structures",
+    "page_no": 1,
+    "figure_id": null,
+    "table_id": null,
+    "source_path": "data/01_raw/pdfs/library/lattice/10_1016_j_compositesb_2019_107565/original.pdf"
+  },
+  {
+    "paper_id": "10_1016_j_compositesb_2019_107565",
+    "chunk_id": "10_1016_j_compositesb_2019_107565:table:002",
+    "source_type": "table",
+    "text": "Relative density, Young's modulus, and SEA values for the tested samples",
+    "page_no": 4,
+    "figure_id": null,
+    "table_id": "table_2",
+    "source_path": "data/01_raw/pdfs/library/lattice/10_1016_j_compositesb_2019_107565/original.pdf"
+  },
+  {
+    "paper_id": "10_1016_j_compositesb_2019_107565",
+    "chunk_id": "10_1016_j_compositesb_2019_107565:caption:003",
+    "source_type": "caption",
+    "text": "Stress-strain curve and energy absorption comparison",
+    "page_no": 5,
+    "figure_id": "fig_3",
+    "table_id": null,
+    "source_path": "data/01_raw/pdfs/library/lattice/10_1016_j_compositesb_2019_107565/original.pdf"
+  }
+]

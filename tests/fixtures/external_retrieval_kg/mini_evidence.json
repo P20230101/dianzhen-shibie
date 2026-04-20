@@ -1,0 +1,9 @@
+{
+  "evidence_id": "e-104",
+  "sample_id": "sample-104",
+  "field_name": "structure_main_class",
+  "field_value": "tpms",
+  "source_priority": "T1",
+  "source_type": "text",
+  "verified_by_human": true
+}
