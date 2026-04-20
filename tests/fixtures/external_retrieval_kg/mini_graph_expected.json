@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {
+      "node_id": "sample:sample-1",
+      "node_type": "sample",
+      "label": "sample-1"
+    },
+    {
+      "node_id": "paper:10_1016_j_compositesb_2019_107565",
+      "node_type": "paper",
+      "label": "10_1016_j_compositesb_2019_107565"
+    },
+    {
+      "node_id": "evidence:e-1",
+      "node_type": "evidence",
+      "label": "structure_main_class"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "paper:10_1016_j_compositesb_2019_107565",
+      "target_id": "sample:sample-1",
+      "relation": "contains_sample"
+    },
+    {
+      "source_id": "sample:sample-1",
+      "target_id": "evidence:e-1",
+      "relation": "supports_field"
+    }
+  ]
+}
