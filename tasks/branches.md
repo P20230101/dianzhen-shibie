@@ -8,3 +8,5 @@ Rules:
 
 | Task ID | Title | Dispatch Branch | Dev Branch | Integration Method | Status |
 |---|---|---|---|---|---|
+| TASK-001 | P1 first minimal chain | dispatch/tasks | feat/task-001-min-pipeline | rebase --onto | Done |
+| TASK-002 | Excel input adapter for seed intake | dispatch/tasks | feat/task-002-input-excel | rebase --onto | Doing |
