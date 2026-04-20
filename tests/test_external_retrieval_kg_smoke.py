@@ -21,6 +21,7 @@ def test_external_retrieval_to_kg_smoke(tmp_path: Path) -> None:
     graph_path = tmp_path / "knowledge_graph.json"
     samples_path = tmp_path / "accepted_samples.json"
     evidence_path = tmp_path / "verified_evidence.json"
+    query = json.loads((FIXTURES_DIR / "mini_query.json").read_text(encoding="utf-8"))
 
     samples = json.loads((ROOT / "outputs/p1/extracted/samples_v1.json").read_text(encoding="utf-8"))
     sample_row = next(row for row in samples if row["paper_id"] == "10-1016-j-compositesb-2019-107565")
@@ -81,7 +82,28 @@ def test_external_retrieval_to_kg_smoke(tmp_path: Path) -> None:
     corpus_manifest = json.loads(corpus_manifest_path.read_text(encoding="utf-8"))
     candidates = json.loads(candidates_path.read_text(encoding="utf-8"))
     graph = json.loads(graph_path.read_text(encoding="utf-8"))
+    corpus_rows = [
+        json.loads(line)
+        for line in corpus_path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
     assert corpus_manifest["chunk_count"] > 0
     assert len(candidates["candidates"]) > 0
+    assert candidates["candidates"][0]["paper_id"] == query["paper_id"]
+    assert any(row["chunk_id"] == candidates["candidates"][0]["chunk_id"] for row in corpus_rows)
     assert len(graph["nodes"]) > 0
     assert len(graph["edges"]) > 0
+    assert any(node["node_id"] == f"sample:{sample_row['sample_id']}" for node in graph["nodes"])
+    assert any(node["node_id"] == f"evidence:{evidence_row['evidence_id']}" for node in graph["nodes"])
+    assert any(
+        edge["source_id"] == f"paper:{sample_row['paper_id']}"
+        and edge["target_id"] == f"sample:{sample_row['sample_id']}"
+        and edge["relation"] == "contains_sample"
+        for edge in graph["edges"]
+    )
+    assert any(
+        edge["source_id"] == f"sample:{sample_row['sample_id']}"
+        and edge["target_id"] == f"evidence:{evidence_row['evidence_id']}"
+        and edge["relation"] == "supports_field"
+        for edge in graph["edges"]
+    )
