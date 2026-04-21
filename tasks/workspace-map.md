@@ -3,8 +3,8 @@
 ## Snapshot
 
 - Dispatch branch: `dispatch/tasks`
-- Dispatch head: `b5c16a4`
-- Current dev branch: `feat/task-010-review-approval`
+- Dispatch head: `947be70`
+- Current dev branch: `dispatch/tasks`
 - No `TASK-011` is opened.
 
 ## Mapping
@@ -19,7 +19,7 @@
 | TASK-007 | `scripts/query_retrieval.py`, `scripts/retrieval_kg_common.py` | `tests/test_query_retrieval.py` | `outputs/retrieval/candidates.json` | Committed; `feat/task-007-extract-query` now contains the retrieval ranking and candidate export. |
 | TASK-008 | `scripts/project_knowledge_graph.py`, `scripts/retrieval_kg_common.py` | `tests/test_retrieval_kg_common.py`, `tests/test_project_knowledge_graph.py` | `outputs/kg/knowledge_graph.json` | Committed; `feat/task-008-export-kg` now contains the KG projection from validated sample and evidence data. |
 | TASK-009 | `tests/test_external_retrieval_kg_smoke.py` | `tests/test_external_retrieval_kg_smoke.py` | Smoke fixtures only under `tests/fixtures/external_retrieval_kg/` | Committed; `feat/task-009-smoke-retrieval-kg` now contains the smoke coverage for retrieval and KG. |
-| TASK-010 | `scripts/promote_p1_review.py`, `tests/test_promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py`, `tests/test_external_retrieval_kg_smoke.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Committed; `feat/task-010-review-approval` contains the integrated P1, PDF, retrieval, and KG stack plus local-data ignore rules and docs. |
+| TASK-010 | `scripts/promote_p1_review.py`, `tests/test_promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py`, `tests/test_external_retrieval_kg_smoke.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Merged locally; `dispatch/tasks` now contains the integrated P1, PDF, retrieval, and KG stack plus local-data ignore rules and docs. |
 
 ## Split Notes
 
