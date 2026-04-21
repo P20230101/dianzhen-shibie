@@ -1,5 +1,9 @@
 # Dispatch Workflow
 
+## Scope Note
+
+This workflow only governs repository dispatch and task execution. The product main line remains the lattice crashworthiness literature database defined by the project source documents and `Lattice crashworthiness data.xlsx`.
+
 ## 1. Start A Task
 1. Assign the next `TASK-xxx`.
 2. Create `tasks/assignments/TASK-xxx.md` from `tasks/templates/task-template.md`, keeping the initial `Status Log` entry for `Created`.

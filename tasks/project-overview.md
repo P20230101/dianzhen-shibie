@@ -4,6 +4,17 @@
 
 Build a controlled lattice crashworthiness literature database that turns paper evidence into normalized sample-level data.
 
+## Scope Note
+
+This page describes the current execution and governance target for the repository. It does not replace the product-level goal defined by:
+
+- `点阵吸能文献数据库实施方案_纳入Excel原型.md`
+- `最小系统实现方案.md`
+- `数据库清洗与字段标准化方案.md`
+- `Lattice crashworthiness data.xlsx`
+
+Those files define the product main line. This page only tracks how the repository is being organized right now to support that main line.
+
 ## Current Phase
 
 - `P0 / M0: 可控开发启动阶段`

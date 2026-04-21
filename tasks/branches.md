@@ -9,4 +9,12 @@ Rules:
 | Task ID | Title | Dispatch Branch | Dev Branch | Integration Method | Status |
 |---|---|---|---|---|---|
 | TASK-001 | P1 first minimal chain | dispatch/tasks | feat/task-001-min-pipeline | rebase --onto | Done |
-| TASK-002 | Excel input adapter for seed intake | dispatch/tasks | feat/task-002-input-excel | rebase --onto | Doing |
+| TASK-002 | Excel input adapter for seed intake | dispatch/tasks | feat/task-002-input-excel | rebase --onto | Done |
+| TASK-003 | PDF first-pass register extractor | dispatch/tasks | feat/task-003-input-pdf | rebase --onto | Done |
+| TASK-004 | PDF subtype enrichment and register sync | dispatch/tasks | feat/task-004-extract-subtypes | rebase --onto | Done |
+| TASK-005 | PDF intake manifest adapter | dispatch/tasks | feat/task-005-input-pdf-intake | rebase --onto | Done |
+| TASK-006 | Retrieval corpus from canonical PDF library | dispatch/tasks | feat/task-006-retrieval-corpus | rebase --onto | Done |
+| TASK-007 | Retrieval query ranking and candidate export | dispatch/tasks | feat/task-007-extract-query | rebase --onto | Done |
+| TASK-008 | Lightweight KG projection from validated sample/evidence | dispatch/tasks | feat/task-008-export-kg | rebase --onto | Done |
+| TASK-009 | External retrieval KG smoke verification | dispatch/tasks | feat/task-009-smoke-retrieval-kg | rebase --onto | Done |
+| TASK-010 | P1 sample review promotion and KG population | dispatch/tasks | feat/task-010-review-approval | rebase --onto | Done |

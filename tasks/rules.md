@@ -1,5 +1,9 @@
 # Dispatch Rules
 
+## Scope Note
+
+These rules apply only to dispatch records, task cards, board updates, and branch mapping. They do not redefine the product main line, which stays anchored to the source documents and `Lattice crashworthiness data.xlsx`.
+
 ## Allowed On dispatch/tasks
 - Task breakdown
 - Task cards
