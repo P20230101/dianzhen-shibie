@@ -32,6 +32,4 @@
 
 ## Recommended Next Execution Package
 
-- `P1 first minimal chain`
-- `Suggested first branch: feat/task-xxx-min-pipeline`
-- `Package scope: input entry, parsed layer, extracted output, sample and evidence alignment, minimal review or export closure`
+- Hold until `dispatch/tasks` and the real branch heads are reconciled.

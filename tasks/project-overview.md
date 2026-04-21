@@ -53,7 +53,4 @@ Those files define the product main line. This page only tracks how the reposito
 
 ## Next Actions
 
-1. Choose the first real `P1` execution package.
-2. Keep long-term roadmap and branch strategy on `dispatch/tasks`.
-3. Open one execution branch from `dispatch/tasks` and validate the first minimal chain.
-4. Integrate code to `main` with `rebase --onto` or `cherry-pick`.
+1. Hold new task assignment until `dispatch/tasks` and the real branch heads are reconciled.
