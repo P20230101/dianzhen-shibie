@@ -1,1 +1,7 @@
 .worktrees/
+.codex-memory/
+tmp/
+scripts/__pycache__/
+tests/__pycache__/
+data/01_raw/pdfs/inbox/**/*.pdf
+data/01_raw/pdfs/library/**/original.pdf
