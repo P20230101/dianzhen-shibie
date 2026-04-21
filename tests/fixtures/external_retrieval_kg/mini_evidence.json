@@ -1,0 +1,29 @@
+[
+  {
+    "evidence_id": "e-1",
+    "sample_id": "sample-1",
+    "field_name": "structure_main_class",
+    "field_value": "tpms",
+    "source_priority": "T1",
+    "source_type": "text",
+    "verified_by_human": true
+  },
+  {
+    "evidence_id": "e-2",
+    "sample_id": "sample-1",
+    "field_name": "sea_j_g",
+    "field_value": "12.776",
+    "source_priority": "T1",
+    "source_type": "text",
+    "verified_by_human": false
+  },
+  {
+    "evidence_id": "e-3",
+    "sample_id": "sample-2",
+    "field_name": "structure_main_class",
+    "field_value": "truss_lattice",
+    "source_priority": "T1",
+    "source_type": "text",
+    "verified_by_human": true
+  }
+]

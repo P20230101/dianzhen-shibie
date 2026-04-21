@@ -1,0 +1,11 @@
+{
+  "query_id": "q-001",
+  "sample_id": "10_1016_j_compositesb_2019_107565-row-104",
+  "field_name": "structure_main_class",
+  "keywords": [
+    "TPMS",
+    "sheet-based 3D periodic cellular structures",
+    "primitive"
+  ],
+  "top_k": 2
+}

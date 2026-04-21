@@ -1,0 +1,30 @@
+{
+  "query_id": "q-001",
+  "sample_id": "10_1016_j_compositesb_2019_107565-row-104",
+  "field_name": "structure_main_class",
+  "top_k": 2,
+  "candidates": [
+    {
+      "paper_id": "10_1016_j_compositesb_2019_107565",
+      "chunk_id": "10_1016_j_compositesb_2019_107565:text:017",
+      "source_type": "text",
+      "text": "Sheet-based 3D periodic cellular structures attract great attentions due to their lightweight and excellent mechanical properties. Unlike other traditional honeycombs and lattice structures, sheet-based cellular structures consist of triply periodic minimal surface (TPMS) cores, which are continuous through space with a porous cavity surrounded by continuous surfaces. In this study, the crashworthiness of four types of TPMS sheet structures (i.e., Primitive, FRD, IWP, and Gyroid) under axial loading was investigated. According to the results obtained by the nonlinear finite element analysis, the level-constant in the implicit form of TPMS and the shell thickness of TPMS sheet structures were found to affect the crashworthiness significantly. To achieve an optimal design, a metamodel-based multi-objective optimization method was developed to optimize the four types of TPMS sheet structures. Three different metamodels, i.e., Kriging (KRG), polynomial response surface (PRS) and radial basis function (RBF), were compared to identify the most accurate model, which was then utilized for the optimization. Followed by the multiobjective optimization, four Pareto fronts of these TPMS sheet structures were plotted and compared, of which the FRD-sheet structure was found to have the best energy absorption capacity. Moreover, the crashworthiness of the TPMS sheet structures was compared with that of the other materials or structures in nature and engineering, and an Ashby plot was given. Overall, TPMS sheet structures possess excellent specific energy absorption and specific strength and show great potential for engineering applications.",
+      "page_no": 1,
+      "figure_id": null,
+      "table_id": null,
+      "source_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\lattice\\10_1016_j_compositesb_2019_107565\\original.pdf",
+      "score": 9.0
+    },
+    {
+      "paper_id": "10_1016_j_jmrt_2023_05_167",
+      "chunk_id": "10_1016_j_jmrt_2023_05_167:text:025",
+      "source_type": "text",
+      "text": "The triply minimal surface structure (TPMS) is a class of lattice designs that offers multifunctional capabilities [31]. It has attracted the attention of researchers in recent years to evaluate the properties of different types of lattice designs with different relative densities since the structural configuration control the failure modes [32] in either a bendingdominated mode or a stretching-dominated mode. The use of strut-based cellular structures has been investigated by researchers [16,33] to design open cell configurations with desirable mechanical properties, as nodal connections can lead to stretch-dominated failure [4]. Strut-based cell configurations exhibit shear deformation bands, usually formed by the rapid failure of struts in successive layers, where the peak stress increases significantly and then decrease rapidly [34], leading to undulations in the load-carrying capacity of the structure due to the orientation of the struts in the loading direction, resulting in a higher elastic modulus. The unevenness in load-bearing capacity and energy absorption can be eliminated by using sheet-based TPMS configurations. Moreover, the mechanical compressive performance of TPMS configurations is highly desirable compared to strut-based configurations with high nodal connectivity [16,35]. The key reason for this is the continuous surface curvature and connectivity, which leads to improved load distribution and bearing capability, thus mitigating the occurrence of stress peaks, and ensuring a smooth transition from elastic to plastic deformation regime with stable plateau stress [32]. A review by [7] summarize the design process and methods for developing TPMS-based cellular structures, as well as the relationship between cell topology and material properties of various TPMS-based configurations. In [36], structureproperty correlations of primitives, gyroids, diamonds, and IWPsurfaces of higher relative densities (up to 68%) are clearly elaborated and future directions for the design of scaffold architectures are proposed. In a similar study [13] clarified the deformation patterns and determined the numerical parameters required to establish the relationships between the lattice design and the mechanical properties of primitive, gyroid, and diamond structures. [16] investigated the topologyproperty relationships of strut, skeleton, and sheet TPMS cell structures and summarized the results to show that sheetbased TPMS configurations followed a stretch-dominated deformation, while skeleton-based TPMS configurations followed a bend-dominated deformation, and the strut-based topologies exhibited a mixed deformation mode. In [12], stress concentration effects are reported to occur in TPMS based frameworks due to a heterogeneous mass distribution at lower volume fractions. Numerical analysis by [37] showed that the thickness and the number of cells in a lattice structure strongly affect the strength, stiffness, and failure pattern. This is due to localized fracture [38], which can be avoided by reducing the size of the unit cells and by choosing an appropriate cell topology.",
+      "page_no": 2,
+      "figure_id": null,
+      "table_id": null,
+      "source_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\lattice\\10_1016_j_jmrt_2023_05_167\\original.pdf",
+      "score": 8.0
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "nodes": [
+    {
+      "node_id": "sample:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104",
+      "node_type": "sample",
+      "label": "10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104"
+    },
+    {
+      "node_id": "paper:10-1016-j-compositesb-2019-107565",
+      "node_type": "paper",
+      "label": "10-1016-j-compositesb-2019-107565"
+    },
+    {
+      "node_id": "evidence:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-001",
+      "node_type": "evidence",
+      "label": "raw_design"
+    },
+    {
+      "node_id": "evidence:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-002",
+      "node_type": "evidence",
+      "label": "raw_material"
+    },
+    {
+      "node_id": "evidence:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-003",
+      "node_type": "evidence",
+      "label": "raw_process"
+    },
+    {
+      "node_id": "evidence:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-004",
+      "node_type": "evidence",
+      "label": "sea_j_g"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "paper:10-1016-j-compositesb-2019-107565",
+      "target_id": "sample:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104",
+      "relation": "contains_sample"
+    },
+    {
+      "source_id": "sample:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104",
+      "target_id": "evidence:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-001",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104",
+      "target_id": "evidence:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-002",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104",
+      "target_id": "evidence:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-003",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104",
+      "target_id": "evidence:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-004",
+      "relation": "supports_field"
+    }
+  ]
+}

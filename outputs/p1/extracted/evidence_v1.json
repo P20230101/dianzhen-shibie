@@ -1,0 +1,62 @@
+[
+  {
+    "evidence_id": "10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-001",
+    "sample_id": "10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104",
+    "field_name": "raw_design",
+    "field_value": "Primitive",
+    "source_priority": "T1",
+    "source_type": "table",
+    "page_no": null,
+    "figure_id": null,
+    "table_id": "Database",
+    "text_snippet": "Database row records raw_design=Primitive.",
+    "extractor": "p1_workbook_adapter",
+    "extract_confidence": 1.0,
+    "verified_by_human": true
+  },
+  {
+    "evidence_id": "10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-002",
+    "sample_id": "10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104",
+    "field_name": "raw_material",
+    "field_value": "316L",
+    "source_priority": "T1",
+    "source_type": "table",
+    "page_no": null,
+    "figure_id": null,
+    "table_id": "Database",
+    "text_snippet": "Database row records raw_material=316L.",
+    "extractor": "p1_workbook_adapter",
+    "extract_confidence": 1.0,
+    "verified_by_human": true
+  },
+  {
+    "evidence_id": "10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-003",
+    "sample_id": "10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104",
+    "field_name": "raw_process",
+    "field_value": "SLM",
+    "source_priority": "T1",
+    "source_type": "table",
+    "page_no": null,
+    "figure_id": null,
+    "table_id": "Database",
+    "text_snippet": "Database row records raw_process=SLM.",
+    "extractor": "p1_workbook_adapter",
+    "extract_confidence": 1.0,
+    "verified_by_human": true
+  },
+  {
+    "evidence_id": "10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-004",
+    "sample_id": "10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104",
+    "field_name": "sea_j_g",
+    "field_value": "12.776",
+    "source_priority": "T1",
+    "source_type": "table",
+    "page_no": null,
+    "figure_id": null,
+    "table_id": "Database",
+    "text_snippet": "Database row records SEA(J/g).",
+    "extractor": "p1_workbook_adapter",
+    "extract_confidence": 1.0,
+    "verified_by_human": true
+  }
+]
