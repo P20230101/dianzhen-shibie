@@ -3,7 +3,7 @@
 ## Snapshot
 
 - Dispatch branch: `dispatch/tasks`
-- Dispatch head: `82269b7`
+- Dispatch head: `b5c16a4`
 - Current dev branch: `feat/task-010-review-approval`
 - No `TASK-011` is opened.
 
@@ -11,7 +11,7 @@
 
 | Task | Primary implementation files | Tests | Generated artifacts | Current branch state |
 |---|---|---|---|---|
-| TASK-002 | `scripts/p1_seed.py`, `scripts/p1_transform.py`, `scripts/p1_validate_export.py`, `scripts/p1_pipeline_common.py` | `tests/test_p1_workbook_seed_adapter.py` | `data/p1/seed_input.json`, `outputs/p1/seed/seed_input.json`, `outputs/p1/parsed/parsed_sample.json`, `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/p1/review/p1_chain_report.json` | Workspace-only; `feat/task-002-input-excel` still points at `c16d956` and does not contain these files. |
+| TASK-002 | `scripts/p1_seed.py`, `scripts/p1_transform.py`, `scripts/p1_validate_export.py`, `scripts/p1_pipeline_common.py` | `tests/test_p1_workbook_seed_adapter.py` | `data/p1/seed_input.json`, `outputs/p1/seed/seed_input.json`, `outputs/p1/parsed/parsed_sample.json`, `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/p1/review/p1_chain_report.json` | Committed; `feat/task-002-input-excel` now points at `3b7b702` and contains the P1 workbook seed chain. |
 | TASK-003 | `scripts/build_pdf_register.py`, `tests/test_pdf_register_extractor.py` | `tests/test_pdf_register_extractor.py` | `data/01_raw/pdfs/paper_register_first_pass.csv`, `data/01_raw/pdfs/paper_register_first_pass.md` | Workspace-only; no committed branch head carries the current extractor implementation yet. |
 | TASK-004 | `scripts/build_pdf_register.py`, `tests/test_pdf_register_extractor.py` | `tests/test_pdf_register_extractor.py` | `data/01_raw/pdfs/paper_register.csv`, `data/01_raw/pdfs/paper_register.md` | Workspace-only; this is the canonical-register extension of the same extractor used by `TASK-003`. |
 | TASK-005 | `scripts/build_pdf_intake_manifest.py` | `tests/test_pdf_intake_manifest.py` | `data/02_parsed/pdf_intake_manifest.json` | Workspace-only; `feat/task-005-input-pdf-intake` still points at `c16d956` and does not contain the manifest adapter. |
