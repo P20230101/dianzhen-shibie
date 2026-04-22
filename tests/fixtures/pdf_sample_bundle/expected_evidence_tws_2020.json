@@ -1,0 +1,62 @@
+[
+  {
+    "evidence_id": "10_1016_j_tws_2020_106623-sth-r015-v1-ev-001",
+    "sample_id": "10_1016_j_tws_2020_106623-sth-r015-v1",
+    "field_name": "raw_structure",
+    "field_value": "star-triangular honeycomb",
+    "source_priority": "T1",
+    "source_type": "text",
+    "page_no": 1,
+    "figure_id": null,
+    "table_id": null,
+    "text_snippet": "A novel star auxetic honeycomb with enhanced in-plane crushing strength",
+    "extractor": "build_pdf_sample_bundle",
+    "extract_confidence": 1.0,
+    "verified_by_human": false
+  },
+  {
+    "evidence_id": "10_1016_j_tws_2020_106623-sth-r015-v1-ev-002",
+    "sample_id": "10_1016_j_tws_2020_106623-sth-r015-v1",
+    "field_name": "raw_material",
+    "field_value": "aluminum alloy 6061O",
+    "source_priority": "T1",
+    "source_type": "text",
+    "page_no": 2,
+    "figure_id": null,
+    "table_id": null,
+    "text_snippet": "The matrix material of the auxetic honeycomb is aluminum alloy 6061O, and it is assumed that the cell wall is elastic-perfectly plastic with Young ' s modulus E ¼ 68 GPa , yield stress σ s ¼ 80 MPa , density ρ s ¼ 2700 kg = m 3 and Poisson ' s ratio γ ¼ 0 : 33 [45].",
+    "extractor": "build_pdf_sample_bundle",
+    "extract_confidence": 0.98,
+    "verified_by_human": false
+  },
+  {
+    "evidence_id": "10_1016_j_tws_2020_106623-sth-r015-v1-ev-003",
+    "sample_id": "10_1016_j_tws_2020_106623-sth-r015-v1",
+    "field_name": "plateau_stress_mpa",
+    "field_value": "1.1928",
+    "source_priority": "T1",
+    "source_type": "table",
+    "page_no": 9,
+    "figure_id": null,
+    "table_id": "table_001",
+    "text_snippet": "Table 1 The low-velocity crushing strengths of the STH. Relative density ρ Crushing velocity v (m/s) First plateau stress σ L 1 (MPa) Relative errors (%) Second plateau stress σ L 2 (MPa) Relative errors (%) Theoretical Numerical Theoretical Numerical 0.05 1 0.0120 0.0122 1.438 0.1172 0.1129 3.827 3 0.0127 0.0133 4.259 0.1186 0.1144 3.666 5 0.0142 0.0149 5.023 0.1213 0.116 4.604 0.1 1 0.0539 0.0542 0.475 0.4880 0.4765 2.410 3 0.0555 0.0554 0.250 0.4908 0.4845 1.310 5 0.0587 0.0606 3.084 0.4966 0.5056 1.787 0.15 1 0.1414 0.1401 0.904 1.1732 1.1928 1.647 3 0.1441 0.1476 2.348 1.1777 1.2144 3.022 5 0.1497 0.1519 1.468 1.1868 1.2262 3.213 0.2 1 0.2885 0.2848 1.285 2.1795 2.1637 0.731 3 0.2927 0.2804 4.394 2.1859 2.1508 1.631 5 0.3012 0.2959 1.806 2.1986 2.1654 1.534",
+    "extractor": "build_pdf_sample_bundle",
+    "extract_confidence": 0.99,
+    "verified_by_human": false
+  },
+  {
+    "evidence_id": "10_1016_j_tws_2020_106623-sth-r015-v1-ev-004",
+    "sample_id": "10_1016_j_tws_2020_106623-sth-r015-v1",
+    "field_name": "loading_direction",
+    "field_value": "in_plane",
+    "source_priority": "T1",
+    "source_type": "text",
+    "page_no": 2,
+    "figure_id": null,
+    "table_id": null,
+    "text_snippet": "To reveal the dynamic deformation behavior and mechanical properties of the STH systematically, a finite element model was established using the explicit code of the nonlinear finite element software package LS-DYNA. In this model, the STH is located between the upper and lower rigid plates to simulate in-plane dynamic crushing.",
+    "extractor": "build_pdf_sample_bundle",
+    "extract_confidence": 0.98,
+    "verified_by_human": false
+  }
+]

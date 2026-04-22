@@ -1,0 +1,62 @@
+[
+  {
+    "evidence_id": "10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive-ev-001",
+    "sample_id": "10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive",
+    "field_name": "raw_design",
+    "field_value": "Primitive",
+    "source_priority": "T1",
+    "source_type": "table",
+    "page_no": 7,
+    "figure_id": null,
+    "table_id": "table_003",
+    "text_snippet": "Table 3 row P1L records Schwarz Primitive with relative density 0.27 and mass 21.77 g.",
+    "extractor": "build_pdf_sample_bundle",
+    "extract_confidence": 0.99,
+    "verified_by_human": false
+  },
+  {
+    "evidence_id": "10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive-ev-002",
+    "sample_id": "10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive",
+    "field_name": "raw_structure",
+    "field_value": "TPMS",
+    "source_priority": "T1",
+    "source_type": "text",
+    "page_no": 1,
+    "figure_id": null,
+    "table_id": null,
+    "text_snippet": "Title identifies FDM-printed short glass fiber reinforced polyamide TPMS structures.",
+    "extractor": "build_pdf_sample_bundle",
+    "extract_confidence": 1.0,
+    "verified_by_human": false
+  },
+  {
+    "evidence_id": "10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive-ev-003",
+    "sample_id": "10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive",
+    "field_name": "raw_process",
+    "field_value": "FDM",
+    "source_priority": "T1",
+    "source_type": "text",
+    "page_no": 1,
+    "figure_id": null,
+    "table_id": null,
+    "text_snippet": "Abstract states the work manufactures short glass fiber-reinforced polyamide composites using the FDM process.",
+    "extractor": "build_pdf_sample_bundle",
+    "extract_confidence": 0.98,
+    "verified_by_human": false
+  },
+  {
+    "evidence_id": "10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive-ev-004",
+    "sample_id": "10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive",
+    "field_name": "sea_j_g",
+    "field_value": "1.41",
+    "source_priority": "T1",
+    "source_type": "table",
+    "page_no": 9,
+    "figure_id": null,
+    "table_id": "table_004",
+    "text_snippet": "Table 4 row P1L records compressive modulus 21.21 MPa, peak compressive stress 1.41 MPa, specific energy absorption 1.41 J/g, and densification strain 59.94%.",
+    "extractor": "build_pdf_sample_bundle",
+    "extract_confidence": 0.99,
+    "verified_by_human": false
+  }
+]

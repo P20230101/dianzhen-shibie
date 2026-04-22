@@ -1,0 +1,62 @@
+[
+  {
+    "evidence_id": "10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb-ev-001",
+    "sample_id": "10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb",
+    "field_name": "raw_structure",
+    "field_value": "vertex-based hierarchical honeycomb",
+    "source_priority": "T1",
+    "source_type": "text",
+    "page_no": 1,
+    "figure_id": null,
+    "table_id": null,
+    "text_snippet": "Abstract states triangular lattices were incorporated into a regular hexagonal honeycomb to replace each vertex.",
+    "extractor": "build_pdf_sample_bundle",
+    "extract_confidence": 1.0,
+    "verified_by_human": false
+  },
+  {
+    "evidence_id": "10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb-ev-002",
+    "sample_id": "10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb",
+    "field_name": "raw_process",
+    "field_value": "ABAQUS/Explicit",
+    "source_priority": "T1",
+    "source_type": "text",
+    "page_no": 4,
+    "figure_id": null,
+    "table_id": null,
+    "text_snippet": "The explicit FE code ABAQUS/Explicit is employed to simulate the crushing processes of the hierarchical honeycombs.",
+    "extractor": "build_pdf_sample_bundle",
+    "extract_confidence": 0.98,
+    "verified_by_human": false
+  },
+  {
+    "evidence_id": "10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb-ev-003",
+    "sample_id": "10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb",
+    "field_name": "plateau_stress_mpa",
+    "field_value": "0.353",
+    "source_priority": "T1",
+    "source_type": "table",
+    "page_no": 7,
+    "figure_id": null,
+    "table_id": "table_001",
+    "text_snippet": "Table 1 row 7 records plateau stress 0.353 MPa in the L direction and 0.343 MPa in the W direction.",
+    "extractor": "build_pdf_sample_bundle",
+    "extract_confidence": 0.99,
+    "verified_by_human": false
+  },
+  {
+    "evidence_id": "10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb-ev-004",
+    "sample_id": "10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb",
+    "field_name": "sea_j_g",
+    "field_value": "2.976",
+    "source_priority": "T1",
+    "source_type": "table",
+    "page_no": 7,
+    "figure_id": null,
+    "table_id": "table_001",
+    "text_snippet": "Table 1 row 7 records SEA 2.976 kJ/kg in the L direction and 2.803 kJ/kg in the W direction.",
+    "extractor": "build_pdf_sample_bundle",
+    "extract_confidence": 0.99,
+    "verified_by_human": false
+  }
+]
