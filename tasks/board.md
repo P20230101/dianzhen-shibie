@@ -4,6 +4,7 @@ Entry format:
 `- TASK-001 | <title> | <dev-branch>`
 
 ## To Do
+- TASK-023 | Figure understanding layer implementation | feat/task-023-figure-understanding
 ## Doing
 ## Blocked
 
