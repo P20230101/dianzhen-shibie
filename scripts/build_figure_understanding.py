@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import csv
 from functools import lru_cache
 from pathlib import Path
@@ -10,6 +11,7 @@ from docling.datamodel.pipeline_options import PdfPipelineOptions
 from docling.document_converter import DocumentConverter, PdfFormatOption
 
 from figure_understanding_common import build_figure_record, write_jsonl, write_review_csv
+from figure_understanding_vlm import FixtureFigureInterpreter, VlmFigureInterpreter
 from retrieval_kg_common import write_json
 
 
@@ -238,3 +240,58 @@ def build_figure_understanding_corpus(
         },
     )
     return records
+
+
+def _build_interpreter(args: argparse.Namespace) -> FigureInterpreter:
+    fixture_response = getattr(args, "fixture_response", None)
+    if fixture_response is not None:
+        return FixtureFigureInterpreter(Path(fixture_response))
+
+    base_url = getattr(args, "base_url", None)
+    model = getattr(args, "model", None)
+    if not base_url or not model:
+        raise SystemExit("provide either --fixture-response or both --base-url and --model")
+    return VlmFigureInterpreter(
+        base_url=str(base_url),
+        model=str(model),
+        api_key=getattr(args, "api_key", None),
+        timeout_s=float(getattr(args, "timeout_s", 60.0)),
+    )
+
+
+def _build_arg_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Build the figure understanding corpus from canonical PDF inputs")
+    parser.add_argument("--register", type=Path, default=DEFAULT_REGISTER_PATH)
+    parser.add_argument("--library-root", type=Path, default=DEFAULT_LIBRARY_ROOT)
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT_PATH)
+    parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST_PATH)
+    parser.add_argument("--review", type=Path, default=DEFAULT_REVIEW_PATH)
+    parser.add_argument("--review-threshold", type=float, default=0.85)
+    parser.add_argument("--fixture-response", type=Path)
+    parser.add_argument("--base-url")
+    parser.add_argument("--model")
+    parser.add_argument("--api-key")
+    parser.add_argument("--timeout-s", type=float, default=60.0)
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = _build_arg_parser()
+    args = parser.parse_args(argv)
+    interpreter = _build_interpreter(args)
+
+    records = build_figure_understanding_corpus(
+        register_path=args.register,
+        library_root=args.library_root,
+        output_path=args.output,
+        manifest_path=args.manifest,
+        review_path=args.review,
+        interpreter=interpreter,
+        review_threshold=float(args.review_threshold),
+    )
+    print(f"figure records written: {len(records)} -> {args.output}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
