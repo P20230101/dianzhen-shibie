@@ -18,3 +18,12 @@ Rules:
 | TASK-008 | Lightweight KG projection from validated sample/evidence | dispatch/tasks | feat/task-008-export-kg | rebase --onto | Done |
 | TASK-009 | External retrieval KG smoke verification | dispatch/tasks | feat/task-009-smoke-retrieval-kg | rebase --onto | Done |
 | TASK-010 | P1 sample review promotion and KG population | dispatch/tasks | feat/task-010-review-approval | rebase --onto | Done |
+| TASK-011 | PDF sample expansion from the library | dispatch/tasks | feat/task-011-extract-paper-sample | rebase --onto | Done |
+| TASK-012 | AddMA gyroid sample expansion | dispatch/tasks | feat/task-012-addma-gyroid-sample | rebase --onto | Done |
+| TASK-013 | Petal-shaped honeycomb sample expansion | dispatch/tasks | feat/task-013-extract-psh-honeycomb | rebase --onto | Done |
+| TASK-014 | Star auxetic honeycomb sample expansion | dispatch/tasks | feat/task-014-extract-star-auxetic | rebase --onto | Done |
+| TASK-015 | Vertex-based hierarchical honeycomb sample expansion | dispatch/tasks | feat/task-015-extract-hierarchical-honeycomb | rebase --onto | Done |
+| TASK-016 | 3D printed hierarchical honeycomb sample expansion | dispatch/tasks | feat/task-016-extract-matdes-hierarchical | rebase --onto | Done |
+| TASK-017 | Bio-inspired hierarchical honeycomb sample expansion | dispatch/tasks | feat/task-017-extract-bioinspired-hierarchical | rebase --onto | Done |
+| TASK-018 | Bio-inspired spatial lattice sample expansion | dispatch/tasks | feat/task-018-extract-bioinspired-spatial-lattice | rebase --onto | Done |
+| TASK-019 | 3D metamaterial sample expansion | dispatch/tasks | feat/task-019-extract-engstruct-metamaterial | rebase --onto | Done |

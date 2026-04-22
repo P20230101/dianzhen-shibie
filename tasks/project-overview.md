@@ -53,4 +53,4 @@ Those files define the product main line. This page only tracks how the reposito
 
 ## Next Actions
 
-1. Hold new task assignment until `dispatch/tasks` and the real branch heads are reconciled.
+1. Hold new task assignment until `TASK-020` has a unique target and `dispatch/tasks` matches the local implementation state.
