@@ -3,8 +3,8 @@
 ## Snapshot
 
 - Dispatch branch: `dispatch/tasks`
-- Dispatch head: `67d098f`
-- Current dev branch: `feat/task-019-extract-engstruct-metamaterial`
+- Dispatch head: `38ba3ab`
+- Current dev branch: `dispatch/tasks`
 - `TASK-019` is now archived after the EngStruct 2023 3D metamaterial bundle landed.
 
 ## Mapping
@@ -28,7 +28,7 @@
 | TASK-016 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-016-extract-matdes-hierarchical` now contains the 3D printed hierarchical honeycomb paper bundle and produces a larger KG. |
 | TASK-017 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-017-extract-bioinspired-hierarchical` now contains the bio-inspired hierarchical honeycomb paper bundle and produces a larger KG. |
 | TASK-018 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-018-extract-bioinspired-spatial-lattice` now contains the IJIMPENG 2023 spatial lattice bundle and produces a larger KG. |
-| TASK-019 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-019-extract-engstruct-metamaterial` now contains the EngStruct 2023 3D metamaterial bundle and produces a larger KG. |
+| TASK-019 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Merged locally; `dispatch/tasks` now contains the EngStruct 2023 3D metamaterial bundle and produces a larger KG. |
 
 ## Split Notes
 
