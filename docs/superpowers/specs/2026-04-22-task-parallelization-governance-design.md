@@ -21,7 +21,7 @@ This means the current workflow fails the branch-splitting gate in `tasks/branch
 2. the acceptance boundary is not independent
 3. global KG growth is being used as a per-task acceptance signal
 
-The shortest-path fix is not “open more branches now”; it is to change what future tasks are allowed to write.
+The shortest-path fix is not "open more branches now"; it is to change what future tasks are allowed to write.
 
 ## Constraints
 
@@ -153,7 +153,7 @@ Only promotion tasks write:
 1. select one paper target
 2. create or update its paper spec
 3. run `build_pdf_sample_bundle.py --paper-id <paper-id>`
-4. write only that paper’s bundle outputs
+4. write only that paper's bundle outputs
 5. run paper-specific tests
 6. close the bundle task
 
@@ -233,7 +233,7 @@ After this change:
 - future paper-expansion tasks stop fighting over canonical outputs
 - paper-local bundle tasks can be released on multiple execution branches
 - canonical extracted outputs and KG stay under one controlled promotion path
-- branch splitting follows the repository’s existing governance rules instead of bypassing them
+- branch splitting follows the repository's existing governance rules instead of bypassing them
 
 ## Recommendation
 
