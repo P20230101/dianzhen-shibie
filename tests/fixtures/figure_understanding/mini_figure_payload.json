@@ -1,0 +1,23 @@
+{
+  "raw": {
+    "paper_id": "10_1016_j_addma_2022_102887",
+    "figure_id": "fig_001",
+    "page_no": 3,
+    "image_path": "data/03_figures/images/10_1016_j_addma_2022_102887/fig_001.png",
+    "caption_text": "Stress-strain curves of gyroid and diamond lattices.",
+    "context_text": "Figure 2 shows quasi-static compression results."
+  },
+  "interpretation": {
+    "panel_labels": ["b", "a", "a"],
+    "figure_type": "curve_plot",
+    "recaption": "Stress-strain curves compare gyroid and diamond lattices.",
+    "figure_summary": "The curves show distinct plateau behavior under compression.",
+    "confidence": 0.78,
+    "source_refs": [
+      "paper:10_1016_j_addma_2022_102887",
+      "page:3",
+      "figure:fig_001"
+    ]
+  },
+  "review_threshold": 0.85
+}
