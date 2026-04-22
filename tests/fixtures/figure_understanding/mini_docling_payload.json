@@ -1,0 +1,45 @@
+{
+  "texts": [
+    {
+      "label": "text",
+      "text": "Figure 2. Stress-strain curves under quasi-static compression.",
+      "prov": [
+        {
+          "page_no": 3
+        }
+      ]
+    },
+    {
+      "label": "text",
+      "text": "The surrounding paragraph explains that the gyroid lattice is compared with a diamond lattice under compression.",
+      "prov": [
+        {
+          "page_no": 3
+        }
+      ]
+    }
+  ],
+  "pictures": [
+    {
+      "figure_id": "fig_001",
+      "prov": [
+        {
+          "page_no": 3
+        }
+      ],
+      "captions": [
+        {
+          "$ref": "#/texts/0"
+        }
+      ],
+      "description": "The figure compares gyroid and diamond lattice responses under compression.",
+      "image_path": "tests/fixtures/figure_understanding/mini_figure_image.png",
+      "bbox": [
+        10,
+        20,
+        30,
+        40
+      ]
+    }
+  ]
+}
