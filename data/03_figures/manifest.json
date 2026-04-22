@@ -1,0 +1,11 @@
+{
+  "register_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\.worktrees\\task-023-figure-understanding-finish\\tests\\fixtures\\figure_understanding\\mini_register.csv",
+  "library_root": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\.worktrees\\task-023-figure-understanding-finish\\data\\01_raw\\pdfs\\library",
+  "output_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\.worktrees\\task-023-figure-understanding-finish\\data\\03_figures\\figures_v1.jsonl",
+  "review_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\.worktrees\\task-023-figure-understanding-finish\\data\\03_figures\\figures_review.csv",
+  "paper_count": 1,
+  "figure_count": 2,
+  "paper_ids": [
+    "10_1016_j_addma_2022_102887"
+  ]
+}

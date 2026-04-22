@@ -50,6 +50,10 @@ def test_end_to_end_smoke_writes_figure_outputs(tmp_path: Path) -> None:
     assert jsonl_rows[0]["figure_type"] == "curve_plot"
     assert jsonl_rows[0]["needs_manual_review"] is False
     assert jsonl_rows[0]["panel_labels"] == ["a", "b"]
+    assert jsonl_rows[0]["subfigure_map"] == {
+        "a": "gyroid lattice",
+        "b": "diamond lattice",
+    }
 
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     assert manifest["figure_count"] == 1
@@ -63,10 +67,11 @@ def test_end_to_end_smoke_writes_figure_outputs(tmp_path: Path) -> None:
             "paper_id": "10_1016_j_addma_2022_102887",
             "figure_id": "fig_001",
             "page_no": "3",
-            "image_path": "tests/fixtures/figure_understanding/mini_figure_image.png",
+            "image_path": "data/03_figures/images/10_1016_j_addma_2022_102887/fig_001.png",
             "caption_text": "Figure 2. Stress-strain curves under quasi-static compression.",
             "context_text": "The figure compares gyroid and diamond lattice responses under compression.",
             "panel_labels": "a;b",
+            "subfigure_map": "{\"a\": \"gyroid lattice\", \"b\": \"diamond lattice\"}",
             "figure_type": "curve_plot",
             "recaption": "Compression curves compare gyroid and diamond lattices.",
             "figure_summary": "The gyroid lattice shows a higher plateau stress than the diamond lattice under compression.",
@@ -117,4 +122,35 @@ def test_main_writes_expected_outputs_with_fixture_backend(tmp_path: Path, monke
 
     assert len(jsonl_rows) == 1
     assert jsonl_rows[0]["figure_type"] == "curve_plot"
+    assert jsonl_rows[0]["subfigure_map"] == {
+        "a": "gyroid lattice",
+        "b": "diamond lattice",
+    }
     assert manifest["figure_count"] == 1
+
+
+def test_seeded_figure_artifacts_are_checked_in() -> None:
+    figure_dir = ROOT / "data" / "03_figures"
+    jsonl_path = figure_dir / "figures_v1.jsonl"
+    manifest_path = figure_dir / "manifest.json"
+    review_path = figure_dir / "figures_review.csv"
+    expected = json.loads((FIXTURES_DIR / "multi_figure_expected.json").read_text(encoding="utf-8"))
+
+    assert jsonl_path.exists()
+    assert manifest_path.exists()
+    assert review_path.exists()
+
+    jsonl_rows = [json.loads(line) for line in jsonl_path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+
+    assert manifest["figure_count"] == len(jsonl_rows) == 2
+    assert manifest["paper_count"] == 1
+    assert jsonl_rows == expected
+
+    with review_path.open("r", encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+
+    assert len(rows) == 2
+    assert {row["figure_id"] for row in rows} == {"fig_003", "fig_004"}
+    assert any(row["subfigure_map"] == '{"a": "stress-strain response", "b": "deformed specimen", "c": "fracture path"}' for row in rows)
+    assert any(row["subfigure_map"] == "{}" for row in rows)

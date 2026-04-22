@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 from dataclasses import dataclass
 import base64
 import json
@@ -46,7 +47,7 @@ class VlmFigureInterpreter:
                     "role": "system",
                     "content": (
                         "Return a JSON object with figure_type, recaption, figure_summary, "
-                        "panel_labels, confidence, and source_refs."
+                        "panel_labels, subfigure_map, confidence, and source_refs."
                     ),
                 },
                 {
@@ -109,3 +110,57 @@ class VlmFigureInterpreter:
         if not isinstance(content, str):
             raise TypeError("VLM response content must be text or JSON")
         return _normalize_response(json.loads(content))
+
+
+def _build_arg_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Run a single figure understanding interpretation")
+    parser.add_argument("--image", type=Path, required=True)
+    parser.add_argument("--caption")
+    parser.add_argument("--context")
+    parser.add_argument("--out", type=Path)
+    parser.add_argument("--fixture-response", type=Path)
+    parser.add_argument("--base-url")
+    parser.add_argument("--model")
+    parser.add_argument("--api-key")
+    parser.add_argument("--timeout-s", type=float, default=60.0)
+    return parser
+
+
+def _build_interpreter(args: argparse.Namespace) -> FixtureFigureInterpreter | VlmFigureInterpreter:
+    fixture_response = getattr(args, "fixture_response", None)
+    if fixture_response is not None:
+        return FixtureFigureInterpreter(Path(fixture_response))
+
+    base_url = getattr(args, "base_url", None)
+    model = getattr(args, "model", None)
+    if not base_url or not model:
+        raise SystemExit("provide either --fixture-response or both --base-url and --model")
+    return VlmFigureInterpreter(
+        base_url=str(base_url),
+        model=str(model),
+        api_key=getattr(args, "api_key", None),
+        timeout_s=float(getattr(args, "timeout_s", 60.0)),
+    )
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = _build_arg_parser()
+    args = parser.parse_args(argv)
+    interpreter = _build_interpreter(args)
+
+    result = interpreter.interpret(
+        image_path=str(args.image),
+        caption_text=args.caption,
+        context_text=args.context,
+    )
+
+    if args.out:
+        args.out.parent.mkdir(parents=True, exist_ok=True)
+        args.out.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    else:
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

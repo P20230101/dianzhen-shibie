@@ -41,6 +41,22 @@ def _normalize_string_list(value: object) -> list[str]:
     return values
 
 
+def _normalize_subfigure_map(value: object) -> dict[str, str]:
+    if not isinstance(value, dict):
+        return {}
+
+    normalized: dict[str, str] = {}
+    for key in sorted(value.keys(), key=lambda item: str(item).strip().lower()):
+        label = str(key).strip().lower()
+        if not label:
+            continue
+        text = _optional_text(value.get(key))
+        if text is None:
+            continue
+        normalized[label] = text
+    return normalized
+
+
 @dataclass(frozen=True)
 class FigureRecord:
     paper_id: str
@@ -50,6 +66,7 @@ class FigureRecord:
     caption_text: str | None
     context_text: str | None
     panel_labels: list[str]
+    subfigure_map: dict[str, str]
     figure_type: str
     recaption: str | None
     figure_summary: str | None
@@ -91,6 +108,7 @@ def build_figure_record(
         caption_text=_optional_text(raw.get("caption_text")),
         context_text=_optional_text(raw.get("context_text")),
         panel_labels=normalize_panel_labels(interpretation.get("panel_labels")),
+        subfigure_map=_normalize_subfigure_map(interpretation.get("subfigure_map")),
         figure_type=_optional_text(interpretation.get("figure_type")) or "unknown",
         recaption=_optional_text(interpretation.get("recaption")),
         figure_summary=_optional_text(interpretation.get("figure_summary")),
@@ -112,6 +130,7 @@ def write_jsonl(records: list[dict[str, object]], path: Path) -> None:
 def _review_row(record: dict[str, object]) -> dict[str, object]:
     row = dict(record)
     row["panel_labels"] = ";".join(str(item) for item in record.get("panel_labels", []))
+    row["subfigure_map"] = json.dumps(record.get("subfigure_map", {}), ensure_ascii=False)
     row["source_refs"] = ";".join(str(item) for item in record.get("source_refs", []))
     row["needs_manual_review"] = str(bool(record.get("needs_manual_review"))).lower()
     return row
@@ -127,6 +146,7 @@ def write_review_csv(records: list[dict[str, object]], path: Path) -> None:
         "caption_text",
         "context_text",
         "panel_labels",
+        "subfigure_map",
         "figure_type",
         "recaption",
         "figure_summary",

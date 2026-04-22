@@ -19,6 +19,7 @@ Each figure record should include at least:
 - `caption_text`
 - `context_text`
 - `panel_labels`
+- `subfigure_map`
 - `figure_type`
 - `recaption`
 - `figure_summary`

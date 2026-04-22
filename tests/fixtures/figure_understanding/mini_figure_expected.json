@@ -6,6 +6,10 @@
   "caption_text": "Stress-strain curves of gyroid and diamond lattices.",
   "context_text": "Figure 2 shows quasi-static compression results.",
   "panel_labels": ["a", "b"],
+  "subfigure_map": {
+    "a": "gyroid lattice",
+    "b": "diamond lattice"
+  },
   "figure_type": "curve_plot",
   "recaption": "Stress-strain curves compare gyroid and diamond lattices.",
   "figure_summary": "The curves show distinct plateau behavior under compression.",

@@ -33,7 +33,7 @@
         }
       ],
       "description": "The figure compares gyroid and diamond lattice responses under compression.",
-      "image_path": "tests/fixtures/figure_understanding/mini_figure_image.png",
+      "image_path": "data/03_figures/images/10_1016_j_addma_2022_102887/fig_001.png",
       "bbox": [
         10,
         20,

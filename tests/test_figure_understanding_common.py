@@ -34,6 +34,22 @@ def test_build_figure_record_matches_fixture_contract() -> None:
     assert record == expected
 
 
+def test_build_figure_record_preserves_subfigure_map() -> None:
+    payload = read_json(FIXTURES_DIR / "mini_figure_payload.json")
+    assert isinstance(payload, dict)
+
+    record = build_figure_record(
+        raw=payload["raw"],
+        interpretation=payload["interpretation"],
+        review_threshold=float(payload["review_threshold"]),
+    )
+
+    assert record["subfigure_map"] == {
+        "a": "gyroid lattice",
+        "b": "diamond lattice",
+    }
+
+
 def test_write_jsonl_and_review_csv_round_trip(tmp_path: Path) -> None:
     payload = read_json(FIXTURES_DIR / "mini_figure_payload.json")
     expected = read_json(FIXTURES_DIR / "mini_figure_expected.json")
@@ -63,6 +79,7 @@ def test_write_jsonl_and_review_csv_round_trip(tmp_path: Path) -> None:
             "caption_text": "Stress-strain curves of gyroid and diamond lattices.",
             "context_text": "Figure 2 shows quasi-static compression results.",
             "panel_labels": "a;b",
+            "subfigure_map": "{\"a\": \"gyroid lattice\", \"b\": \"diamond lattice\"}",
             "figure_type": "curve_plot",
             "recaption": "Stress-strain curves compare gyroid and diamond lattices.",
             "figure_summary": "The curves show distinct plateau behavior under compression.",

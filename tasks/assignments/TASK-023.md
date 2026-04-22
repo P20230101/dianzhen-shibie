@@ -20,3 +20,5 @@
 ## Status Log
 Append one line for every state change. Minimum lifecycle entries: `Created`, `Started`, `Blocked` (if any), `Resumed` (if any), `Done`, and `Archived`.
 - `2026-04-22 15:30 | Created on dispatch/tasks`
+- `2026-04-22 21:40 | Started figure-understanding finish work`
+- `2026-04-22 22:08 | Done figure-understanding finish work`
