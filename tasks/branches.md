@@ -8,7 +8,7 @@ Rules:
 
 | Task ID | Title | Dispatch Branch | Dev Branch | Integration Method | Status |
 |---|---|---|---|---|---|
-| TASK-023 | Figure understanding layer implementation | dispatch/tasks | feat/task-023-figure-understanding | rebase --onto | To Do |
+| TASK-023 | Figure understanding layer implementation | dispatch/tasks | feat/task-023-figure-understanding | rebase --onto | Done |
 | TASK-001 | P1 first minimal chain | dispatch/tasks | feat/task-001-min-pipeline | rebase --onto | Done |
 | TASK-002 | Excel input adapter for seed intake | dispatch/tasks | feat/task-002-input-excel | rebase --onto | Done |
 | TASK-003 | PDF first-pass register extractor | dispatch/tasks | feat/task-003-input-pdf | rebase --onto | Done |

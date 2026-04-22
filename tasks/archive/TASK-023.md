@@ -20,3 +20,6 @@
 ## Status Log
 Append one line for every state change. Minimum lifecycle entries: `Created`, `Started`, `Blocked` (if any), `Resumed` (if any), `Done`, and `Archived`.
 - `2026-04-22 15:30 | Created on dispatch/tasks`
+- `2026-04-22 15:44 | Started on feat/task-023-figure-understanding`
+- `2026-04-22 16:12 | Done | figure-understanding layer implemented, tests passed, PR #2 merged`
+- `2026-04-22 16:12 | Archived to tasks/archive/`

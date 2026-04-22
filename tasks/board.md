@@ -4,7 +4,6 @@ Entry format:
 `- TASK-001 | <title> | <dev-branch>`
 
 ## To Do
-- TASK-023 | Figure understanding layer implementation | feat/task-023-figure-understanding
 ## Doing
 ## Blocked
 
@@ -28,3 +27,4 @@ Entry format:
 - TASK-017 | Bio-inspired hierarchical honeycomb sample expansion | feat/task-017-extract-bioinspired-hierarchical
 - TASK-018 | Bio-inspired spatial lattice sample expansion | feat/task-018-extract-bioinspired-spatial-lattice
 - TASK-019 | 3D metamaterial sample expansion | feat/task-019-extract-engstruct-metamaterial
+- TASK-023 | Figure understanding layer implementation | feat/task-023-figure-understanding

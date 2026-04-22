@@ -3,9 +3,10 @@
 ## Snapshot
 
 - Dispatch branch: `dispatch/tasks`
-- Dispatch head: `38ba3ab`
+- Dispatch head: `b0c6021`
 - Current dev branch: `dispatch/tasks`
 - `TASK-019` is now archived after the EngStruct 2023 3D metamaterial bundle landed.
+- `TASK-023` is now archived after the figure-understanding layer PR merged.
 
 ## Mapping
 
@@ -29,6 +30,7 @@
 | TASK-017 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-017-extract-bioinspired-hierarchical` now contains the bio-inspired hierarchical honeycomb paper bundle and produces a larger KG. |
 | TASK-018 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-018-extract-bioinspired-spatial-lattice` now contains the IJIMPENG 2023 spatial lattice bundle and produces a larger KG. |
 | TASK-019 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Merged locally; `dispatch/tasks` now contains the EngStruct 2023 3D metamaterial bundle and produces a larger KG. |
+| TASK-023 | `scripts/figure_understanding_common.py`, `scripts/build_figure_understanding.py`, `scripts/figure_understanding_vlm.py` | `tests/test_figure_understanding_common.py`, `tests/test_build_figure_understanding.py`, `tests/test_figure_understanding_vlm.py`, `tests/test_figure_understanding_smoke.py` | `data/03_figures/figures_v1.jsonl`, `data/03_figures/figures_review.csv`, `data/03_figures/manifest.json` | Merged locally; `feat/task-023-figure-understanding` was delivered through PR #2 and the figure-understanding layer is complete. |
 
 ## Split Notes
 
@@ -45,3 +47,4 @@
 - `TASK-017` extends `TASK-016` with a bio-inspired hierarchical honeycomb bundle and reuses the same promotion and KG path.
 - `TASK-018` extends `TASK-017` with the bio-inspired spatial lattice bundle and reuses the same promotion and KG path.
 - `TASK-019` extends `TASK-018` with the EngStruct 2023 3D metamaterial bundle and reuses the same promotion and KG path.
+- `TASK-023` is a figure-only branch that does not feed sample/evidence or KG; it ships the figure understanding layer and stops at image-level artifacts.
