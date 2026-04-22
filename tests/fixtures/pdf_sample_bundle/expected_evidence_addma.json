@@ -1,0 +1,62 @@
+[
+  {
+    "evidence_id": "10_1016_j_addma_2022_102887-i2o-2-mgo-ev-001",
+    "sample_id": "10_1016_j_addma_2022_102887-i2o-2-mgo",
+    "field_name": "raw_structure",
+    "field_value": "gyroid",
+    "source_priority": "T1",
+    "source_type": "text",
+    "page_no": 1,
+    "figure_id": null,
+    "table_id": null,
+    "text_snippet": "Title identifies titanium gyroid lattice structures.",
+    "extractor": "build_pdf_sample_bundle",
+    "extract_confidence": 1.0,
+    "verified_by_human": false
+  },
+  {
+    "evidence_id": "10_1016_j_addma_2022_102887-i2o-2-mgo-ev-002",
+    "sample_id": "10_1016_j_addma_2022_102887-i2o-2-mgo",
+    "field_name": "raw_process",
+    "field_value": "L-PBF",
+    "source_priority": "T1",
+    "source_type": "text",
+    "page_no": 1,
+    "figure_id": null,
+    "table_id": null,
+    "text_snippet": "Abstract states the lattice structures were additively manufactured by laser powder bed fusion (L-PBF).",
+    "extractor": "build_pdf_sample_bundle",
+    "extract_confidence": 1.0,
+    "verified_by_human": false
+  },
+  {
+    "evidence_id": "10_1016_j_addma_2022_102887-i2o-2-mgo-ev-003",
+    "sample_id": "10_1016_j_addma_2022_102887-i2o-2-mgo",
+    "field_name": "raw_material",
+    "field_value": "MgO-doped CP Ti",
+    "source_priority": "T1",
+    "source_type": "text",
+    "page_no": 1,
+    "figure_id": null,
+    "table_id": null,
+    "text_snippet": "Abstract states MgO nanoparticles were introduced to CP Ti feedstock for oxygen solute strengthening.",
+    "extractor": "build_pdf_sample_bundle",
+    "extract_confidence": 0.98,
+    "verified_by_human": false
+  },
+  {
+    "evidence_id": "10_1016_j_addma_2022_102887-i2o-2-mgo-ev-004",
+    "sample_id": "10_1016_j_addma_2022_102887-i2o-2-mgo",
+    "field_name": "sea_j_g",
+    "field_value": "28.5",
+    "source_priority": "T1",
+    "source_type": "table",
+    "page_no": 0,
+    "figure_id": null,
+    "table_id": "table_003",
+    "text_snippet": "Table 3 row I2O-2-MgO records average relative density 36.58%, yield strength 111.16 MPa, and specific energy absorption 28.5 J/g.",
+    "extractor": "build_pdf_sample_bundle",
+    "extract_confidence": 0.99,
+    "verified_by_human": false
+  }
+]

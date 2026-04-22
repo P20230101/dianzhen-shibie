@@ -1,0 +1,14 @@
+[
+  {
+    "sample_id": "sample-1",
+    "paper_id": "10_1016_j_compositesb_2019_107565",
+    "review_status": "accepted",
+    "needs_manual_review": false
+  },
+  {
+    "sample_id": "sample-2",
+    "paper_id": "10_1016_j_matdes_2019_108076",
+    "review_status": "pending",
+    "needs_manual_review": true
+  }
+]

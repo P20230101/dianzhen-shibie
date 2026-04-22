@@ -1,0 +1,616 @@
+{
+  "nodes": [
+    {
+      "node_id": "sample:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104",
+      "node_type": "sample",
+      "label": "10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104"
+    },
+    {
+      "node_id": "paper:10-1016-j-compositesb-2019-107565",
+      "node_type": "paper",
+      "label": "10-1016-j-compositesb-2019-107565"
+    },
+    {
+      "node_id": "sample:10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive",
+      "node_type": "sample",
+      "label": "10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive"
+    },
+    {
+      "node_id": "paper:10_1016_j_jmrt_2023_05_167",
+      "node_type": "paper",
+      "label": "10_1016_j_jmrt_2023_05_167"
+    },
+    {
+      "node_id": "sample:10_1016_j_addma_2022_102887-i2o-2-mgo",
+      "node_type": "sample",
+      "label": "10_1016_j_addma_2022_102887-i2o-2-mgo"
+    },
+    {
+      "node_id": "paper:10_1016_j_addma_2022_102887",
+      "node_type": "paper",
+      "label": "10_1016_j_addma_2022_102887"
+    },
+    {
+      "node_id": "sample:10_1016_j_compstruct_2019_111219-psh-a5-b1p568-t0p3",
+      "node_type": "sample",
+      "label": "10_1016_j_compstruct_2019_111219-psh-a5-b1p568-t0p3"
+    },
+    {
+      "node_id": "paper:10_1016_j_compstruct_2019_111219",
+      "node_type": "paper",
+      "label": "10_1016_j_compstruct_2019_111219"
+    },
+    {
+      "node_id": "sample:10_1016_j_tws_2020_106623-sth-r015-v1",
+      "node_type": "sample",
+      "label": "10_1016_j_tws_2020_106623-sth-r015-v1"
+    },
+    {
+      "node_id": "paper:10_1016_j_tws_2020_106623",
+      "node_type": "paper",
+      "label": "10_1016_j_tws_2020_106623"
+    },
+    {
+      "node_id": "sample:10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb",
+      "node_type": "sample",
+      "label": "10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb"
+    },
+    {
+      "node_id": "paper:10_1016_j_tws_2019_106436",
+      "node_type": "paper",
+      "label": "10_1016_j_tws_2019_106436"
+    },
+    {
+      "node_id": "sample:10_1016_j_matdes_2017_10_028-rd016-hierarchical-honeycomb",
+      "node_type": "sample",
+      "label": "10_1016_j_matdes_2017_10_028-rd016-hierarchical-honeycomb"
+    },
+    {
+      "node_id": "paper:10_1016_j_matdes_2017_10_028",
+      "node_type": "paper",
+      "label": "10_1016_j_matdes_2017_10_028"
+    },
+    {
+      "node_id": "sample:10_1016_j_compstruct_2018_03_050-n2-r0125-triangular-hierarchical",
+      "node_type": "sample",
+      "label": "10_1016_j_compstruct_2018_03_050-n2-r0125-triangular-hierarchical"
+    },
+    {
+      "node_id": "paper:10_1016_j_compstruct_2018_03_050",
+      "node_type": "paper",
+      "label": "10_1016_j_compstruct_2018_03_050"
+    },
+    {
+      "node_id": "sample:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice",
+      "node_type": "sample",
+      "label": "10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice"
+    },
+    {
+      "node_id": "paper:10_1016_j_ijimpeng_2023_104713",
+      "node_type": "paper",
+      "label": "10_1016_j_ijimpeng_2023_104713"
+    },
+    {
+      "node_id": "sample:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00",
+      "node_type": "sample",
+      "label": "10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00"
+    },
+    {
+      "node_id": "paper:10_1016_j_engstruct_2023_116510",
+      "node_type": "paper",
+      "label": "10_1016_j_engstruct_2023_116510"
+    },
+    {
+      "node_id": "evidence:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-001",
+      "node_type": "evidence",
+      "label": "raw_design"
+    },
+    {
+      "node_id": "evidence:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-002",
+      "node_type": "evidence",
+      "label": "raw_material"
+    },
+    {
+      "node_id": "evidence:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-003",
+      "node_type": "evidence",
+      "label": "raw_process"
+    },
+    {
+      "node_id": "evidence:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-004",
+      "node_type": "evidence",
+      "label": "sea_j_g"
+    },
+    {
+      "node_id": "evidence:10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive-ev-001",
+      "node_type": "evidence",
+      "label": "raw_design"
+    },
+    {
+      "node_id": "evidence:10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive-ev-002",
+      "node_type": "evidence",
+      "label": "raw_structure"
+    },
+    {
+      "node_id": "evidence:10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive-ev-003",
+      "node_type": "evidence",
+      "label": "raw_process"
+    },
+    {
+      "node_id": "evidence:10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive-ev-004",
+      "node_type": "evidence",
+      "label": "sea_j_g"
+    },
+    {
+      "node_id": "evidence:10_1016_j_addma_2022_102887-i2o-2-mgo-ev-001",
+      "node_type": "evidence",
+      "label": "raw_structure"
+    },
+    {
+      "node_id": "evidence:10_1016_j_addma_2022_102887-i2o-2-mgo-ev-002",
+      "node_type": "evidence",
+      "label": "raw_process"
+    },
+    {
+      "node_id": "evidence:10_1016_j_addma_2022_102887-i2o-2-mgo-ev-003",
+      "node_type": "evidence",
+      "label": "raw_material"
+    },
+    {
+      "node_id": "evidence:10_1016_j_addma_2022_102887-i2o-2-mgo-ev-004",
+      "node_type": "evidence",
+      "label": "sea_j_g"
+    },
+    {
+      "node_id": "evidence:10_1016_j_compstruct_2019_111219-psh-a5-b1p568-t0p3-ev-001",
+      "node_type": "evidence",
+      "label": "raw_structure"
+    },
+    {
+      "node_id": "evidence:10_1016_j_compstruct_2019_111219-psh-a5-b1p568-t0p3-ev-002",
+      "node_type": "evidence",
+      "label": "raw_process"
+    },
+    {
+      "node_id": "evidence:10_1016_j_compstruct_2019_111219-psh-a5-b1p568-t0p3-ev-003",
+      "node_type": "evidence",
+      "label": "sea_j_g"
+    },
+    {
+      "node_id": "evidence:10_1016_j_compstruct_2019_111219-psh-a5-b1p568-t0p3-ev-004",
+      "node_type": "evidence",
+      "label": "plateau_stress_mpa"
+    },
+    {
+      "node_id": "evidence:10_1016_j_tws_2020_106623-sth-r015-v1-ev-001",
+      "node_type": "evidence",
+      "label": "raw_structure"
+    },
+    {
+      "node_id": "evidence:10_1016_j_tws_2020_106623-sth-r015-v1-ev-002",
+      "node_type": "evidence",
+      "label": "raw_material"
+    },
+    {
+      "node_id": "evidence:10_1016_j_tws_2020_106623-sth-r015-v1-ev-003",
+      "node_type": "evidence",
+      "label": "plateau_stress_mpa"
+    },
+    {
+      "node_id": "evidence:10_1016_j_tws_2020_106623-sth-r015-v1-ev-004",
+      "node_type": "evidence",
+      "label": "loading_direction"
+    },
+    {
+      "node_id": "evidence:10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb-ev-001",
+      "node_type": "evidence",
+      "label": "raw_structure"
+    },
+    {
+      "node_id": "evidence:10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb-ev-002",
+      "node_type": "evidence",
+      "label": "raw_process"
+    },
+    {
+      "node_id": "evidence:10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb-ev-003",
+      "node_type": "evidence",
+      "label": "plateau_stress_mpa"
+    },
+    {
+      "node_id": "evidence:10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb-ev-004",
+      "node_type": "evidence",
+      "label": "sea_j_g"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2017_10_028-rd016-hierarchical-honeycomb-ev-001",
+      "node_type": "evidence",
+      "label": "raw_structure"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2017_10_028-rd016-hierarchical-honeycomb-ev-002",
+      "node_type": "evidence",
+      "label": "raw_design"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2017_10_028-rd016-hierarchical-honeycomb-ev-003",
+      "node_type": "evidence",
+      "label": "raw_material"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2017_10_028-rd016-hierarchical-honeycomb-ev-004",
+      "node_type": "evidence",
+      "label": "raw_process"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2017_10_028-rd016-hierarchical-honeycomb-ev-005",
+      "node_type": "evidence",
+      "label": "relative_density"
+    },
+    {
+      "node_id": "evidence:10_1016_j_compstruct_2018_03_050-n2-r0125-triangular-hierarchical-ev-001",
+      "node_type": "evidence",
+      "label": "raw_structure"
+    },
+    {
+      "node_id": "evidence:10_1016_j_compstruct_2018_03_050-n2-r0125-triangular-hierarchical-ev-002",
+      "node_type": "evidence",
+      "label": "raw_design"
+    },
+    {
+      "node_id": "evidence:10_1016_j_compstruct_2018_03_050-n2-r0125-triangular-hierarchical-ev-003",
+      "node_type": "evidence",
+      "label": "raw_material"
+    },
+    {
+      "node_id": "evidence:10_1016_j_compstruct_2018_03_050-n2-r0125-triangular-hierarchical-ev-004",
+      "node_type": "evidence",
+      "label": "raw_process"
+    },
+    {
+      "node_id": "evidence:10_1016_j_compstruct_2018_03_050-n2-r0125-triangular-hierarchical-ev-005",
+      "node_type": "evidence",
+      "label": "relative_density"
+    },
+    {
+      "node_id": "evidence:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice-ev-001",
+      "node_type": "evidence",
+      "label": "raw_structure"
+    },
+    {
+      "node_id": "evidence:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice-ev-002",
+      "node_type": "evidence",
+      "label": "raw_design"
+    },
+    {
+      "node_id": "evidence:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice-ev-003",
+      "node_type": "evidence",
+      "label": "raw_material"
+    },
+    {
+      "node_id": "evidence:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice-ev-004",
+      "node_type": "evidence",
+      "label": "raw_process"
+    },
+    {
+      "node_id": "evidence:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice-ev-005",
+      "node_type": "evidence",
+      "label": "sea_j_g"
+    },
+    {
+      "node_id": "evidence:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice-ev-006",
+      "node_type": "evidence",
+      "label": "pcf_kn"
+    },
+    {
+      "node_id": "evidence:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00-ev-001",
+      "node_type": "evidence",
+      "label": "raw_structure"
+    },
+    {
+      "node_id": "evidence:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00-ev-002",
+      "node_type": "evidence",
+      "label": "raw_material"
+    },
+    {
+      "node_id": "evidence:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00-ev-003",
+      "node_type": "evidence",
+      "label": "raw_process"
+    },
+    {
+      "node_id": "evidence:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00-ev-004",
+      "node_type": "evidence",
+      "label": "raw_design"
+    },
+    {
+      "node_id": "evidence:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00-ev-005",
+      "node_type": "evidence",
+      "label": "sea_j_g"
+    },
+    {
+      "node_id": "evidence:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00-ev-006",
+      "node_type": "evidence",
+      "label": "pcf_kn"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "paper:10-1016-j-compositesb-2019-107565",
+      "target_id": "sample:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104",
+      "relation": "contains_sample"
+    },
+    {
+      "source_id": "paper:10_1016_j_jmrt_2023_05_167",
+      "target_id": "sample:10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive",
+      "relation": "contains_sample"
+    },
+    {
+      "source_id": "paper:10_1016_j_addma_2022_102887",
+      "target_id": "sample:10_1016_j_addma_2022_102887-i2o-2-mgo",
+      "relation": "contains_sample"
+    },
+    {
+      "source_id": "paper:10_1016_j_compstruct_2019_111219",
+      "target_id": "sample:10_1016_j_compstruct_2019_111219-psh-a5-b1p568-t0p3",
+      "relation": "contains_sample"
+    },
+    {
+      "source_id": "paper:10_1016_j_tws_2020_106623",
+      "target_id": "sample:10_1016_j_tws_2020_106623-sth-r015-v1",
+      "relation": "contains_sample"
+    },
+    {
+      "source_id": "paper:10_1016_j_tws_2019_106436",
+      "target_id": "sample:10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb",
+      "relation": "contains_sample"
+    },
+    {
+      "source_id": "paper:10_1016_j_matdes_2017_10_028",
+      "target_id": "sample:10_1016_j_matdes_2017_10_028-rd016-hierarchical-honeycomb",
+      "relation": "contains_sample"
+    },
+    {
+      "source_id": "paper:10_1016_j_compstruct_2018_03_050",
+      "target_id": "sample:10_1016_j_compstruct_2018_03_050-n2-r0125-triangular-hierarchical",
+      "relation": "contains_sample"
+    },
+    {
+      "source_id": "paper:10_1016_j_ijimpeng_2023_104713",
+      "target_id": "sample:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice",
+      "relation": "contains_sample"
+    },
+    {
+      "source_id": "paper:10_1016_j_engstruct_2023_116510",
+      "target_id": "sample:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00",
+      "relation": "contains_sample"
+    },
+    {
+      "source_id": "sample:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104",
+      "target_id": "evidence:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-001",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104",
+      "target_id": "evidence:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-002",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104",
+      "target_id": "evidence:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-003",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104",
+      "target_id": "evidence:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-004",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive",
+      "target_id": "evidence:10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive-ev-001",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive",
+      "target_id": "evidence:10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive-ev-002",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive",
+      "target_id": "evidence:10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive-ev-003",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive",
+      "target_id": "evidence:10_1016_j_jmrt_2023_05_167-p1l-tpms-primitive-ev-004",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_addma_2022_102887-i2o-2-mgo",
+      "target_id": "evidence:10_1016_j_addma_2022_102887-i2o-2-mgo-ev-001",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_addma_2022_102887-i2o-2-mgo",
+      "target_id": "evidence:10_1016_j_addma_2022_102887-i2o-2-mgo-ev-002",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_addma_2022_102887-i2o-2-mgo",
+      "target_id": "evidence:10_1016_j_addma_2022_102887-i2o-2-mgo-ev-003",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_addma_2022_102887-i2o-2-mgo",
+      "target_id": "evidence:10_1016_j_addma_2022_102887-i2o-2-mgo-ev-004",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_compstruct_2019_111219-psh-a5-b1p568-t0p3",
+      "target_id": "evidence:10_1016_j_compstruct_2019_111219-psh-a5-b1p568-t0p3-ev-001",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_compstruct_2019_111219-psh-a5-b1p568-t0p3",
+      "target_id": "evidence:10_1016_j_compstruct_2019_111219-psh-a5-b1p568-t0p3-ev-002",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_compstruct_2019_111219-psh-a5-b1p568-t0p3",
+      "target_id": "evidence:10_1016_j_compstruct_2019_111219-psh-a5-b1p568-t0p3-ev-003",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_compstruct_2019_111219-psh-a5-b1p568-t0p3",
+      "target_id": "evidence:10_1016_j_compstruct_2019_111219-psh-a5-b1p568-t0p3-ev-004",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_tws_2020_106623-sth-r015-v1",
+      "target_id": "evidence:10_1016_j_tws_2020_106623-sth-r015-v1-ev-001",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_tws_2020_106623-sth-r015-v1",
+      "target_id": "evidence:10_1016_j_tws_2020_106623-sth-r015-v1-ev-002",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_tws_2020_106623-sth-r015-v1",
+      "target_id": "evidence:10_1016_j_tws_2020_106623-sth-r015-v1-ev-003",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_tws_2020_106623-sth-r015-v1",
+      "target_id": "evidence:10_1016_j_tws_2020_106623-sth-r015-v1-ev-004",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb",
+      "target_id": "evidence:10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb-ev-001",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb",
+      "target_id": "evidence:10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb-ev-002",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb",
+      "target_id": "evidence:10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb-ev-003",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb",
+      "target_id": "evidence:10_1016_j_tws_2019_106436-g06-hierarchical-honeycomb-ev-004",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2017_10_028-rd016-hierarchical-honeycomb",
+      "target_id": "evidence:10_1016_j_matdes_2017_10_028-rd016-hierarchical-honeycomb-ev-001",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2017_10_028-rd016-hierarchical-honeycomb",
+      "target_id": "evidence:10_1016_j_matdes_2017_10_028-rd016-hierarchical-honeycomb-ev-002",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2017_10_028-rd016-hierarchical-honeycomb",
+      "target_id": "evidence:10_1016_j_matdes_2017_10_028-rd016-hierarchical-honeycomb-ev-003",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2017_10_028-rd016-hierarchical-honeycomb",
+      "target_id": "evidence:10_1016_j_matdes_2017_10_028-rd016-hierarchical-honeycomb-ev-004",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2017_10_028-rd016-hierarchical-honeycomb",
+      "target_id": "evidence:10_1016_j_matdes_2017_10_028-rd016-hierarchical-honeycomb-ev-005",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_compstruct_2018_03_050-n2-r0125-triangular-hierarchical",
+      "target_id": "evidence:10_1016_j_compstruct_2018_03_050-n2-r0125-triangular-hierarchical-ev-001",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_compstruct_2018_03_050-n2-r0125-triangular-hierarchical",
+      "target_id": "evidence:10_1016_j_compstruct_2018_03_050-n2-r0125-triangular-hierarchical-ev-002",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_compstruct_2018_03_050-n2-r0125-triangular-hierarchical",
+      "target_id": "evidence:10_1016_j_compstruct_2018_03_050-n2-r0125-triangular-hierarchical-ev-003",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_compstruct_2018_03_050-n2-r0125-triangular-hierarchical",
+      "target_id": "evidence:10_1016_j_compstruct_2018_03_050-n2-r0125-triangular-hierarchical-ev-004",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_compstruct_2018_03_050-n2-r0125-triangular-hierarchical",
+      "target_id": "evidence:10_1016_j_compstruct_2018_03_050-n2-r0125-triangular-hierarchical-ev-005",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice",
+      "target_id": "evidence:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice-ev-001",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice",
+      "target_id": "evidence:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice-ev-002",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice",
+      "target_id": "evidence:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice-ev-003",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice",
+      "target_id": "evidence:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice-ev-004",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice",
+      "target_id": "evidence:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice-ev-005",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice",
+      "target_id": "evidence:10_1016_j_ijimpeng_2023_104713-design1-reinforced-hexagonal-lattice-ev-006",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00",
+      "target_id": "evidence:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00-ev-001",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00",
+      "target_id": "evidence:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00-ev-002",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00",
+      "target_id": "evidence:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00-ev-003",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00",
+      "target_id": "evidence:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00-ev-004",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00",
+      "target_id": "evidence:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00-ev-005",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00",
+      "target_id": "evidence:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00-ev-006",
+      "relation": "supports_field"
+    }
+  ]
+}

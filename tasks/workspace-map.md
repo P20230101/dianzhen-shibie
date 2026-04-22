@@ -1,0 +1,47 @@
+# Workspace Task Map
+
+## Snapshot
+
+- Dispatch branch: `dispatch/tasks`
+- Dispatch head: `38ba3ab`
+- Current dev branch: `dispatch/tasks`
+- `TASK-019` is now archived after the EngStruct 2023 3D metamaterial bundle landed.
+
+## Mapping
+
+| Task | Primary implementation files | Tests | Generated artifacts | Current branch state |
+|---|---|---|---|---|
+| TASK-002 | `scripts/p1_seed.py`, `scripts/p1_transform.py`, `scripts/p1_validate_export.py`, `scripts/p1_pipeline_common.py` | `tests/test_p1_workbook_seed_adapter.py` | `data/p1/seed_input.json`, `outputs/p1/seed/seed_input.json`, `outputs/p1/parsed/parsed_sample.json`, `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/p1/review/p1_chain_report.json` | Committed; `feat/task-002-input-excel` now points at `3b7b702` and contains the P1 workbook seed chain. |
+| TASK-003 | `scripts/build_pdf_register.py`, `tests/test_pdf_register_extractor.py` | `tests/test_pdf_register_extractor.py` | `data/01_raw/pdfs/paper_register_first_pass.csv`, `data/01_raw/pdfs/paper_register_first_pass.md` | Committed; `feat/task-003-input-pdf` now points at `ac228c6` and contains the first-pass PDF register extractor. |
+| TASK-004 | `scripts/build_pdf_register.py`, `tests/test_pdf_register_extractor.py` | `tests/test_pdf_register_extractor.py` | `data/01_raw/pdfs/paper_register.csv`, `data/01_raw/pdfs/paper_register.md` | Committed; `feat/task-004-extract-subtypes` now points at `497526a` and contains the canonical-register sync plus subtype enrichment. |
+| TASK-005 | `scripts/build_pdf_intake_manifest.py` | `tests/test_pdf_intake_manifest.py` | `data/02_parsed/pdf_intake_manifest.json` | Committed; `feat/task-005-input-pdf-intake` now points at `ed698da` and contains the PDF intake manifest adapter. |
+| TASK-006 | `scripts/build_retrieval_corpus.py`, `scripts/retrieval_kg_common.py` | `tests/test_build_retrieval_corpus.py` | `data/02_retrieval/corpus.jsonl`, `data/02_retrieval/corpus_manifest.json` | Committed; `feat/task-006-retrieval-corpus` now contains the retrieval corpus build and helper layer. |
+| TASK-007 | `scripts/query_retrieval.py`, `scripts/retrieval_kg_common.py` | `tests/test_query_retrieval.py` | `outputs/retrieval/candidates.json` | Committed; `feat/task-007-extract-query` now contains the retrieval ranking and candidate export. |
+| TASK-008 | `scripts/project_knowledge_graph.py`, `scripts/retrieval_kg_common.py` | `tests/test_retrieval_kg_common.py`, `tests/test_project_knowledge_graph.py` | `outputs/kg/knowledge_graph.json` | Committed; `feat/task-008-export-kg` now contains the KG projection from validated sample and evidence data. |
+| TASK-009 | `tests/test_external_retrieval_kg_smoke.py` | `tests/test_external_retrieval_kg_smoke.py` | Smoke fixtures only under `tests/fixtures/external_retrieval_kg/` | Committed; `feat/task-009-smoke-retrieval-kg` now contains the smoke coverage for retrieval and KG. |
+| TASK-010 | `scripts/promote_p1_review.py`, `tests/test_promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py`, `tests/test_external_retrieval_kg_smoke.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Merged locally; `dispatch/tasks` now contains the integrated P1, PDF, retrieval, and KG stack plus local-data ignore rules and docs. |
+| TASK-011 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-011-extract-paper-sample` now contains the paper-derived sample bundle and produces a larger KG. |
+| TASK-012 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-012-addma-gyroid-sample` now contains the AddMA gyroid paper bundle and produces a larger KG. |
+| TASK-013 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-013-extract-psh-honeycomb` now contains the PSH honeycomb paper bundle and produces a larger KG. |
+| TASK-014 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-014-extract-star-auxetic` now contains the star auxetic honeycomb paper bundle and produces a larger KG. |
+| TASK-015 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-015-extract-hierarchical-honeycomb` now contains the vertex-based hierarchical honeycomb paper bundle and produces a larger KG. |
+| TASK-016 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-016-extract-matdes-hierarchical` now contains the 3D printed hierarchical honeycomb paper bundle and produces a larger KG. |
+| TASK-017 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-017-extract-bioinspired-hierarchical` now contains the bio-inspired hierarchical honeycomb paper bundle and produces a larger KG. |
+| TASK-018 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-018-extract-bioinspired-spatial-lattice` now contains the IJIMPENG 2023 spatial lattice bundle and produces a larger KG. |
+| TASK-019 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Merged locally; `dispatch/tasks` now contains the EngStruct 2023 3D metamaterial bundle and produces a larger KG. |
+
+## Split Notes
+
+- `TASK-002` owns the P1 workbook seed, transform, and validation chain.
+- `TASK-003` and `TASK-004` share the register extractor, but `TASK-004` extends it to the canonical register outputs.
+- `TASK-006` and `TASK-007` share `scripts/retrieval_kg_common.py`.
+- `TASK-008`, `TASK-009`, and `TASK-010` sit on top of the KG projection layer, with `TASK-010` reusing `scripts/project_knowledge_graph.py` after promoting the review state.
+- `TASK-011` starts from the PDF library and extends the existing promotion and KG path with one additional paper-derived sample bundle.
+- `TASK-012` extends `TASK-011` with a second paper-derived sample bundle and reuses the same promotion and KG path.
+- `TASK-013` extends `TASK-012` with a PSH honeycomb bundle and reuses the same promotion and KG path.
+- `TASK-014` extends `TASK-013` with a star auxetic honeycomb bundle and reuses the same promotion and KG path.
+- `TASK-015` extends `TASK-014` with a vertex-based hierarchical honeycomb bundle and reuses the same promotion and KG path.
+- `TASK-016` extends `TASK-015` with a 3D printed hierarchical honeycomb bundle and reuses the same promotion and KG path.
+- `TASK-017` extends `TASK-016` with a bio-inspired hierarchical honeycomb bundle and reuses the same promotion and KG path.
+- `TASK-018` extends `TASK-017` with the bio-inspired spatial lattice bundle and reuses the same promotion and KG path.
+- `TASK-019` extends `TASK-018` with the EngStruct 2023 3D metamaterial bundle and reuses the same promotion and KG path.

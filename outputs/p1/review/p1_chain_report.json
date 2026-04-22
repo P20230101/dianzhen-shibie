@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "chain": [
+    "seed",
+    "parse",
+    "extract",
+    "validate",
+    "export"
+  ],
+  "parsed_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\outputs\\p1\\parsed\\parsed_sample.json",
+  "samples_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\outputs\\p1\\extracted\\samples_v1.json",
+  "evidence_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\outputs\\p1\\extracted\\evidence_v1.json",
+  "sample_count": 1,
+  "evidence_count": 4,
+  "schema_checks": {
+    "samples": "passed",
+    "evidence": "passed"
+  },
+  "closure": "P1 first minimal chain is export-ready on feat/task-001-min-pipeline."
+}

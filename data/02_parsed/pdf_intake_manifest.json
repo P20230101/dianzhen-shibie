@@ -1,0 +1,248 @@
+[
+  {
+    "paper_id": "10_1016_j_compstruct_2018_03_050",
+    "title": "In-plane crashworthiness of bio-inspired hierarchical honeycombs",
+    "doi": "10.1016/j.compstruct.2018.03.050",
+    "family": "honeycomb",
+    "structure_main_class": "honeycomb_2d",
+    "structure_subtype_list": [
+      "bioinspired",
+      "hierarchical"
+    ],
+    "status": "identified",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\honeycomb\\10_1016_j_compstruct_2018_03_050\\original.pdf",
+    "page_count": 12,
+    "first_page_excerpt": "Contents lists available at ScienceDirect Composite Structures journal homepage: www.elsevier.com/locate/compstruct In-plane crashworthiness of bio-inspired hierarchical honeycombs Hanfeng Yin a, Xiaofei Huang a, Fabrizio Scarpa b, Guilin Wen a, Yanyu Chen c,⁎ , Chao Zhang d a State Key Laboratory of Advanced Design and Manufacturing for Vehicle Body, Hunan University, Changsha, Hunan 410082, PR China b Bristol Composites Institute (ACCIS), University of Bristol, Bristol BS8 1TR, UK c Transporta"
+  },
+  {
+    "paper_id": "10_1016_j_compstruct_2019_111219",
+    "title": "In-plane dynamic crushing of a novel circular-celled honeycomb nested with petal-shaped mesostructure",
+    "doi": "10.1016/j.compstruct.2019.111219",
+    "family": "honeycomb",
+    "structure_main_class": "honeycomb_2d",
+    "structure_subtype_list": [
+      "circular_celled",
+      "petal_shaped",
+      "nested"
+    ],
+    "status": "identified",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\honeycomb\\10_1016_j_compstruct_2019_111219\\original.pdf",
+    "page_count": 13,
+    "first_page_excerpt": "Contents lists available at ScienceDirect Composite Structures journal homepage: www.elsevier.com/locate/compstruct In-plane dynamic crushing of a novel circular-celled honeycomb nested with petal-shaped mesostructure Xianfeng Yang a, Xulong Xi b, Qifan Pan d, Hu Liu c,⁎ a Institute of Solid Mechanics, Beihang University, Beijing 100191, PR China b Aviation Key Laboratory of Science and Technology on Structures Impact Dynamics, Aircraft Strength Research Institute of China, Xi ’an 710065, PR Chi"
+  },
+  {
+    "paper_id": "10_1016_j_matdes_2017_10_028",
+    "title": "3D printed hierarchical honeycombs with shape integrity under large compressive deformations",
+    "doi": "10.1016/j.matdes.2017.10.028",
+    "family": "honeycomb",
+    "structure_main_class": "honeycomb_2d",
+    "structure_subtype_list": [
+      "hierarchical"
+    ],
+    "status": "identified",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\honeycomb\\10_1016_j_matdes_2017_10_028\\original.pdf",
+    "page_count": 9,
+    "first_page_excerpt": "3D printed hierarchical honeycombs with shape integrity under large compressive deformations Yanyu Chen a,b,⁎, Tiantian Li b,Z i a nJ i ab, Fabrizio Scarpa c, Chun-Wei Yao d, Lifeng Wang b,⁎⁎ a Transportation and Hydrogen Systems Center, National Renewable Energy Laboratory, Golden, CO 80401, USA b Department of Mechanical Engineering, State University of New York at Stony Brook, Stony Brook, New York 11794, USA c Bristol Composites Institute (ACCIS), University of Bristol, Bristol BS8 1TR, UK d"
+  },
+  {
+    "paper_id": "10_1016_j_tws_2019_106436",
+    "title": "Crushing of vertex-based hierarchical honeycombs with triangular substructures",
+    "doi": "10.1016/j.tws.2019.106436",
+    "family": "honeycomb",
+    "structure_main_class": "honeycomb_2d",
+    "structure_subtype_list": [
+      "hierarchical",
+      "vertex_based",
+      "triangular_substructures"
+    ],
+    "status": "identified",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\honeycomb\\10_1016_j_tws_2019_106436\\original.pdf",
+    "page_count": 16,
+    "first_page_excerpt": "Thin–Walled Structures 146 (2020) 106436 Available online 24 October 2019 0263-8231/© 2019 Elsevier Ltd. All rights reserved. Full length article Crushing of vertex-based hierarchical honeycombs with triangular substructures Dahai Zhang a , b , Qingguo Fei a , b , * , Jingze Liu a , b , Dong Jiang a , c , Yanbin Li a , b a Institute of Aerospace Machinery and Dynamics, Southeast University, Nanjing, 211189, China b School of Mechanical Engineering, Southeast University, Nanjing, 211189, China c"
+  },
+  {
+    "paper_id": "10_1016_j_tws_2020_106623",
+    "title": "A novel star auxetic honeycomb with enhanced in-plane crushing strength",
+    "doi": "10.1016/j.tws.2020.106623",
+    "family": "honeycomb",
+    "structure_main_class": "honeycomb_2d",
+    "structure_subtype_list": [
+      "auxetic",
+      "star"
+    ],
+    "status": "identified",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\honeycomb\\10_1016_j_tws_2020_106623\\original.pdf",
+    "page_count": 15,
+    "first_page_excerpt": "Thin–Walled Structures 149 (2020) 106623 Available online 29 January 2020 0263-8231/© 2020 Elsevier Ltd. All rights reserved. Full length article A novel star auxetic honeycomb with enhanced in-plane crushing strength Lulu Wei , Xuan Zhao * , Qiang Yu , Guohua Zhu School of Automobile, Chang ’ an University, Xi ’ an, 710064, China ARTICLE INFO Keywords: Auxetic honeycomb Deformation model Crushing strength Densification strain Negative Poisson ’ s ratio ABSTRACT Auxetic honeycombs exhibit low we"
+  },
+  {
+    "paper_id": "pii_s0734_743x_97_00040_7",
+    "title": "STATIC AND DYNAMIC PROPERTIES OF HIGH-DENSITY METAL HONEYCOMBS",
+    "doi": null,
+    "family": "honeycomb",
+    "structure_main_class": "honeycomb_2d",
+    "structure_subtype_list": [],
+    "status": "identified",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\honeycomb\\pii_s0734_743x_97_00040_7\\original.pdf",
+    "page_count": 15,
+    "first_page_excerpt": "Int. J. Impact Engng Vol. 21, No. 3, pp. 149Ð163, 1998 ( 1998 Elsevier Science Ltd. All rights reserved Printed in Great Britain PII: S0734±743X(97)00040±7 0734Ð743X/98$19.00#0.00 STATIC AND DYNAMIC PROPERTIES OF HIGH-DENSITY METAL HONEYCOMBS W. E. BAKER-, T. C. TOGAMIà and J. C. WEYDERTà -M. E. Department, The University of New Mexico, Albuquerque, NM 87131, U.S.A. àSandia National Laboratories, Albuquerque, NM 87185, U.S.A. (Received 25 November 1996; in revised form 24 April 1997; received fo"
+  },
+  {
+    "paper_id": "10_1016_j_addma_2022_102887",
+    "title": "Enhancing specific energy absorption of additively manufactured titanium lattice structures through simultaneous manipulation of architecture and constituent material",
+    "doi": "10.1016/j.addma.2022.102887",
+    "family": "lattice",
+    "structure_main_class": "tpms",
+    "structure_subtype_list": [
+      "gyroid"
+    ],
+    "status": "identified",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\lattice\\10_1016_j_addma_2022_102887\\original.pdf",
+    "page_count": 16,
+    "first_page_excerpt": "Additive Manufacturing 55 (2022) 102887 Available online 13 May 2022 2214-8604/© 2022 Elsevier B.V. All rights reserved. Research paper Enhancing specific energy absorption of additively manufactured titanium lattice structures through simultaneous manipulation of architecture and constituent material Jingqi Zhang a , 1 , Yingang Liu a , 1 , Behzad Bahrami Babamiri b , Ying Zhou c , Matthew Dargusch a , Kavan Hazeli d , * , Ming-Xing Zhang a , * a School of Mechanical and Mining Engineering, The"
+  },
+  {
+    "paper_id": "10_1016_j_cirpj_2024_06_009",
+    "title": "Comparative study on the process, anisotropy, and mechanical performance of laser powder bed fusion fabricated truss-lattice structures with different unit cell designs",
+    "doi": "10.1016/j.cirpj.2024.06.009",
+    "family": "lattice",
+    "structure_main_class": "truss_lattice",
+    "structure_subtype_list": [
+      "octet"
+    ],
+    "status": "identified",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\lattice\\10_1016_j_cirpj_2024_06_009\\original.pdf",
+    "page_count": 11,
+    "first_page_excerpt": "CIRP Journal of Manufacturing Science and Technology 52 (2024) 307–317 Available online 28 June 2024 1755-5817/© 2024 CIRP. Comparative study on the process, anisotropy, and mechanical performance of laser powder bed fusion fabricated truss-lattice structures with different unit cell designs Jiankai Yang, Weidong Li * School of Mechanical Engineering, University of Shanghai for Science and Technology, Jungong Road 516, Shanghai 200093, China ARTICLE INFO Keywords: Lattice structure Additive manu"
+  },
+  {
+    "paper_id": "10_1016_j_compositesb_2019_107565",
+    "title": "Crushing behavior and optimization of sheet-based 3D periodic cellular structures",
+    "doi": "10.1016/j.compositesb.2019.107565",
+    "family": "lattice",
+    "structure_main_class": "tpms",
+    "structure_subtype_list": [
+      "sheet_based",
+      "primitive",
+      "gyroid"
+    ],
+    "status": "identified",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\lattice\\10_1016_j_compositesb_2019_107565\\original.pdf",
+    "page_count": 16,
+    "first_page_excerpt": "Composites Part B 182 (2020) 107565 Available online 1 November 2019 1359-8368/© 2019 Elsevier Ltd. All rights reserved. Crushing behavior and optimization of sheet-based 3D periodic cellular structures Hanfeng Yin a , b , Zhipeng Liu a , b , Jinle Dai a , b , Guilin Wen a , b , * , Chao Zhang c , d a State Key Laboratory of Advanced Design and Manufacturing for Vehicle Body, Hunan University, Changsha, Hunan, 410082, PR China b Key Laboratory of Advanced Design and Simulation Techniques for Spe"
+  },
+  {
+    "paper_id": "10_1016_j_engstruct_2023_116510",
+    "title": "On vibration isolation performance and crashworthiness of a three-dimensional lattice metamaterial",
+    "doi": "10.1016/j.engstruct.2023.116510",
+    "family": "lattice",
+    "structure_main_class": "hybrid_lattice",
+    "structure_subtype_list": [
+      "cylindrical_tube"
+    ],
+    "status": "identified",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\lattice\\10_1016_j_engstruct_2023_116510\\original.pdf",
+    "page_count": 12,
+    "first_page_excerpt": "Engineering Structures 292 (2023) 116510 Available online 27 June 2023 0141-0296/© 2023 Elsevier Ltd. All rights reserved. On vibration isolation performance and crashworthiness of a three-dimensional lattice metamaterial Linwei Zhang a , Zhonghao Bai a , Qiang Zhang a , Yao Jin b , Yafeng Chen c , * a State Key Laboratory of Advanced Design and Manufacturing for Vehicle Body, Hunan University, Changsha, Hunan 410082, China b College of Engineering and Design, Hunan Normal University, Hunan 4100"
+  },
+  {
+    "paper_id": "10_1016_j_ijimpeng_2023_104713",
+    "title": "Crashworthiness analysis and multi-objective optimization of spatial lattice structure under dynamic compression",
+    "doi": "10.1016/j.ijimpeng.2023.104713",
+    "family": "lattice",
+    "structure_main_class": "bioinspired",
+    "structure_subtype_list": [
+      "bionic_honeycomb"
+    ],
+    "status": "identified",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\lattice\\10_1016_j_ijimpeng_2023_104713\\original.pdf",
+    "page_count": 15,
+    "first_page_excerpt": "International Journal of Impact Engineering 180 (2023) 104713 Available online 29 June 2023 0734-743X/© 2023 Elsevier Ltd. All rights reserved. Crashworthiness analysis and multi-objective optimization of spatial lattice structure under dynamic compression Chong Xie a , b , c , Dengfeng Wang a , * , Ling Zong a , Dewen Kong a a State Key Laboratory of Automotive Simulation and Control, College of Automotive Engineering, Jilin University, Changchun 130022, PR China b Hubei Key Laboratory of Advan"
+  },
+  {
+    "paper_id": "10_1016_j_ijimpeng_2025_105321",
+    "title": "Response of hybrid plate-rod lattices to static and dynamic compression–An experimental study",
+    "doi": "10.1016/j.ijimpeng.2025.105321",
+    "family": "lattice",
+    "structure_main_class": "hybrid_lattice",
+    "structure_subtype_list": [
+      "plate_rod",
+      "octet"
+    ],
+    "status": "identified",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\lattice\\10_1016_j_ijimpeng_2025_105321\\original.pdf",
+    "page_count": 12,
+    "first_page_excerpt": "Response of hybrid plate-rod lattices to static and dynamic compression – An experimental study Zhuang Cui a , b , Zhengping Sun a , Jiayun Zhao a , Yuanyuan Ding a , * , V.P.W. Shim a , c , * a Key Laboratory of Impact and Safety Engineering, Ministry of Education, Ningbo University, Ningbo 315211, Zhejiang, China b Institute of Advanced Equipment, College of Energy Engineering, Zhejiang University, Hangzhou 310027, Zhejiang, China c Impact Mechanics Laboratory, Department of Mechanical Enginee"
+  },
+  {
+    "paper_id": "10_1016_j_jmrt_2021_08_092",
+    "title": "Development of novel hybrid TPMS cellular lattices and their mechanical characterisation",
+    "doi": "10.1016/j.jmrt.2021.08.092",
+    "family": "lattice",
+    "structure_main_class": "tpms",
+    "structure_subtype_list": [
+      "hybrid_tpms",
+      "gyroid",
+      "diamond"
+    ],
+    "status": "identified",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\lattice\\10_1016_j_jmrt_2021_08_092\\original.pdf",
+    "page_count": 12,
+    "first_page_excerpt": "Original Article Development of novel hybrid TPMS cellular lattices and their mechanical characterisation Nejc Novak a,*, Oraib Al-Ketan b,**, Matej Borovin /C20sek a, Lovre Krstulovi /C19c-Opara c, Reza Rowshan b, Matej Vesenjak a, Zoran Ren a a Faculty of Mechanical Engineering, University of Maribor, Maribor, Slovenia b Core Technology Platforms Operations, New York University Abu Dhabi, Abu Dhabi, United Arab Emirates c Faculty of Electrical Engineering, Mechanical Engineering and Naval Arch"
+  },
+  {
+    "paper_id": "10_1016_j_jmrt_2023_05_167",
+    "title": "Anisotropic structure-property relations of FDM printed short glass fiber reinforced polyamide TPMS structures under quasi-static compression",
+    "doi": "10.1016/j.jmrt.2023.05.167",
+    "family": "lattice",
+    "structure_main_class": "tpms",
+    "structure_subtype_list": [
+      "primitive",
+      "gyroid",
+      "diamond"
+    ],
+    "status": "identified",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\lattice\\10_1016_j_jmrt_2023_05_167\\original.pdf",
+    "page_count": 18,
+    "first_page_excerpt": "Anisotropic structure-property relations of FDM printed short glass fiber reinforced polyamide TPMS structures under quasi-static compression Prince Jeya Lal Lazar a, Jeyanthi Subramanian b, Elango Natarajan c,d,*, Kalaimani Markandan c, S. Ramesh e a Department of Mechanical Engineering, Rajalakshmi Institute of Technology, Chennai 600124, Tamil Nadu, India b School of Mechanical Engineering, VIT Chennai Campus, Chennai 600127, Tamil Nadu, India c Faculty of Engineering, Technology and Built En"
+  },
+  {
+    "paper_id": "10_1016_j_matdes_2018_05_059",
+    "title": "Fabrication of polymeric lattice structures for optimum energy absorption using Multi Jet Fusion technology",
+    "doi": "10.1016/j.matdes.2018.05.059",
+    "family": "lattice",
+    "structure_main_class": "truss_lattice",
+    "structure_subtype_list": [],
+    "status": "identified",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\lattice\\10_1016_j_matdes_2018_05_059\\original.pdf",
+    "page_count": 13,
+    "first_page_excerpt": "Fabrication of polymeric lattice structures for optimum energy absorption using Multi Jet Fusion technology F.N. Habib ⁎, P. Iovenitti, S.H. Masood, M. Nikzad Department of Mechanical and Product Design Engineering, Faculty of Science, Engineering and Technology, Swinburne University of Technology, Melbourne 3122, Australia HIGHLIGHTS • Designing polymeric periodic lattice structures of identical relative density from six different unit cells • Successful fabrication of the lattices via Multi Je"
+  },
+  {
+    "paper_id": "10_1016_j_matdes_2019_108076",
+    "title": "Mechanical properties of lightweight 316L stainless steel lattice structures fabricated by selective laser melting",
+    "doi": "10.1016/j.matdes.2019.108076",
+    "family": "lattice",
+    "structure_main_class": "truss_lattice",
+    "structure_subtype_list": [],
+    "status": "identified",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\lattice\\10_1016_j_matdes_2019_108076\\original.pdf",
+    "page_count": 12,
+    "first_page_excerpt": "Mechanical properties of lightweight 316L stainless steel lattice structures fabricated by selective laser melting Tianlin Zhong a,K e t a iH ea,b,⁎, Huaixue Li c, Lechang Yang a a School of Mechanical Engineering, University of Science and Technology Beijing, 100083, PR China b Institute of Artificial Intelligence, University of Science and Technology Beijing, 100083, PR China c AVIC Manufacturing Technology Institute, 100024 Beijing, PR China HIGHLIGHTS • Constructing a periodic lattice struct"
+  },
+  {
+    "paper_id": "10_3390_ma18040732",
+    "title": "Enhancement of Energy Absorption Capability of 3D Printed Ti-6Al-4V BCC Lattice Structures by Adding Auxiliary Struts",
+    "doi": "10.3390/ma18040732",
+    "family": "lattice",
+    "structure_main_class": "truss_lattice",
+    "structure_subtype_list": [
+      "bcc",
+      "auxiliary_struts"
+    ],
+    "status": "identified",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\dianzhen shujuku\\data\\01_raw\\pdfs\\library\\lattice\\10_3390_ma18040732\\original.pdf",
+    "page_count": 29,
+    "first_page_excerpt": "Academic Editors: Tomasz Kozior and Jerzy Bochnia Received: 18 December 2024 Revised: 20 January 2025 Accepted: 24 January 2025 Published: 7 February 2025 Citation: Cho, J.; Kim, E.; Kim, J.H.; Lee, C.-Y.; Cho, J.Y. Enhancement of Energy Absorption Capability of 3D Printed Ti-6Al-4V BCC Lattice Structures by Adding Auxiliary Struts. Materials 2025, 18, 732. https:// doi.org/10.3390/ma18040732 Copyright: © 2025 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access arti"
+  }
+]
