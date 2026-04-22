@@ -3,7 +3,7 @@
 ## Snapshot
 
 - Dispatch branch: `dispatch/tasks`
-- Dispatch head: `b0c6021`
+- Dispatch head: `8fa45fa`
 - Current dev branch: `dispatch/tasks`
 - `TASK-019` is now archived after the EngStruct 2023 3D metamaterial bundle landed.
 - `TASK-023` is now archived after the figure-understanding layer PR merged.
