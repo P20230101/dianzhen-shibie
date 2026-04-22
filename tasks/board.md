@@ -8,6 +8,8 @@ Entry format:
 ## Blocked
 
 ## Done
+- TASK-024 | Octagonal lattice sample expansion | feat/task-024-extract-matdes-2018-octagonal
+- TASK-023 | BCC lattice sample expansion | feat/task-023-extract-matdes-2019-bcc
 - TASK-001 | P1 first minimal chain | feat/task-001-min-pipeline
 - TASK-002 | Excel input adapter for seed intake | feat/task-002-input-excel
 - TASK-003 | PDF first-pass register extractor | feat/task-003-input-pdf
@@ -27,3 +29,6 @@ Entry format:
 - TASK-017 | Bio-inspired hierarchical honeycomb sample expansion | feat/task-017-extract-bioinspired-hierarchical
 - TASK-018 | Bio-inspired spatial lattice sample expansion | feat/task-018-extract-bioinspired-spatial-lattice
 - TASK-019 | 3D metamaterial sample expansion | feat/task-019-extract-engstruct-metamaterial
+- TASK-020 | BCCz+cross sample expansion | feat/task-020-extract-bccz-cross
+- TASK-021 | Octet truss lattice sample expansion | feat/task-021-extract-octet
+- TASK-022 | Hybrid plate-rod lattice sample expansion | feat/task-022-extract-hprl

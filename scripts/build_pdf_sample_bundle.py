@@ -21,8 +21,13 @@ COMPSTRUCT_2018_PAPER_ID = "10_1016_j_compstruct_2018_03_050"
 TWS_2019_PAPER_ID = "10_1016_j_tws_2019_106436"
 TWS_2020_PAPER_ID = "10_1016_j_tws_2020_106623"
 MATDES_2017_PAPER_ID = "10_1016_j_matdes_2017_10_028"
+MATDES_2018_PAPER_ID = "10_1016_j_matdes_2018_05_059"
+MATDES_2019_PAPER_ID = "10_1016_j_matdes_2019_108076"
 IJIMPENG_2023_PAPER_ID = "10_1016_j_ijimpeng_2023_104713"
 ENGSTRUCT_2023_PAPER_ID = "10_1016_j_engstruct_2023_116510"
+MA18040732_PAPER_ID = "10_3390_ma18040732"
+CIRPJ_2024_PAPER_ID = "10_1016_j_cirpj_2024_06_009"
+IJIMPENG_2025_PAPER_ID = "10_1016_j_ijimpeng_2025_105321"
 
 
 def _load_jsonl(path: Path) -> list[dict[str, Any]]:
@@ -1353,6 +1358,950 @@ def _build_engstruct_2023_bundle(
     return samples, evidence
 
 
+def _build_ma18040732_bundle(
+    paper_id: str,
+    register_row: dict[str, str],
+    paper_chunks: list[dict[str, Any]],
+    samples: list[dict[str, Any]],
+    evidence: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    structure_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:051")), None)
+    design_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:335")), None)
+    material_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:337")), None)
+    table_chunk = _find_chunk(paper_chunks, table_id="table_002")
+
+    sample = {
+        "paper_id": paper_id,
+        "sample_id": f"{paper_id}-bccz-cross-4x4x5",
+        "doi": register_row.get("doi") or None,
+        "title": register_row.get("title") or None,
+        "sample_label_in_paper": "BCCz+cross",
+        "is_multi_sample_paper": True,
+        "raw_design": "4 × 4 × 5 lattice structure, 12 mm unit cell",
+        "raw_structure": "BCCz+cross",
+        "raw_type": "lattice",
+        "structure_main_class": "truss_lattice",
+        "structure_subtype_list": ["bcc", "bccz", "auxiliary_struts", "cross"],
+        "is_hierarchical": False,
+        "is_graded": False,
+        "is_optimized": True,
+        "relative_density_raw": None,
+        "relative_density_value": None,
+        "raw_material": "Ti-6Al-4V Grade 5",
+        "raw_material_group": "titanium",
+        "material_canonical": "Ti-6Al-4V",
+        "material_family": "metal",
+        "raw_process": "EBM",
+        "process_canonical": "EBM",
+        "process_family": "3d_printing",
+        "analysis_type": "experimental_numerical",
+        "test_mode": "quasi_static",
+        "loading_direction": "uniaxial",
+        "velocity_m_s_raw": "60 mm/sec",
+        "velocity_m_s": 0.06,
+        "sea_j_g_raw": "2.68 × 10^3",
+        "sea_j_g": 2.68,
+        "pcf_kn_raw": None,
+        "pcf_kn": None,
+        "mcf_kn_raw": "4.68 × 10^2",
+        "mcf_kn": 468.0,
+        "cfe_raw": None,
+        "cfe": None,
+        "plateau_stress_mpa_raw": None,
+        "plateau_stress_mpa": None,
+        "confidence_overall": 0.94,
+        "needs_manual_review": True,
+        "review_status": "pending",
+        "review_notes": "Paper-derived seed from PDF corpus for TASK-020.",
+    }
+    _append_unique(samples, sample, "sample_id")
+
+    evidence_rows = [
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-001",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_structure",
+            "field_value": "BCCz+cross",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 4,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "If a BCC structure is reinforced with vertical and rectangular and cross-shaped horizontal struts, it is denominated as BCCz+rect and BCCz+cross, respectively.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-002",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_design",
+            "field_value": "4 × 4 × 5 lattice structure, 12 mm unit cell",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 18,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "For the fabrication process, six structures were output, each with a length of one corner of the unit structure set to 12 mm, consistent with the dimensions used in the FEA models. The overall size of the fabricated structure was 48 mm × 48 mm × 60 mm, with the number of unit structures in each corner set to 4, 4, and 5, respectively.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.98,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-003",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_material",
+            "field_value": "Ti-6Al-4V Grade 5",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 18,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "Ti-6Al-4V Grade 5 metal powder was employed, possessing an average particle size ranging from 45 to 106 µm.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-004",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_process",
+            "field_value": "EBM",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 18,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "The structures were manufactured by the EBM method with the GE Additive's Arcam EBM Spectra H Machine.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-005",
+            "sample_id": sample["sample_id"],
+            "field_name": "sea_j_g",
+            "field_value": "2.68 × 10^3",
+            "source_priority": "T1",
+            "source_type": "table",
+            "page_no": 21,
+            "figure_id": None,
+            "table_id": "table_002",
+            "text_snippet": "BCCz+cross 8.4 2.25 × 10^4 2.68 × 10^3 4.68 × 10^2 0.3424 55.77",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-006",
+            "sample_id": sample["sample_id"],
+            "field_name": "mcf_kn",
+            "field_value": "4.68 × 10^2",
+            "source_priority": "T1",
+            "source_type": "table",
+            "page_no": 21,
+            "figure_id": None,
+            "table_id": "table_002",
+            "text_snippet": "BCCz+cross 8.4 2.25 × 10^4 2.68 × 10^3 4.68 × 10^2 0.3424 55.77",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+    ]
+    for row in evidence_rows:
+        _append_unique(evidence, row, "evidence_id")
+
+    _require_chunk_text(structure_chunk, "BCCz+cross", "MA18040732 structure")
+    _require_chunk_text(design_chunk, "48 mm × 48 mm × 60 mm", "MA18040732 design")
+    _require_chunk_text(material_chunk, "Ti-6Al-4V Grade 5", "MA18040732 material")
+    _require_chunk_text(table_chunk, "BCCz+cross 8.4 2.25 × 10 4", "MA18040732 table 2")
+
+    return samples, evidence
+
+
+def _build_cirpj_2024_bundle(
+    paper_id: str,
+    register_row: dict[str, str],
+    paper_chunks: list[dict[str, Any]],
+    samples: list[dict[str, Any]],
+    evidence: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    abstract_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:015")), None)
+    design_chunk = _find_chunk(paper_chunks, table_id="table_001")
+    material_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:018")), None)
+    process_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:019")), None)
+    density_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:036")), None)
+    compression_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:026")), None)
+    performance_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:058")), None)
+
+    sample = {
+        "paper_id": paper_id,
+        "sample_id": f"{paper_id}-octet-10x10x10-d0p40-r015",
+        "doi": register_row.get("doi") or None,
+        "title": register_row.get("title") or None,
+        "sample_label_in_paper": "Octet",
+        "is_multi_sample_paper": True,
+        "raw_design": "10 × 10 × 10 mm, 0.40 mm strut diameter",
+        "raw_structure": "Octet",
+        "raw_type": "lattice",
+        "structure_main_class": "truss_lattice",
+        "structure_subtype_list": ["octet"],
+        "is_hierarchical": False,
+        "is_graded": False,
+        "is_optimized": False,
+        "relative_density_raw": "15 %",
+        "relative_density_value": 15.0,
+        "raw_material": "316L stainless steel",
+        "raw_material_group": "stainless_steel",
+        "material_canonical": "316L stainless steel",
+        "material_family": "metal",
+        "raw_process": "LPBF",
+        "process_canonical": "LPBF",
+        "process_family": "3d_printing",
+        "analysis_type": "experimental_numerical",
+        "test_mode": "quasi_static",
+        "loading_direction": "uniaxial",
+        "velocity_m_s_raw": "2 mm/min",
+        "velocity_m_s": 3.3333333333333335e-05,
+        "sea_j_g_raw": "18.1 J/g",
+        "sea_j_g": 18.1,
+        "pcf_kn_raw": None,
+        "pcf_kn": None,
+        "mcf_kn_raw": None,
+        "mcf_kn": None,
+        "cfe_raw": None,
+        "cfe": None,
+        "plateau_stress_mpa_raw": None,
+        "plateau_stress_mpa": None,
+        "confidence_overall": 0.93,
+        "needs_manual_review": True,
+        "review_status": "pending",
+        "review_notes": "Paper-derived seed from PDF corpus for TASK-021.",
+    }
+    _append_unique(samples, sample, "sample_id")
+
+    evidence_rows = [
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-001",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_structure",
+            "field_value": "Octet",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 1,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "The paper systematically compares FCC, Octet, and Kelvin lattice structures fabricated by LPBF.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-002",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_design",
+            "field_value": "10 × 10 × 10 mm, 0.40 mm strut diameter",
+            "source_priority": "T1",
+            "source_type": "table",
+            "page_no": 3,
+            "figure_id": None,
+            "table_id": "table_001",
+            "text_snippet": "Table 1 records the Octet lattice structure with length, width, and height of 10 mm and a strut diameter of 0.40 mm.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-003",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_material",
+            "field_value": "316L stainless steel",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 2,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "316 L stainless steel was selected as the basic material for the lattice structures.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-004",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_process",
+            "field_value": "LPBF",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 2,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "FCC, Octet, and Kelvin lattice structures were fabricated using the LPBF technology.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-005",
+            "sample_id": sample["sample_id"],
+            "field_name": "relative_density_raw",
+            "field_value": "15 %",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 3,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "All lattice structures have the same relative density ρ (15 %) to study the effect of geometries on formability and mechanical properties.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.98,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-006",
+            "sample_id": sample["sample_id"],
+            "field_name": "sea_j_g",
+            "field_value": "18.1 J/g",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 7,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "When the strain reached 50 %, the W s of FCC, Octet, and Kelvin lattice structures were 31.9 J/g, 18.1 J/g, and 25.3 J/g, respectively.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+    ]
+    for row in evidence_rows:
+        _append_unique(evidence, row, "evidence_id")
+
+    _require_chunk_text(
+        abstract_chunk,
+        "laser powder bed fusion (LPBF) processed face-centered cubic (FCC), Octet, and Kelvin lattice structures were systematically compared through experiments and finite element analysis",
+        "CIRPJ 2024 abstract",
+    )
+    _require_chunk_text(design_chunk, "Octet 10 10 10 0.40", "CIRPJ 2024 table 1")
+    _require_chunk_text(material_chunk, "316 L stainless steel was selected as the basic material", "CIRPJ 2024 material")
+    _require_chunk_text(process_chunk, "fabricated using the LPBF technology", "CIRPJ 2024 process")
+    _require_chunk_text(density_chunk, "same relative density ρ (15 %)", "CIRPJ 2024 density")
+    _require_chunk_text(compression_chunk, "crosshead velocity during the compression was set as 2 mm/min", "CIRPJ 2024 compression")
+    _require_chunk_text(performance_chunk, "W s of FCC, Octet, and Kelvin lattice structures were 31.9 J/g, 18.1 J/g, and 25.3 J/g", "CIRPJ 2024 performance")
+
+    return samples, evidence
+
+
+def _build_ijimpeng_2025_bundle(
+    paper_id: str,
+    register_row: dict[str, str],
+    paper_chunks: list[dict[str, Any]],
+    samples: list[dict[str, Any]],
+    evidence: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    abstract_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:021")), None)
+    design_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:024")), None)
+    material_process_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:021")), None)
+    geometry_table = _find_chunk(paper_chunks, table_id="table_002")
+    performance_table = _find_chunk(paper_chunks, table_id="table_003")
+
+    sample = {
+        "paper_id": paper_id,
+        "sample_id": f"{paper_id}-hprl-qstatic-r022",
+        "doi": register_row.get("doi") or None,
+        "title": register_row.get("title") or None,
+        "sample_label_in_paper": "HPRL",
+        "is_multi_sample_paper": True,
+        "raw_design": "4 × 4 × 4 cell assembly, 24 mm cube",
+        "raw_structure": "HPRL",
+        "raw_type": "lattice",
+        "structure_main_class": "hybrid_lattice",
+        "structure_subtype_list": ["plate_rod", "octet"],
+        "is_hierarchical": False,
+        "is_graded": False,
+        "is_optimized": False,
+        "relative_density_raw": "0.22",
+        "relative_density_value": 0.22,
+        "raw_material": "17-4PH stainless steel",
+        "raw_material_group": "stainless_steel",
+        "material_canonical": "17-4PH stainless steel",
+        "material_family": "metal",
+        "raw_process": "SLM",
+        "process_canonical": "SLM",
+        "process_family": "3d_printing",
+        "analysis_type": "experimental",
+        "test_mode": "quasi_static",
+        "loading_direction": "uniaxial",
+        "velocity_m_s_raw": "0.024 mm/s",
+        "velocity_m_s": 2.4e-05,
+        "sea_j_g_raw": "11.2 J/g",
+        "sea_j_g": 11.2,
+        "pcf_kn_raw": None,
+        "pcf_kn": None,
+        "mcf_kn_raw": None,
+        "mcf_kn": None,
+        "cfe_raw": None,
+        "cfe": None,
+        "plateau_stress_mpa_raw": "38.7 MPa",
+        "plateau_stress_mpa": 38.7,
+        "confidence_overall": 0.93,
+        "needs_manual_review": True,
+        "review_status": "pending",
+        "review_notes": "Paper-derived seed from PDF corpus for TASK-022.",
+    }
+    _append_unique(samples, sample, "sample_id")
+
+    evidence_rows = [
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-001",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_structure",
+            "field_value": "HPRL",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 2,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "The hybrid structure is established by combining a semi-open Octet-plate lattice (SOPL) and a strut or rod-based open-cell lattice, to form a hybrid plate-rod lattice (HPRL), amenable to fabrication via selective laser melting (SLM).",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-002",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_design",
+            "field_value": "4 × 4 × 4 cell assembly, 24 mm cube",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 2,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "Using SolidWorks software, 4 × 4 × 4 cell assemblies of the semi-open Octet-plate lattice (SOPL) and hybrid plate-rod lattice (HPRL) were established by connecting four unit cells along three orthogonal directions.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.98,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-003",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_material",
+            "field_value": "17-4PH stainless steel",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 2,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "17 -4PH stainless steel powder was used to fabricate HPRL specimens by selective laser melting (SLM).",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-004",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_process",
+            "field_value": "SLM",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 2,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "17 -4PH stainless steel powder was used to fabricate HPRL specimens by selective laser melting (SLM).",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-005",
+            "sample_id": sample["sample_id"],
+            "field_name": "velocity_m_s_raw",
+            "field_value": "0.024 mm/s",
+            "source_priority": "T1",
+            "source_type": "table",
+            "page_no": 4,
+            "figure_id": None,
+            "table_id": "table_002",
+            "text_snippet": "HPRL 1 24.03 × 24.08 × 24.03 mm 3 23.91 g 0.024 mm/ s 0.22",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.98,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-006",
+            "sample_id": sample["sample_id"],
+            "field_name": "relative_density_raw",
+            "field_value": "0.22",
+            "source_priority": "T1",
+            "source_type": "table",
+            "page_no": 4,
+            "figure_id": None,
+            "table_id": "table_002",
+            "text_snippet": "HPRL 1 24.03 × 24.08 × 24.03 mm 3 23.91 g 0.024 mm/ s 0.22",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.98,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-007",
+            "sample_id": sample["sample_id"],
+            "field_name": "sea_j_g",
+            "field_value": "11.2 J/g",
+            "source_priority": "T1",
+            "source_type": "table",
+            "page_no": 9,
+            "figure_id": None,
+            "table_id": "table_003",
+            "text_snippet": "HPRL Initial yield stress (MPa) 35.5 53.8 54.3 Densification strain 0.50 0.50 0.51 Average plateau stress (MPa) 38.7 45.7 46.6 SEA (J/g) 11.2 13.4 13.7",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-008",
+            "sample_id": sample["sample_id"],
+            "field_name": "plateau_stress_mpa",
+            "field_value": "38.7 MPa",
+            "source_priority": "T1",
+            "source_type": "table",
+            "page_no": 9,
+            "figure_id": None,
+            "table_id": "table_003",
+            "text_snippet": "HPRL Initial yield stress (MPa) 35.5 53.8 54.3 Densification strain 0.50 0.50 0.51 Average plateau stress (MPa) 38.7 45.7 46.6 SEA (J/g) 11.2 13.4 13.7",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+    ]
+    for row in evidence_rows:
+        _append_unique(evidence, row, "evidence_id")
+
+    _require_chunk_text(
+        abstract_chunk,
+        "novel hybrid plate-rod lattice (HPRL) structure and examines its mechanical response to quasi-static and dynamic gross compression",
+        "IJIMPENG 2025 abstract",
+    )
+    _require_chunk_text(
+        design_chunk,
+        "4 × 4 × 4 cell assemblies of the semi-open Octet-plate lattice (SOPL) and hybrid plate-rod lattice (HPRL) were established",
+        "IJIMPENG 2025 design",
+    )
+    _require_chunk_text(material_process_chunk, "fabricate HPRL specimens by selective laser melting (SLM)", "IJIMPENG 2025 material/process")
+    _require_chunk_text(geometry_table, "HPRL 1 24.03 × 24.08 × 24.03 mm", "IJIMPENG 2025 geometry")
+    _require_chunk_text(performance_table, "HPRL Initial yield stress (MPa) 35.5 53.8 54.3", "IJIMPENG 2025 performance")
+
+    return samples, evidence
+
+
+def _build_matdes_2018_bundle(
+    paper_id: str,
+    register_row: dict[str, str],
+    paper_chunks: list[dict[str, Any]],
+    samples: list[dict[str, Any]],
+    evidence: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    abstract_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:024")), None)
+    structure_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:094")), None)
+    design_table = _find_chunk(paper_chunks, table_id="table_001")
+    material_process_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:102")), None)
+    compression_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:159")), None)
+    energy_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:140")), None)
+    performance_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:137")), None)
+
+    sample = {
+        "paper_id": paper_id,
+        "sample_id": f"{paper_id}-octagonal-l4p14-d1p626-r015",
+        "doi": register_row.get("doi") or None,
+        "title": register_row.get("title") or None,
+        "sample_label_in_paper": "Octagonal",
+        "is_multi_sample_paper": True,
+        "raw_design": "5 x 5 x 5 cells, octagonal lattice, l = 4.14 mm, d = 1.626 mm",
+        "raw_structure": "Octagonal",
+        "raw_type": "lattice",
+        "structure_main_class": "truss_lattice",
+        "structure_subtype_list": ["octagonal"],
+        "is_hierarchical": False,
+        "is_graded": False,
+        "is_optimized": True,
+        "relative_density_raw": "15 %",
+        "relative_density_value": 15.0,
+        "raw_material": "HP PA12",
+        "raw_material_group": "polyamide",
+        "material_canonical": "Polyamide 12",
+        "material_family": "polymer",
+        "raw_process": "MJF",
+        "process_canonical": "MJF",
+        "process_family": "3d_printing",
+        "analysis_type": "experimental_numerical",
+        "test_mode": "quasi_static",
+        "loading_direction": "uniaxial",
+        "velocity_m_s_raw": "5 mm/min",
+        "velocity_m_s": 8.333333333333333e-05,
+        "sea_j_g_raw": "0.75 J/cm3",
+        "sea_j_g": 0.75,
+        "pcf_kn_raw": None,
+        "pcf_kn": None,
+        "mcf_kn_raw": None,
+        "mcf_kn": None,
+        "cfe_raw": None,
+        "cfe": None,
+        "plateau_stress_mpa_raw": "1.05 MPa",
+        "plateau_stress_mpa": 1.05,
+        "confidence_overall": 0.95,
+        "needs_manual_review": True,
+        "review_status": "pending",
+        "review_notes": "Paper-derived seed from PDF corpus for TASK-024.",
+    }
+    _append_unique(samples, sample, "sample_id")
+
+    evidence_rows = [
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-001",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_structure",
+            "field_value": "Octagonal",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 4,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "Thus type 2 was constructed from three crossed octagons, designated as Octagonal lattice.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-002",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_design",
+            "field_value": "5 x 5 x 5 cells, octagonal lattice, l = 4.14 mm, d = 1.626 mm",
+            "source_priority": "T1",
+            "source_type": "table",
+            "page_no": 2,
+            "figure_id": None,
+            "table_id": "table_001",
+            "text_snippet": "Table 1 Unit cell and overall specimen design and dimensions for the examined 3D structures of 15% relative density. ... 2 Octagonal l =4.14 1.626 51.626",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-003",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_material",
+            "field_value": "HP PA12",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 5,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "A prototype of each lattice type was built using a new 3D printing technology called Multi Jet Fusion (MJF) in a brand of polyamide 12 plastic, namely HP PA12 available for this process.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-004",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_process",
+            "field_value": "MJF",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 5,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "A prototype of each lattice type was built using a new 3D printing technology called Multi Jet Fusion (MJF) in a brand of polyamide 12 plastic, namely HP PA12 available for this process.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-005",
+            "sample_id": sample["sample_id"],
+            "field_name": "relative_density_raw",
+            "field_value": "15 %",
+            "source_priority": "T1",
+            "source_type": "table",
+            "page_no": 2,
+            "figure_id": None,
+            "table_id": "table_001",
+            "text_snippet": "The six structures were designed to have a constant relative density of 15%.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.98,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-006",
+            "sample_id": sample["sample_id"],
+            "field_name": "velocity_m_s_raw",
+            "field_value": "5 mm/min",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 10,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "The cross-head was moving downwards at a constant speed of 5 mm/min in accordance with the standard test method for compressive properties of rigid cellular plastics ASTM 1621-16.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-007",
+            "sample_id": sample["sample_id"],
+            "field_name": "sea_j_g",
+            "field_value": "0.75 J/cm3",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 9,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "From the table, it can be seen that the Octagonal lattice is capable of absorbing the highest energy of 0.75 J/cm 3.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-008",
+            "sample_id": sample["sample_id"],
+            "field_name": "plateau_stress_mpa",
+            "field_value": "1.05 MPa",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 9,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "Among all structures, the Octagonal lattice provides the highest plateau stress of 1.05 MPa.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+    ]
+    for row in evidence_rows:
+        _append_unique(evidence, row, "evidence_id")
+
+    _require_chunk_text(abstract_chunk, "quasi-static energy absorption of six polymeric lattice structures", "MATDES 2018 abstract")
+    _require_chunk_text(
+        structure_chunk,
+        "octagonal cell was chosen for constructing 3D lattice in this work",
+        "MATDES 2018 structure",
+    )
+    _require_chunk_text(design_table, "Octagonal l =4.14 1.626 51.626", "MATDES 2018 table 1")
+    _require_chunk_text(material_process_chunk, "namelyHPPA12availablefor this process", "MATDES 2018 material/process")
+    _require_chunk_text(compression_chunk, "5 mm/min", "MATDES 2018 compression")
+    _require_chunk_text(energy_chunk, "0.75 J/cm 3", "MATDES 2018 energy")
+    _require_chunk_text(
+        performance_chunk,
+        "Among all structures, the Octagonal lattice provides the highest plateau stress of 1.05 MPa.",
+        "MATDES 2018 performance",
+    )
+
+    return samples, evidence
+
+
+def _build_matdes_2019_bundle(
+    paper_id: str,
+    register_row: dict[str, str],
+    paper_chunks: list[dict[str, Any]],
+    samples: list[dict[str, Any]],
+    evidence: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    abstract_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:026")), None)
+    structure_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:034")), None)
+    design_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:050")), None)
+    material_process_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:048")), None)
+    compression_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:063")), None)
+    density_table = _find_chunk(paper_chunks, table_id="table_002")
+    performance_table = _find_chunk(paper_chunks, table_id="table_005")
+
+    sample = {
+        "paper_id": paper_id,
+        "sample_id": f"{paper_id}-d5-bcc",
+        "doi": register_row.get("doi") or None,
+        "title": register_row.get("title") or None,
+        "sample_label_in_paper": "D5",
+        "is_multi_sample_paper": True,
+        "raw_design": "25 × 25 × 25 mm cube, BCC lattice",
+        "raw_structure": "BCC",
+        "raw_type": "lattice",
+        "structure_main_class": "truss_lattice",
+        "structure_subtype_list": ["bcc"],
+        "is_hierarchical": False,
+        "is_graded": False,
+        "is_optimized": False,
+        "relative_density_raw": "12.60%",
+        "relative_density_value": 0.126,
+        "raw_material": "316L stainless steel",
+        "raw_material_group": "stainless_steel",
+        "material_canonical": "316L stainless steel",
+        "material_family": "metal",
+        "raw_process": "SLM",
+        "process_canonical": "SLM",
+        "process_family": "3d_printing",
+        "analysis_type": "experimental_numerical",
+        "test_mode": "quasi_static",
+        "loading_direction": "uniaxial",
+        "velocity_m_s_raw": "6 mm/min",
+        "velocity_m_s": 0.0001,
+        "sea_j_g_raw": "1.09 J/g",
+        "sea_j_g": 1.09,
+        "pcf_kn_raw": None,
+        "pcf_kn": None,
+        "mcf_kn_raw": None,
+        "mcf_kn": None,
+        "cfe_raw": None,
+        "cfe": None,
+        "plateau_stress_mpa_raw": "2.04 MPa",
+        "plateau_stress_mpa": 2.04,
+        "confidence_overall": 0.91,
+        "needs_manual_review": True,
+        "review_status": "pending",
+        "review_notes": "Paper-derived seed from PDF corpus for TASK-023.",
+    }
+    _append_unique(samples, sample, "sample_id")
+
+    evidence_rows = [
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-001",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_structure",
+            "field_value": "BCC",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 2,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "Recently, the research on metal three-dimensional lattice structure mainly focuses on body-centered cubic (BCC) and other topologies derived from it.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.98,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-002",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_design",
+            "field_value": "25 × 25 × 25 mm cube, BCC lattice",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 3,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "AutoCAD software was used to design the lattice structures in cubes of dimensions 25 × 25 × 25 mm so that they could be built in one batch to reduce production deviation.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.98,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-003",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_material",
+            "field_value": "316L stainless steel",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 3,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "All of the lattice structures were made from a 316L stainless steel powder with an average particle size of 35 ± 10 µm.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-004",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_process",
+            "field_value": "SLM",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 3,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "SLM technique as the additive manufacturing process was used to fabricate lattice structures.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-005",
+            "sample_id": sample["sample_id"],
+            "field_name": "relative_density_raw",
+            "field_value": "12.60%",
+            "source_priority": "T1",
+            "source_type": "table",
+            "page_no": 4,
+            "figure_id": None,
+            "table_id": "table_002",
+            "text_snippet": "Table 2 The parameters of design configuration for lattice structure. Lattice structure D (mm) P (%) 1 1 12.60 12.60 Sample designation C1 C2 C3 C4 C5 C6 C7 D1 D2 D3 D4 D5 D6 D7 D8 LED (J/mm 3 ) 109.7 89.29 71.43 71.23 49.02 39.22 29.41 23.81",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.98,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-006",
+            "sample_id": sample["sample_id"],
+            "field_name": "velocity_m_s_raw",
+            "field_value": "6 mm/min",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 4,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "Uni-axial compression and tensile tests were carried out to assess the mechanical properties and energy absorption of the lattice structures by using a universal testing machine. During the compression tests, the lattice structures were centrally located between two plates. The speed of loading was set a constant of 6 mm/min for all of the tests.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-007",
+            "sample_id": sample["sample_id"],
+            "field_name": "sea_j_g",
+            "field_value": "1.09 J/g",
+            "source_priority": "T1",
+            "source_type": "table",
+            "page_no": 7,
+            "figure_id": None,
+            "table_id": "table_005",
+            "text_snippet": "Table 5 Energy absorption of the lattices derived from the stress-strain diagrams. Lattice designation Plateau stress, σ pl (MPa) Strain at the plateau start, ε y At the plateau end Strain, ε cd Energy absorbed, W (J/cm 3 ) Efficiency, E (%) A2 79.67 0.06 0.41 31.28 35.20 B1 8.99 0.11 0.64 5.49 46.95 C4 6.35 0.07 0.56 3.36 45.94 D5 2.04 0.07 0.56 1.08 42.63",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.97,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-008",
+            "sample_id": sample["sample_id"],
+            "field_name": "plateau_stress_mpa",
+            "field_value": "2.04 MPa",
+            "source_priority": "T1",
+            "source_type": "table",
+            "page_no": 7,
+            "figure_id": None,
+            "table_id": "table_005",
+            "text_snippet": "Table 5 Energy absorption of the lattices derived from the stress-strain diagrams. Lattice designation Plateau stress, σ pl (MPa) Strain at the plateau start, ε y At the plateau end Strain, ε cd Energy absorbed, W (J/cm 3 ) Efficiency, E (%) A2 79.67 0.06 0.41 31.28 35.20 B1 8.99 0.11 0.64 5.49 46.95 C4 6.35 0.07 0.56 3.36 45.94 D5 2.04 0.07 0.56 1.08 42.63",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.97,
+            "verified_by_human": False,
+        },
+    ]
+    for row in evidence_rows:
+        _append_unique(evidence, row, "evidence_id")
+
+    _require_chunk_text(
+        abstract_chunk,
+        "The performance of advanced and lightweight 316L stainless steel lattice structures fabricated by selective laser melting (SLM) was investigated using a range of laser energy densities (LED).",
+        "MATDES 2019 abstract",
+    )
+    _require_chunk_text(
+        structure_chunk,
+        "body-centered cubic (BCC) and other topologies derived from it",
+        "MATDES 2019 BCC background",
+    )
+    _require_chunk_text(design_chunk, "25 × 25 × 25 mm", "MATDES 2019 design")
+    _require_chunk_text(material_process_chunk, "316L stainless steel powder", "MATDES 2019 material")
+    _require_chunk_text(material_process_chunk, "SLM technique as the additive manufacturing process", "MATDES 2019 process")
+    _require_chunk_text(density_table, "D5", "MATDES 2019 table 2")
+    _require_chunk_text(compression_chunk, "6 mm/min", "MATDES 2019 compression")
+    _require_chunk_text(performance_table, "D5 2.04 0.07 0.56 1.08 42.63", "MATDES 2019 performance")
+
+    return samples, evidence
+
+
 def build_bundle(
     paper_id: str,
     samples: list[dict[str, Any]],
@@ -1381,10 +2330,20 @@ def build_bundle(
         return _build_tws_2020_bundle(paper_id, register_row, paper_chunks, samples, evidence)
     if paper_id == MATDES_2017_PAPER_ID:
         return _build_matdes_2017_bundle(paper_id, register_row, paper_chunks, samples, evidence)
+    if paper_id == MATDES_2018_PAPER_ID:
+        return _build_matdes_2018_bundle(paper_id, register_row, paper_chunks, samples, evidence)
+    if paper_id == MATDES_2019_PAPER_ID:
+        return _build_matdes_2019_bundle(paper_id, register_row, paper_chunks, samples, evidence)
     if paper_id == IJIMPENG_2023_PAPER_ID:
         return _build_ijimpeng_2023_bundle(paper_id, register_row, paper_chunks, samples, evidence)
     if paper_id == ENGSTRUCT_2023_PAPER_ID:
         return _build_engstruct_2023_bundle(paper_id, register_row, paper_chunks, samples, evidence)
+    if paper_id == MA18040732_PAPER_ID:
+        return _build_ma18040732_bundle(paper_id, register_row, paper_chunks, samples, evidence)
+    if paper_id == CIRPJ_2024_PAPER_ID:
+        return _build_cirpj_2024_bundle(paper_id, register_row, paper_chunks, samples, evidence)
+    if paper_id == IJIMPENG_2025_PAPER_ID:
+        return _build_ijimpeng_2025_bundle(paper_id, register_row, paper_chunks, samples, evidence)
     raise SystemExit(f"unsupported paper_id: {paper_id}")
 
 

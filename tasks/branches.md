@@ -8,6 +8,11 @@ Rules:
 
 | Task ID | Title | Dispatch Branch | Dev Branch | Integration Method | Status |
 |---|---|---|---|---|---|
+| TASK-024 | Octagonal lattice sample expansion | dispatch/tasks | feat/task-024-extract-matdes-2018-octagonal | rebase --onto | Done |
+| TASK-023 | BCC lattice sample expansion | dispatch/tasks | feat/task-023-extract-matdes-2019-bcc | rebase --onto | Done |
+| TASK-022 | Hybrid plate-rod lattice sample expansion | dispatch/tasks | feat/task-022-extract-hprl | rebase --onto | Done |
+| TASK-021 | Octet truss lattice sample expansion | dispatch/tasks | feat/task-021-extract-octet | rebase --onto | Done |
+| TASK-020 | BCCz+cross sample expansion | dispatch/tasks | feat/task-020-extract-bccz-cross | rebase --onto | Done |
 | TASK-001 | P1 first minimal chain | dispatch/tasks | feat/task-001-min-pipeline | rebase --onto | Done |
 | TASK-002 | Excel input adapter for seed intake | dispatch/tasks | feat/task-002-input-excel | rebase --onto | Done |
 | TASK-003 | PDF first-pass register extractor | dispatch/tasks | feat/task-003-input-pdf | rebase --onto | Done |

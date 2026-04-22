@@ -101,6 +101,56 @@
       "label": "10_1016_j_engstruct_2023_116510"
     },
     {
+      "node_id": "sample:10_3390_ma18040732-bccz-cross-4x4x5",
+      "node_type": "sample",
+      "label": "10_3390_ma18040732-bccz-cross-4x4x5"
+    },
+    {
+      "node_id": "paper:10_3390_ma18040732",
+      "node_type": "paper",
+      "label": "10_3390_ma18040732"
+    },
+    {
+      "node_id": "sample:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015",
+      "node_type": "sample",
+      "label": "10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015"
+    },
+    {
+      "node_id": "paper:10_1016_j_cirpj_2024_06_009",
+      "node_type": "paper",
+      "label": "10_1016_j_cirpj_2024_06_009"
+    },
+    {
+      "node_id": "sample:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022",
+      "node_type": "sample",
+      "label": "10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022"
+    },
+    {
+      "node_id": "paper:10_1016_j_ijimpeng_2025_105321",
+      "node_type": "paper",
+      "label": "10_1016_j_ijimpeng_2025_105321"
+    },
+    {
+      "node_id": "sample:10_1016_j_matdes_2019_108076-d5-bcc",
+      "node_type": "sample",
+      "label": "10_1016_j_matdes_2019_108076-d5-bcc"
+    },
+    {
+      "node_id": "paper:10_1016_j_matdes_2019_108076",
+      "node_type": "paper",
+      "label": "10_1016_j_matdes_2019_108076"
+    },
+    {
+      "node_id": "sample:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015",
+      "node_type": "sample",
+      "label": "10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015"
+    },
+    {
+      "node_id": "paper:10_1016_j_matdes_2018_05_059",
+      "node_type": "paper",
+      "label": "10_1016_j_matdes_2018_05_059"
+    },
+    {
       "node_id": "evidence:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-001",
       "node_type": "evidence",
       "label": "raw_design"
@@ -329,6 +379,186 @@
       "node_id": "evidence:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00-ev-006",
       "node_type": "evidence",
       "label": "pcf_kn"
+    },
+    {
+      "node_id": "evidence:10_3390_ma18040732-bccz-cross-4x4x5-ev-001",
+      "node_type": "evidence",
+      "label": "raw_structure"
+    },
+    {
+      "node_id": "evidence:10_3390_ma18040732-bccz-cross-4x4x5-ev-002",
+      "node_type": "evidence",
+      "label": "raw_design"
+    },
+    {
+      "node_id": "evidence:10_3390_ma18040732-bccz-cross-4x4x5-ev-003",
+      "node_type": "evidence",
+      "label": "raw_material"
+    },
+    {
+      "node_id": "evidence:10_3390_ma18040732-bccz-cross-4x4x5-ev-004",
+      "node_type": "evidence",
+      "label": "raw_process"
+    },
+    {
+      "node_id": "evidence:10_3390_ma18040732-bccz-cross-4x4x5-ev-005",
+      "node_type": "evidence",
+      "label": "sea_j_g"
+    },
+    {
+      "node_id": "evidence:10_3390_ma18040732-bccz-cross-4x4x5-ev-006",
+      "node_type": "evidence",
+      "label": "mcf_kn"
+    },
+    {
+      "node_id": "evidence:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015-ev-001",
+      "node_type": "evidence",
+      "label": "raw_structure"
+    },
+    {
+      "node_id": "evidence:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015-ev-002",
+      "node_type": "evidence",
+      "label": "raw_design"
+    },
+    {
+      "node_id": "evidence:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015-ev-003",
+      "node_type": "evidence",
+      "label": "raw_material"
+    },
+    {
+      "node_id": "evidence:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015-ev-004",
+      "node_type": "evidence",
+      "label": "raw_process"
+    },
+    {
+      "node_id": "evidence:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015-ev-005",
+      "node_type": "evidence",
+      "label": "relative_density_raw"
+    },
+    {
+      "node_id": "evidence:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015-ev-006",
+      "node_type": "evidence",
+      "label": "sea_j_g"
+    },
+    {
+      "node_id": "evidence:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022-ev-001",
+      "node_type": "evidence",
+      "label": "raw_structure"
+    },
+    {
+      "node_id": "evidence:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022-ev-002",
+      "node_type": "evidence",
+      "label": "raw_design"
+    },
+    {
+      "node_id": "evidence:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022-ev-003",
+      "node_type": "evidence",
+      "label": "raw_material"
+    },
+    {
+      "node_id": "evidence:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022-ev-004",
+      "node_type": "evidence",
+      "label": "raw_process"
+    },
+    {
+      "node_id": "evidence:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022-ev-005",
+      "node_type": "evidence",
+      "label": "velocity_m_s_raw"
+    },
+    {
+      "node_id": "evidence:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022-ev-006",
+      "node_type": "evidence",
+      "label": "relative_density_raw"
+    },
+    {
+      "node_id": "evidence:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022-ev-007",
+      "node_type": "evidence",
+      "label": "sea_j_g"
+    },
+    {
+      "node_id": "evidence:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022-ev-008",
+      "node_type": "evidence",
+      "label": "plateau_stress_mpa"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2019_108076-d5-bcc-ev-001",
+      "node_type": "evidence",
+      "label": "raw_structure"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2019_108076-d5-bcc-ev-002",
+      "node_type": "evidence",
+      "label": "raw_design"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2019_108076-d5-bcc-ev-003",
+      "node_type": "evidence",
+      "label": "raw_material"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2019_108076-d5-bcc-ev-004",
+      "node_type": "evidence",
+      "label": "raw_process"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2019_108076-d5-bcc-ev-005",
+      "node_type": "evidence",
+      "label": "relative_density_raw"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2019_108076-d5-bcc-ev-006",
+      "node_type": "evidence",
+      "label": "velocity_m_s_raw"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2019_108076-d5-bcc-ev-007",
+      "node_type": "evidence",
+      "label": "sea_j_g"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2019_108076-d5-bcc-ev-008",
+      "node_type": "evidence",
+      "label": "plateau_stress_mpa"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015-ev-001",
+      "node_type": "evidence",
+      "label": "raw_structure"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015-ev-002",
+      "node_type": "evidence",
+      "label": "raw_design"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015-ev-003",
+      "node_type": "evidence",
+      "label": "raw_material"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015-ev-004",
+      "node_type": "evidence",
+      "label": "raw_process"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015-ev-005",
+      "node_type": "evidence",
+      "label": "relative_density_raw"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015-ev-006",
+      "node_type": "evidence",
+      "label": "velocity_m_s_raw"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015-ev-007",
+      "node_type": "evidence",
+      "label": "sea_j_g"
+    },
+    {
+      "node_id": "evidence:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015-ev-008",
+      "node_type": "evidence",
+      "label": "plateau_stress_mpa"
     }
   ],
   "edges": [
@@ -380,6 +610,31 @@
     {
       "source_id": "paper:10_1016_j_engstruct_2023_116510",
       "target_id": "sample:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00",
+      "relation": "contains_sample"
+    },
+    {
+      "source_id": "paper:10_3390_ma18040732",
+      "target_id": "sample:10_3390_ma18040732-bccz-cross-4x4x5",
+      "relation": "contains_sample"
+    },
+    {
+      "source_id": "paper:10_1016_j_cirpj_2024_06_009",
+      "target_id": "sample:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015",
+      "relation": "contains_sample"
+    },
+    {
+      "source_id": "paper:10_1016_j_ijimpeng_2025_105321",
+      "target_id": "sample:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022",
+      "relation": "contains_sample"
+    },
+    {
+      "source_id": "paper:10_1016_j_matdes_2019_108076",
+      "target_id": "sample:10_1016_j_matdes_2019_108076-d5-bcc",
+      "relation": "contains_sample"
+    },
+    {
+      "source_id": "paper:10_1016_j_matdes_2018_05_059",
+      "target_id": "sample:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015",
       "relation": "contains_sample"
     },
     {
@@ -610,6 +865,186 @@
     {
       "source_id": "sample:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00",
       "target_id": "evidence:10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00-ev-006",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_3390_ma18040732-bccz-cross-4x4x5",
+      "target_id": "evidence:10_3390_ma18040732-bccz-cross-4x4x5-ev-001",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_3390_ma18040732-bccz-cross-4x4x5",
+      "target_id": "evidence:10_3390_ma18040732-bccz-cross-4x4x5-ev-002",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_3390_ma18040732-bccz-cross-4x4x5",
+      "target_id": "evidence:10_3390_ma18040732-bccz-cross-4x4x5-ev-003",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_3390_ma18040732-bccz-cross-4x4x5",
+      "target_id": "evidence:10_3390_ma18040732-bccz-cross-4x4x5-ev-004",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_3390_ma18040732-bccz-cross-4x4x5",
+      "target_id": "evidence:10_3390_ma18040732-bccz-cross-4x4x5-ev-005",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_3390_ma18040732-bccz-cross-4x4x5",
+      "target_id": "evidence:10_3390_ma18040732-bccz-cross-4x4x5-ev-006",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015",
+      "target_id": "evidence:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015-ev-001",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015",
+      "target_id": "evidence:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015-ev-002",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015",
+      "target_id": "evidence:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015-ev-003",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015",
+      "target_id": "evidence:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015-ev-004",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015",
+      "target_id": "evidence:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015-ev-005",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015",
+      "target_id": "evidence:10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015-ev-006",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022",
+      "target_id": "evidence:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022-ev-001",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022",
+      "target_id": "evidence:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022-ev-002",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022",
+      "target_id": "evidence:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022-ev-003",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022",
+      "target_id": "evidence:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022-ev-004",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022",
+      "target_id": "evidence:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022-ev-005",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022",
+      "target_id": "evidence:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022-ev-006",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022",
+      "target_id": "evidence:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022-ev-007",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022",
+      "target_id": "evidence:10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022-ev-008",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2019_108076-d5-bcc",
+      "target_id": "evidence:10_1016_j_matdes_2019_108076-d5-bcc-ev-001",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2019_108076-d5-bcc",
+      "target_id": "evidence:10_1016_j_matdes_2019_108076-d5-bcc-ev-002",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2019_108076-d5-bcc",
+      "target_id": "evidence:10_1016_j_matdes_2019_108076-d5-bcc-ev-003",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2019_108076-d5-bcc",
+      "target_id": "evidence:10_1016_j_matdes_2019_108076-d5-bcc-ev-004",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2019_108076-d5-bcc",
+      "target_id": "evidence:10_1016_j_matdes_2019_108076-d5-bcc-ev-005",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2019_108076-d5-bcc",
+      "target_id": "evidence:10_1016_j_matdes_2019_108076-d5-bcc-ev-006",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2019_108076-d5-bcc",
+      "target_id": "evidence:10_1016_j_matdes_2019_108076-d5-bcc-ev-007",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2019_108076-d5-bcc",
+      "target_id": "evidence:10_1016_j_matdes_2019_108076-d5-bcc-ev-008",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015",
+      "target_id": "evidence:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015-ev-001",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015",
+      "target_id": "evidence:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015-ev-002",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015",
+      "target_id": "evidence:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015-ev-003",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015",
+      "target_id": "evidence:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015-ev-004",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015",
+      "target_id": "evidence:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015-ev-005",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015",
+      "target_id": "evidence:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015-ev-006",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015",
+      "target_id": "evidence:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015-ev-007",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015",
+      "target_id": "evidence:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015-ev-008",
       "relation": "supports_field"
     }
   ]

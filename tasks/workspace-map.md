@@ -3,9 +3,9 @@
 ## Snapshot
 
 - Dispatch branch: `dispatch/tasks`
-- Dispatch head: `38ba3ab`
-- Current dev branch: `dispatch/tasks`
-- `TASK-019` is now archived after the EngStruct 2023 3D metamaterial bundle landed.
+- Dispatch head: `34d66bb`
+- Current dev branch: `feat/task-024-extract-matdes-2018-octagonal`
+- `TASK-024` is now closed locally after the MATDES 2018 Octagonal bundle landed.
 
 ## Mapping
 
@@ -29,6 +29,11 @@
 | TASK-017 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-017-extract-bioinspired-hierarchical` now contains the bio-inspired hierarchical honeycomb paper bundle and produces a larger KG. |
 | TASK-018 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-018-extract-bioinspired-spatial-lattice` now contains the IJIMPENG 2023 spatial lattice bundle and produces a larger KG. |
 | TASK-019 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Merged locally; `dispatch/tasks` now contains the EngStruct 2023 3D metamaterial bundle and produces a larger KG. |
+| TASK-020 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-020-extract-bccz-cross` now contains the BCCz+cross paper bundle and produces a larger KG. |
+| TASK-021 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-021-extract-octet` now contains the Octet lattice bundle and produces a larger KG. |
+| TASK-022 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-022-extract-hprl` now contains the hybrid plate-rod bundle and produces a larger KG. |
+| TASK-023 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-023-extract-matdes-2019-bcc` now contains the MATDES 2019 BCC bundle and produces a larger KG. |
+| TASK-024 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-024-extract-matdes-2018-octagonal` now contains the MATDES 2018 Octagonal bundle and produces a larger KG. |
 
 ## Split Notes
 
@@ -45,3 +50,8 @@
 - `TASK-017` extends `TASK-016` with a bio-inspired hierarchical honeycomb bundle and reuses the same promotion and KG path.
 - `TASK-018` extends `TASK-017` with the bio-inspired spatial lattice bundle and reuses the same promotion and KG path.
 - `TASK-019` extends `TASK-018` with the EngStruct 2023 3D metamaterial bundle and reuses the same promotion and KG path.
+- `TASK-020` extends `TASK-019` with the BCCz+cross lattice bundle and reuses the same promotion and KG path.
+- `TASK-021` extends `TASK-020` with an Octet truss lattice bundle and reuses the same promotion and KG path.
+- `TASK-022` extends `TASK-021` with a hybrid plate-rod lattice bundle and reuses the same promotion and KG path.
+- `TASK-023` extends `TASK-022` with a BCC lattice bundle and reuses the same promotion and KG path.
+- `TASK-024` extends `TASK-023` with an Octagonal lattice bundle and reuses the same promotion and KG path.
