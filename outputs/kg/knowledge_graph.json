@@ -151,6 +151,16 @@
       "label": "10_1016_j_matdes_2018_05_059"
     },
     {
+      "node_id": "sample:pii_s0734_743x_97_00040_7-al-honeycomb",
+      "node_type": "sample",
+      "label": "pii_s0734_743x_97_00040_7-al-honeycomb"
+    },
+    {
+      "node_id": "paper:pii_s0734_743x_97_00040_7",
+      "node_type": "paper",
+      "label": "pii_s0734_743x_97_00040_7"
+    },
+    {
       "node_id": "evidence:10-1016-j-compositesb-2019-107565-row-104-tpms-primitive-104-ev-001",
       "node_type": "evidence",
       "label": "raw_design"
@@ -559,6 +569,46 @@
       "node_id": "evidence:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015-ev-008",
       "node_type": "evidence",
       "label": "plateau_stress_mpa"
+    },
+    {
+      "node_id": "evidence:pii_s0734_743x_97_00040_7-al-honeycomb-ev-001",
+      "node_type": "evidence",
+      "label": "raw_structure"
+    },
+    {
+      "node_id": "evidence:pii_s0734_743x_97_00040_7-al-honeycomb-ev-002",
+      "node_type": "evidence",
+      "label": "sample_label_in_paper"
+    },
+    {
+      "node_id": "evidence:pii_s0734_743x_97_00040_7-al-honeycomb-ev-003",
+      "node_type": "evidence",
+      "label": "raw_material"
+    },
+    {
+      "node_id": "evidence:pii_s0734_743x_97_00040_7-al-honeycomb-ev-004",
+      "node_type": "evidence",
+      "label": "relative_density_raw"
+    },
+    {
+      "node_id": "evidence:pii_s0734_743x_97_00040_7-al-honeycomb-ev-005",
+      "node_type": "evidence",
+      "label": "raw_process"
+    },
+    {
+      "node_id": "evidence:pii_s0734_743x_97_00040_7-al-honeycomb-ev-006",
+      "node_type": "evidence",
+      "label": "test_mode"
+    },
+    {
+      "node_id": "evidence:pii_s0734_743x_97_00040_7-al-honeycomb-ev-007",
+      "node_type": "evidence",
+      "label": "velocity_m_s_raw"
+    },
+    {
+      "node_id": "evidence:pii_s0734_743x_97_00040_7-al-honeycomb-ev-008",
+      "node_type": "evidence",
+      "label": "loading_direction"
     }
   ],
   "edges": [
@@ -635,6 +685,11 @@
     {
       "source_id": "paper:10_1016_j_matdes_2018_05_059",
       "target_id": "sample:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015",
+      "relation": "contains_sample"
+    },
+    {
+      "source_id": "paper:pii_s0734_743x_97_00040_7",
+      "target_id": "sample:pii_s0734_743x_97_00040_7-al-honeycomb",
       "relation": "contains_sample"
     },
     {
@@ -1045,6 +1100,46 @@
     {
       "source_id": "sample:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015",
       "target_id": "evidence:10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015-ev-008",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:pii_s0734_743x_97_00040_7-al-honeycomb",
+      "target_id": "evidence:pii_s0734_743x_97_00040_7-al-honeycomb-ev-001",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:pii_s0734_743x_97_00040_7-al-honeycomb",
+      "target_id": "evidence:pii_s0734_743x_97_00040_7-al-honeycomb-ev-002",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:pii_s0734_743x_97_00040_7-al-honeycomb",
+      "target_id": "evidence:pii_s0734_743x_97_00040_7-al-honeycomb-ev-003",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:pii_s0734_743x_97_00040_7-al-honeycomb",
+      "target_id": "evidence:pii_s0734_743x_97_00040_7-al-honeycomb-ev-004",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:pii_s0734_743x_97_00040_7-al-honeycomb",
+      "target_id": "evidence:pii_s0734_743x_97_00040_7-al-honeycomb-ev-005",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:pii_s0734_743x_97_00040_7-al-honeycomb",
+      "target_id": "evidence:pii_s0734_743x_97_00040_7-al-honeycomb-ev-006",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:pii_s0734_743x_97_00040_7-al-honeycomb",
+      "target_id": "evidence:pii_s0734_743x_97_00040_7-al-honeycomb-ev-007",
+      "relation": "supports_field"
+    },
+    {
+      "source_id": "sample:pii_s0734_743x_97_00040_7-al-honeycomb",
+      "target_id": "evidence:pii_s0734_743x_97_00040_7-al-honeycomb-ev-008",
       "relation": "supports_field"
     }
   ]

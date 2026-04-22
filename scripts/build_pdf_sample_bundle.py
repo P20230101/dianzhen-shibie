@@ -20,6 +20,7 @@ COMPSTRUCT_2019_PAPER_ID = "10_1016_j_compstruct_2019_111219"
 COMPSTRUCT_2018_PAPER_ID = "10_1016_j_compstruct_2018_03_050"
 TWS_2019_PAPER_ID = "10_1016_j_tws_2019_106436"
 TWS_2020_PAPER_ID = "10_1016_j_tws_2020_106623"
+HIGH_DENSITY_HONEYCOMB_PAPER_ID = "pii_s0734_743x_97_00040_7"
 MATDES_2017_PAPER_ID = "10_1016_j_matdes_2017_10_028"
 MATDES_2018_PAPER_ID = "10_1016_j_matdes_2018_05_059"
 MATDES_2019_PAPER_ID = "10_1016_j_matdes_2019_108076"
@@ -597,6 +598,197 @@ def _build_tws_2020_bundle(
     _require_chunk_text(material_chunk, "aluminum alloy 6061O", "TWS 2020 material")
     _require_chunk_text(model_chunk, "simulate in-plane dynamic crushing", "TWS 2020 model")
     _require_chunk_text(table_001, "The low-velocity crushing strengths of the STH.", "TWS 2020 table 1")
+
+    return samples, evidence
+
+
+def _build_high_density_honeycomb_bundle(
+    paper_id: str,
+    register_row: dict[str, str],
+    paper_chunks: list[dict[str, Any]],
+    samples: list[dict[str, Any]],
+    evidence: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    summary_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:006")), None)
+    structure_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:017")), None)
+    quasi_static_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:033")), None)
+    dynamic_chunk = next((row for row in paper_chunks if str(row.get("chunk_id", "")).endswith(":text:089")), None)
+
+    sample = {
+        "paper_id": paper_id,
+        "sample_id": f"{paper_id}-al-honeycomb",
+        "doi": register_row.get("doi") or None,
+        "title": register_row.get("title") or None,
+        "sample_label_in_paper": "al-honeycomb",
+        "is_multi_sample_paper": True,
+        "raw_design": "al-honeycomb",
+        "raw_structure": "aluminum honeycomb",
+        "raw_type": "honeycomb",
+        "structure_main_class": "honeycomb_2d",
+        "structure_subtype_list": [],
+        "is_hierarchical": False,
+        "is_graded": False,
+        "is_optimized": False,
+        "relative_density_raw": "32%",
+        "relative_density_value": 0.32,
+        "raw_material": "5052 aluminum",
+        "raw_material_group": "aluminum",
+        "material_canonical": "Aluminum alloy",
+        "material_family": "metal",
+        "raw_process": "forming and assembly",
+        "process_canonical": "forming and assembly",
+        "process_family": "forming_and_assembly",
+        "analysis_type": "experimental",
+        "test_mode": "quasi_static",
+        "loading_direction": "uniaxial",
+        "velocity_m_s_raw": "0.025 mm/s",
+        "velocity_m_s": 0.000025,
+        "sea_j_g_raw": None,
+        "sea_j_g": None,
+        "pcf_kn_raw": None,
+        "pcf_kn": None,
+        "mcf_kn_raw": None,
+        "mcf_kn": None,
+        "cfe_raw": None,
+        "cfe": None,
+        "plateau_stress_mpa_raw": None,
+        "plateau_stress_mpa": None,
+        "confidence_overall": 0.9,
+        "needs_manual_review": True,
+        "review_status": "pending",
+        "review_notes": "Paper-derived seed from PDF corpus for TASK-025.",
+    }
+    _append_unique(samples, sample, "sample_id")
+
+    evidence_rows = [
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-001",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_structure",
+            "field_value": "aluminum honeycomb",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 3,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "The materials investigated were an aluminum honeycomb (referred to as al-honeycomb in the future) and a stainless-steel honeycomb.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 1.0,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-002",
+            "sample_id": sample["sample_id"],
+            "field_name": "sample_label_in_paper",
+            "field_value": "al-honeycomb",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 3,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "The materials investigated were an aluminum honeycomb (referred to as al-honeycomb in the future) and a stainless-steel honeycomb.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-003",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_material",
+            "field_value": "5052 aluminum",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 3,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "The al-honeycomb was made of 0.1905 mm (0.0075 in) thick sheets of 5052 aluminum, and it had an overall density was 881 kg/m3 (55 lb/ft3).",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-004",
+            "sample_id": sample["sample_id"],
+            "field_name": "relative_density_raw",
+            "field_value": "32%",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 3,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "Thus, the effective density was 32% of the density of aluminum.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-005",
+            "sample_id": sample["sample_id"],
+            "field_name": "raw_process",
+            "field_value": "forming and assembly",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 3,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "The formed sheets in the al-honeycomb have an approximate sine-wave shape. After they are formed, alternating layers of at sheets and formed sheets are assembled, and then bonded together with an epoxy adhesive.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.98,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-006",
+            "sample_id": sample["sample_id"],
+            "field_name": "test_mode",
+            "field_value": "quasi_static",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 6,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "The quasi-static tests were conducted on a 1.8 MN (400,000 lb) capacity Tinius-Olsen testing machine using a compression rate of approximately 0.025 mm/s (0.001 in/s) for the 76.2 mm (3 in) long specimen.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-007",
+            "sample_id": sample["sample_id"],
+            "field_name": "velocity_m_s_raw",
+            "field_value": "0.025 mm/s",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 6,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "The quasi-static tests were conducted on a 1.8 MN (400,000 lb) capacity Tinius-Olsen testing machine using a compression rate of approximately 0.025 mm/s (0.001 in/s) for the 76.2 mm (3 in) long specimen.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.99,
+            "verified_by_human": False,
+        },
+        {
+            "evidence_id": f"{sample['sample_id']}-ev-008",
+            "sample_id": sample["sample_id"],
+            "field_name": "loading_direction",
+            "field_value": "uniaxial",
+            "source_priority": "T1",
+            "source_type": "text",
+            "page_no": 6,
+            "figure_id": None,
+            "table_id": None,
+            "text_snippet": "A method of testing the specimens in a state approximating uniaxial strain was developed for the large compressive deformations required with honeycombs, and used for both static and dynamic tests.",
+            "extractor": "build_pdf_sample_bundle",
+            "extract_confidence": 0.98,
+            "verified_by_human": False,
+        },
+    ]
+    for row in evidence_rows:
+        _append_unique(evidence, row, "evidence_id")
+
+    _require_chunk_text(summary_chunk, "Both materials showed a strain-rate e/ect", "HIGH DENSITY HONEYCOMB summary")
+    _require_chunk_text(structure_chunk, "The materials investigated were an aluminum honeycomb", "HIGH DENSITY HONEYCOMB structure")
+    _require_chunk_text(quasi_static_chunk, "compression rate of approximately 0.025 mm/s", "HIGH DENSITY HONEYCOMB quasi-static")
+    _require_chunk_text(dynamic_chunk, "dynamic plateau stress is about 50% above the quasi-static value", "HIGH DENSITY HONEYCOMB dynamic")
 
     return samples, evidence
 
@@ -2328,6 +2520,8 @@ def build_bundle(
         return _build_tws_2019_bundle(paper_id, register_row, paper_chunks, samples, evidence)
     if paper_id == TWS_2020_PAPER_ID:
         return _build_tws_2020_bundle(paper_id, register_row, paper_chunks, samples, evidence)
+    if paper_id == HIGH_DENSITY_HONEYCOMB_PAPER_ID:
+        return _build_high_density_honeycomb_bundle(paper_id, register_row, paper_chunks, samples, evidence)
     if paper_id == MATDES_2017_PAPER_ID:
         return _build_matdes_2017_bundle(paper_id, register_row, paper_chunks, samples, evidence)
     if paper_id == MATDES_2018_PAPER_ID:

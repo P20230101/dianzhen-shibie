@@ -560,6 +560,47 @@ def test_promoted_matdes_2018_bundle_grows_the_kg(tmp_path: Path) -> None:
     assert any(node["label"] == "10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015" for node in payload["nodes"])
 
 
+def test_promoted_high_density_honeycomb_bundle_grows_the_kg(tmp_path: Path) -> None:
+    samples_path = tmp_path / "samples_v1.json"
+    evidence_path = tmp_path / "evidence_v1.json"
+    out_path = tmp_path / "knowledge_graph.json"
+
+    samples_path.write_text((FIXTURES_DIR / "samples_v1.json").read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_path.write_text((FIXTURES_DIR / "evidence_v1.json").read_text(encoding="utf-8"), encoding="utf-8")
+
+    build_exit = build_bundle_main([
+        "--paper-id",
+        "pii_s0734_743x_97_00040_7",
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+    promote_exit = promote_main([
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+    project_exit = project_main([
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+        "--out",
+        str(out_path),
+    ])
+
+    payload = json.loads(out_path.read_text(encoding="utf-8"))
+
+    assert build_exit == 0
+    assert promote_exit == 0
+    assert project_exit == 0
+    assert len(payload["nodes"]) > 110
+    assert len(payload["edges"]) > 95
+    assert any(node["label"] == "pii_s0734_743x_97_00040_7-al-honeycomb" for node in payload["nodes"])
+
+
 def test_promoted_compstruct_2018_bundle_grows_the_kg(tmp_path: Path) -> None:
     samples_path = tmp_path / "samples_v1.json"
     evidence_path = tmp_path / "evidence_v1.json"

@@ -469,3 +469,33 @@ def test_build_pdf_sample_bundle_supports_matdes_2018_octagonal_paper(tmp_path: 
     assert all(item in evidence for item in expected_evidence)
     assert len(samples) == len(base_samples) + 1
     assert len(evidence) == len(base_evidence) + len(expected_evidence)
+
+
+def test_build_pdf_sample_bundle_supports_high_density_honeycomb_paper(tmp_path: Path) -> None:
+    samples_path = tmp_path / "samples_v1.json"
+    evidence_path = tmp_path / "evidence_v1.json"
+
+    base_samples = read_json(BASE_SAMPLES)
+    base_evidence = read_json(BASE_EVIDENCE)
+    samples_path.write_text(BASE_SAMPLES.read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_path.write_text(BASE_EVIDENCE.read_text(encoding="utf-8"), encoding="utf-8")
+
+    exit_code = build_bundle_main([
+        "--paper-id",
+        "pii_s0734_743x_97_00040_7",
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+
+    samples = read_json(samples_path)
+    evidence = read_json(evidence_path)
+    expected_sample = read_json(FIXTURES_DIR / "expected_sample_high_density_honeycomb.json")
+    expected_evidence = read_json(FIXTURES_DIR / "expected_evidence_high_density_honeycomb.json")
+
+    assert exit_code == 0
+    assert expected_sample in samples
+    assert all(item in evidence for item in expected_evidence)
+    assert len(samples) == len(base_samples) + 1
+    assert len(evidence) == len(base_evidence) + len(expected_evidence)
