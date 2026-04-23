@@ -3,14 +3,17 @@
 ## Snapshot
 
 - Dispatch branch: `dispatch/tasks`
-- Dispatch head: `38ba3ab`
-- Current dev branch: `dispatch/tasks`
-- `TASK-019` is now archived after the EngStruct 2023 3D metamaterial bundle landed.
+- Dispatch head: `34d66bb`
+- Current dev branch: `codex/task-027-figure-unit-record`
+- `TASK-027` is now in progress locally and the repository is on the figure-understanding unit-record branch.
 
 ## Mapping
 
 | Task | Primary implementation files | Tests | Generated artifacts | Current branch state |
 |---|---|---|---|---|
+| TASK-027 | `scripts/figure_understanding_common.py`, `scripts/build_figure_understanding.py`, `scripts/figure_understanding_vlm.py`, `scripts/render_figure_understanding_report.py` | `tests/test_figure_understanding_common.py`, `tests/test_figure_understanding_vlm.py`, `tests/test_build_figure_understanding.py`, `tests/test_render_figure_understanding_report.py`, `tests/test_figure_understanding_smoke.py` | `data/03_figures/figure_units_v1.jsonl`, `data/03_figures/figure_units_review.csv`, `data/03_figures/manifest.json` | In progress; `codex/task-027-figure-unit-record` now carries the unit-level figure output work. |
+| TASK-026 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `codex/task-026-jmrt-radial-hybrid` now contains the JMRT 2021 radial hybrid bundle, and the repository is in P3 closeout. |
+| TASK-025 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `codex/task-025-extract-high-density-honeycomb` now contains the high-density honeycomb bundle and produces a larger KG. |
 | TASK-002 | `scripts/p1_seed.py`, `scripts/p1_transform.py`, `scripts/p1_validate_export.py`, `scripts/p1_pipeline_common.py` | `tests/test_p1_workbook_seed_adapter.py` | `data/p1/seed_input.json`, `outputs/p1/seed/seed_input.json`, `outputs/p1/parsed/parsed_sample.json`, `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/p1/review/p1_chain_report.json` | Committed; `feat/task-002-input-excel` now points at `3b7b702` and contains the P1 workbook seed chain. |
 | TASK-003 | `scripts/build_pdf_register.py`, `tests/test_pdf_register_extractor.py` | `tests/test_pdf_register_extractor.py` | `data/01_raw/pdfs/paper_register_first_pass.csv`, `data/01_raw/pdfs/paper_register_first_pass.md` | Committed; `feat/task-003-input-pdf` now points at `ac228c6` and contains the first-pass PDF register extractor. |
 | TASK-004 | `scripts/build_pdf_register.py`, `tests/test_pdf_register_extractor.py` | `tests/test_pdf_register_extractor.py` | `data/01_raw/pdfs/paper_register.csv`, `data/01_raw/pdfs/paper_register.md` | Committed; `feat/task-004-extract-subtypes` now points at `497526a` and contains the canonical-register sync plus subtype enrichment. |
@@ -30,18 +33,3 @@
 | TASK-018 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Closed locally; `feat/task-018-extract-bioinspired-spatial-lattice` now contains the IJIMPENG 2023 spatial lattice bundle and produces a larger KG. |
 | TASK-019 | `scripts/build_pdf_sample_bundle.py`, `scripts/promote_p1_review.py`, `scripts/project_knowledge_graph.py` | `tests/test_build_pdf_sample_bundle.py`, `tests/test_promote_p1_review.py`, `tests/test_project_knowledge_graph.py` | `outputs/p1/extracted/samples_v1.json`, `outputs/p1/extracted/evidence_v1.json`, `outputs/kg/knowledge_graph.json` | Merged locally; `dispatch/tasks` now contains the EngStruct 2023 3D metamaterial bundle and produces a larger KG. |
 
-## Split Notes
-
-- `TASK-002` owns the P1 workbook seed, transform, and validation chain.
-- `TASK-003` and `TASK-004` share the register extractor, but `TASK-004` extends it to the canonical register outputs.
-- `TASK-006` and `TASK-007` share `scripts/retrieval_kg_common.py`.
-- `TASK-008`, `TASK-009`, and `TASK-010` sit on top of the KG projection layer, with `TASK-010` reusing `scripts/project_knowledge_graph.py` after promoting the review state.
-- `TASK-011` starts from the PDF library and extends the existing promotion and KG path with one additional paper-derived sample bundle.
-- `TASK-012` extends `TASK-011` with a second paper-derived sample bundle and reuses the same promotion and KG path.
-- `TASK-013` extends `TASK-012` with a PSH honeycomb bundle and reuses the same promotion and KG path.
-- `TASK-014` extends `TASK-013` with a star auxetic honeycomb bundle and reuses the same promotion and KG path.
-- `TASK-015` extends `TASK-014` with a vertex-based hierarchical honeycomb bundle and reuses the same promotion and KG path.
-- `TASK-016` extends `TASK-015` with a 3D printed hierarchical honeycomb bundle and reuses the same promotion and KG path.
-- `TASK-017` extends `TASK-016` with a bio-inspired hierarchical honeycomb bundle and reuses the same promotion and KG path.
-- `TASK-018` extends `TASK-017` with the bio-inspired spatial lattice bundle and reuses the same promotion and KG path.
-- `TASK-019` extends `TASK-018` with the EngStruct 2023 3D metamaterial bundle and reuses the same promotion and KG path.

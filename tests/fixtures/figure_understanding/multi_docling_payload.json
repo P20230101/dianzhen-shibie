@@ -1,0 +1,72 @@
+{
+  "texts": [
+    {
+      "label": "text",
+      "text": "Figure 3. Composite figure summarizing structure, curve, and failure snapshots.",
+      "prov": [
+        {
+          "page_no": 5
+        }
+      ]
+    },
+    {
+      "label": "text",
+      "text": "Panel a plots the stress-strain response, panel b shows the deformed specimen, and panel c highlights the fracture path.",
+      "prov": [
+        {
+          "page_no": 5
+        }
+      ]
+    },
+    {
+      "label": "text",
+      "text": "Figure 4. Microstructure image of the fractured surface after compression.",
+      "prov": [
+        {
+          "page_no": 7
+        }
+      ]
+    },
+    {
+      "label": "text",
+      "text": "The SEM image reveals pore collapse and ligament tearing across the microstructure.",
+      "prov": [
+        {
+          "page_no": 7
+        }
+      ]
+    }
+  ],
+  "pictures": [
+    {
+      "figure_id": "fig_003",
+      "prov": [
+        {
+          "page_no": 5
+        }
+      ],
+      "captions": [
+        {
+          "$ref": "#/texts/0"
+        }
+      ],
+      "description": "Panel a, b, and c are a composite figure with curves, snapshots, and fracture path annotations.",
+      "image_path": "data/03_figures/images/10_1016_j_addma_2022_102887/fig_003.png"
+    },
+    {
+      "figure_id": "fig_004",
+      "prov": [
+        {
+          "page_no": 7
+        }
+      ],
+      "captions": [
+        {
+          "$ref": "#/texts/2"
+        }
+      ],
+      "description": "SEM microstructure image of the fractured surface after compression.",
+      "image_path": "data/03_figures/images/10_1016_j_addma_2022_102887/fig_004.png"
+    }
+  ]
+}

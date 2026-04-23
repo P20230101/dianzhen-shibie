@@ -351,6 +351,297 @@ def test_promoted_engstruct_2023_bundle_grows_the_kg(tmp_path: Path) -> None:
     assert any(node["label"] == "10_1016_j_engstruct_2023_116510-knee-b7p71-d2p00" for node in payload["nodes"])
 
 
+def test_promoted_ma18040732_bundle_grows_the_kg(tmp_path: Path) -> None:
+    samples_path = tmp_path / "samples_v1.json"
+    evidence_path = tmp_path / "evidence_v1.json"
+    out_path = tmp_path / "knowledge_graph.json"
+
+    samples_path.write_text((FIXTURES_DIR / "samples_v1.json").read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_path.write_text((FIXTURES_DIR / "evidence_v1.json").read_text(encoding="utf-8"), encoding="utf-8")
+
+    build_exit = build_bundle_main([
+        "--paper-id",
+        "10_3390_ma18040732",
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+    promote_exit = promote_main([
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+    project_exit = project_main([
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+        "--out",
+        str(out_path),
+    ])
+
+    payload = json.loads(out_path.read_text(encoding="utf-8"))
+
+    assert build_exit == 0
+    assert promote_exit == 0
+    assert project_exit == 0
+    assert len(payload["nodes"]) > 66
+    assert len(payload["edges"]) > 56
+    assert any(node["label"] == "10_3390_ma18040732-bccz-cross-4x4x5" for node in payload["nodes"])
+
+
+def test_promoted_cirpj_2024_bundle_grows_the_kg(tmp_path: Path) -> None:
+    samples_path = tmp_path / "samples_v1.json"
+    evidence_path = tmp_path / "evidence_v1.json"
+    out_path = tmp_path / "knowledge_graph.json"
+
+    samples_path.write_text((FIXTURES_DIR / "samples_v1.json").read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_path.write_text((FIXTURES_DIR / "evidence_v1.json").read_text(encoding="utf-8"), encoding="utf-8")
+
+    build_exit = build_bundle_main([
+        "--paper-id",
+        "10_1016_j_cirpj_2024_06_009",
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+    promote_exit = promote_main([
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+    project_exit = project_main([
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+        "--out",
+        str(out_path),
+    ])
+
+    payload = json.loads(out_path.read_text(encoding="utf-8"))
+
+    assert build_exit == 0
+    assert promote_exit == 0
+    assert project_exit == 0
+    assert len(payload["nodes"]) > 74
+    assert len(payload["edges"]) > 63
+    assert any(node["label"] == "10_1016_j_cirpj_2024_06_009-octet-10x10x10-d0p40-r015" for node in payload["nodes"])
+
+
+def test_promoted_ijimpeng_2025_bundle_grows_the_kg(tmp_path: Path) -> None:
+    samples_path = tmp_path / "samples_v1.json"
+    evidence_path = tmp_path / "evidence_v1.json"
+    out_path = tmp_path / "knowledge_graph.json"
+
+    samples_path.write_text((FIXTURES_DIR / "samples_v1.json").read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_path.write_text((FIXTURES_DIR / "evidence_v1.json").read_text(encoding="utf-8"), encoding="utf-8")
+
+    build_exit = build_bundle_main([
+        "--paper-id",
+        "10_1016_j_ijimpeng_2025_105321",
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+    promote_exit = promote_main([
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+    project_exit = project_main([
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+        "--out",
+        str(out_path),
+    ])
+
+    payload = json.loads(out_path.read_text(encoding="utf-8"))
+
+    assert build_exit == 0
+    assert promote_exit == 0
+    assert project_exit == 0
+    assert len(payload["nodes"]) > 82
+    assert len(payload["edges"]) > 70
+    assert any(node["label"] == "10_1016_j_ijimpeng_2025_105321-hprl-qstatic-r022" for node in payload["nodes"])
+
+
+def test_promoted_matdes_2019_bundle_grows_the_kg(tmp_path: Path) -> None:
+    samples_path = tmp_path / "samples_v1.json"
+    evidence_path = tmp_path / "evidence_v1.json"
+    out_path = tmp_path / "knowledge_graph.json"
+
+    samples_path.write_text((FIXTURES_DIR / "samples_v1.json").read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_path.write_text((FIXTURES_DIR / "evidence_v1.json").read_text(encoding="utf-8"), encoding="utf-8")
+
+    build_exit = build_bundle_main([
+        "--paper-id",
+        "10_1016_j_matdes_2019_108076",
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+    promote_exit = promote_main([
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+    project_exit = project_main([
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+        "--out",
+        str(out_path),
+    ])
+
+    payload = json.loads(out_path.read_text(encoding="utf-8"))
+
+    assert build_exit == 0
+    assert promote_exit == 0
+    assert project_exit == 0
+    assert len(payload["nodes"]) > 92
+    assert len(payload["edges"]) > 79
+    assert any(node["label"] == "10_1016_j_matdes_2019_108076-d5-bcc" for node in payload["nodes"])
+
+
+def test_promoted_matdes_2018_bundle_grows_the_kg(tmp_path: Path) -> None:
+    samples_path = tmp_path / "samples_v1.json"
+    evidence_path = tmp_path / "evidence_v1.json"
+    out_path = tmp_path / "knowledge_graph.json"
+
+    samples_path.write_text((FIXTURES_DIR / "samples_v1.json").read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_path.write_text((FIXTURES_DIR / "evidence_v1.json").read_text(encoding="utf-8"), encoding="utf-8")
+
+    try:
+        build_exit = build_bundle_main([
+            "--paper-id",
+            "10_1016_j_matdes_2018_05_059",
+            "--samples",
+            str(samples_path),
+            "--evidence",
+            str(evidence_path),
+        ])
+    except SystemExit as exc:
+        build_exit = exc.code if isinstance(exc.code, int) else 1
+
+    promote_exit = promote_main([
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+    project_exit = project_main([
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+        "--out",
+        str(out_path),
+    ])
+
+    payload = json.loads(out_path.read_text(encoding="utf-8"))
+
+    assert build_exit == 0
+    assert promote_exit == 0
+    assert project_exit == 0
+    assert len(payload["nodes"]) > 102
+    assert len(payload["edges"]) > 88
+    assert any(node["label"] == "10_1016_j_matdes_2018_05_059-octagonal-l4p14-d1p626-r015" for node in payload["nodes"])
+
+
+def test_promoted_high_density_honeycomb_bundle_grows_the_kg(tmp_path: Path) -> None:
+    samples_path = tmp_path / "samples_v1.json"
+    evidence_path = tmp_path / "evidence_v1.json"
+    out_path = tmp_path / "knowledge_graph.json"
+
+    samples_path.write_text((FIXTURES_DIR / "samples_v1.json").read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_path.write_text((FIXTURES_DIR / "evidence_v1.json").read_text(encoding="utf-8"), encoding="utf-8")
+
+    build_exit = build_bundle_main([
+        "--paper-id",
+        "pii_s0734_743x_97_00040_7",
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+    promote_exit = promote_main([
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+    project_exit = project_main([
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+        "--out",
+        str(out_path),
+    ])
+
+    payload = json.loads(out_path.read_text(encoding="utf-8"))
+
+    assert build_exit == 0
+    assert promote_exit == 0
+    assert project_exit == 0
+    assert len(payload["nodes"]) > 112
+    assert len(payload["edges"]) > 97
+    assert any(node["label"] == "pii_s0734_743x_97_00040_7-al-honeycomb" for node in payload["nodes"])
+
+
+def test_promoted_jmrt_2021_bundle_grows_the_kg(tmp_path: Path) -> None:
+    samples_path = tmp_path / "samples_v1.json"
+    evidence_path = tmp_path / "evidence_v1.json"
+    out_path = tmp_path / "knowledge_graph.json"
+
+    samples_path.write_text((FIXTURES_DIR / "samples_v1.json").read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_path.write_text((FIXTURES_DIR / "evidence_v1.json").read_text(encoding="utf-8"), encoding="utf-8")
+
+    build_exit = build_bundle_main([
+        "--paper-id",
+        "10_1016_j_jmrt_2021_08_092",
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+    promote_exit = promote_main([
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+    project_exit = project_main([
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+        "--out",
+        str(out_path),
+    ])
+
+    payload = json.loads(out_path.read_text(encoding="utf-8"))
+
+    assert build_exit == 0
+    assert promote_exit == 0
+    assert project_exit == 0
+    assert len(payload["nodes"]) > 121
+    assert len(payload["edges"]) > 105
+    assert any(node["label"] == "10_1016_j_jmrt_2021_08_092-radial-hybrid-r016" for node in payload["nodes"])
+
+
 def test_promoted_compstruct_2018_bundle_grows_the_kg(tmp_path: Path) -> None:
     samples_path = tmp_path / "samples_v1.json"
     evidence_path = tmp_path / "evidence_v1.json"

@@ -24,7 +24,7 @@
   "material_family": "polymer",
   "raw_process": "3D printing",
   "process_canonical": "3D printing",
-  "process_family": "3d_printing",
+  "process_family": "unknown",
   "analysis_type": "experimental_numerical",
   "test_mode": "quasi_static",
   "loading_direction": "uniaxial",

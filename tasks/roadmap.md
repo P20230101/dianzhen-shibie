@@ -2,10 +2,10 @@
 
 ## Current Position
 
-- `NOW: P0 / M0`
-- `Milestone Date: 2026-04-21`
-- `Milestone Name: M0 可控开发启动验收`
-- `Acceptance Focus: establish a controllable development start, not a final product release`
+- `NOW: P3`
+- `Milestone Date: 2026-04-23`
+- `Milestone Name: P3 closeout`
+- `Acceptance Focus: integrate current results, freeze the completed run, and sync phase-facing docs`
 
 | Phase | Goal | What Must Be Ready | Exit Signal | Branch Policy |
 |---|---|---|---|---|
@@ -34,4 +34,4 @@
 
 ### `P3`
 
-- Parallel outputs are collected into a stable delivery set
+- The sample-expansion line is closed and the deliverable set is frozen

@@ -24,7 +24,7 @@
   "material_family": "unknown",
   "raw_process": "L-PBF",
   "process_canonical": "L-PBF",
-  "process_family": "unknown",
+  "process_family": "slm",
   "analysis_type": "experimental_numerical",
   "test_mode": "unknown",
   "loading_direction": "uniaxial",

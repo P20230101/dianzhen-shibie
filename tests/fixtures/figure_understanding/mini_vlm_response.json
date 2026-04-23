@@ -3,6 +3,10 @@
     "b",
     "a"
   ],
+  "subfigure_map": {
+    "a": "gyroid lattice",
+    "b": "diamond lattice"
+  },
   "figure_type": "curve_plot",
   "recaption": "Compression curves compare gyroid and diamond lattices.",
   "figure_summary": "The gyroid lattice shows a higher plateau stress than the diamond lattice under compression.",
