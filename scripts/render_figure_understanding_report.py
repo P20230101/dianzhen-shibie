@@ -217,12 +217,48 @@ def _render_subfigure_map(subfigure_map: object) -> str:
         label = html_escape(str(key).strip(), quote=True)
         value = html_escape(str(subfigure_map[key]).strip(), quote=True)
         rows.append(
-            '<div class="map-row">'
-            f'<span class="map-key">{label}</span>'
-            f'<span class="map-value">{value}</span>'
+            '<div class="subfigure-row">'
+            f'<span class="subfigure-key">{label}</span>'
+            f'<span class="subfigure-value">{value}</span>'
             "</div>"
         )
-    return '<div class="map-list">' + "".join(rows) + "</div>"
+    return '<div class="subfigure-map-list">' + "".join(rows) + "</div>"
+
+
+def _render_subfigures_section(record: dict[str, object]) -> str:
+    subfigure_map = record.get("subfigure_map")
+    panel_labels = [
+        str(item).strip()
+        for item in record.get("panel_labels", [])
+        if str(item).strip()
+    ]
+
+    if isinstance(subfigure_map, dict) and subfigure_map:
+        body_html = _render_subfigure_map(subfigure_map)
+    elif panel_labels:
+        body_html = (
+            '<div class="subfigure-label-list">'
+            + "".join(
+                f'<span class="subfigure-label-chip">{html_escape(item, quote=True)}</span>'
+                for item in panel_labels
+            )
+            + "</div>"
+        )
+    else:
+        body_html = (
+            '<div class="subfigure-empty">'
+            f"{html_escape('No subfigure data available', quote=True)}"
+            "</div>"
+        )
+
+    return (
+        '<section class="subfigures-section" aria-label="Subfigures">'
+        '<div class="subfigures-heading">'
+        f"<h3>{html_escape('Subfigures', quote=True)}</h3>"
+        "</div>"
+        f"{body_html}"
+        "</section>"
+    )
 
 
 def _render_field(label: str, value_html: str) -> str:
@@ -263,9 +299,8 @@ def _render_record_card(record: dict[str, object]) -> str:
         f"{_render_field('caption_text', _escape_text(record.get('caption_text')))}"
         f"{_render_field('recaption', _escape_text(record.get('recaption')))}"
         f"{_render_field('figure_summary', _escape_text(record.get('figure_summary')))}"
-        f"{_render_field('panel_labels', _render_empty_or_items([str(item) for item in record.get('panel_labels', []) if str(item).strip()]))}"
-        f"{_render_field('subfigure_map', _render_subfigure_map(record.get('subfigure_map')))}"
         "</div>"
+        f"{_render_subfigures_section(record)}"
         "</div>"
         "</article>"
     )
@@ -476,45 +511,73 @@ def render_report_html(
       overflow-wrap: anywhere;
     }}
 
-    .chip-list {{
+    .subfigures-section {{
+      margin-top: 18px;
+      padding: 16px 16px 18px;
+      border: 1px solid rgba(111, 101, 88, 0.18);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255, 247, 236, 0.96), rgba(248, 242, 233, 0.94));
+      display: grid;
+      gap: 12px;
+    }}
+
+    .subfigures-heading h3 {{
+      margin: 0;
+      font-size: 0.98rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }}
+
+    .subfigure-map-list {{
+      display: grid;
+      gap: 10px;
+    }}
+
+    .subfigure-row {{
+      display: grid;
+      grid-template-columns: max-content minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(221, 212, 198, 0.88);
+    }}
+
+    .subfigure-key {{
+      font-weight: 700;
+      color: var(--ink);
+    }}
+
+    .subfigure-value {{
+      color: var(--ink);
+      overflow-wrap: anywhere;
+    }}
+
+    .subfigure-label-list {{
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }}
 
-    .chip {{
+    .subfigure-label-chip {{
       display: inline-flex;
       align-items: center;
       padding: 4px 10px;
       border-radius: 999px;
-      background: var(--chip-bg);
+      background: rgba(32, 86, 59, 0.12);
+      color: var(--ink);
+      border: 1px solid rgba(32, 86, 59, 0.14);
       font-size: 0.92rem;
       font-weight: 600;
     }}
 
-    .map-list {{
-      display: grid;
-      gap: 8px;
-    }}
-
-    .map-row {{
-      display: grid;
-      grid-template-columns: max-content minmax(0, 1fr);
-      gap: 10px;
-      align-items: start;
-    }}
-
-    .map-key {{
-      font-weight: 700;
-      color: var(--ink);
-    }}
-
-    .map-value {{
-      color: var(--ink);
-      overflow-wrap: anywhere;
-    }}
-
-    .empty-value {{
+    .subfigure-empty {{
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px dashed rgba(111, 101, 88, 0.34);
+      background: rgba(255, 255, 255, 0.58);
       color: var(--muted);
       font-style: italic;
     }}

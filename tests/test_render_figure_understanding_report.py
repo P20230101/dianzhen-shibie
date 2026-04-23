@@ -17,6 +17,7 @@ from render_figure_understanding_report import (  # type: ignore  # noqa: E402
     load_records,
     main,
     render_report_html,
+    _render_subfigures_section,
     write_report_html,
 )
 
@@ -68,6 +69,7 @@ def test_load_records_and_render_report_html(tmp_path: Path) -> None:
     image_dir.mkdir(parents=True)
     (image_dir / "fig_a.png").write_bytes(b"a")
     (image_dir / "fig_b.png").write_bytes(b"b")
+    (image_dir / "fig_c.png").write_bytes(b"c")
 
     record_b = {
         "paper_id": "paper<1>",
@@ -77,13 +79,29 @@ def test_load_records_and_render_report_html(tmp_path: Path) -> None:
         "caption_text": "Caption <two> & \"quoted\"",
         "context_text": "Context > two",
         "panel_labels": ["b"],
-        "subfigure_map": {"b": "right & panel"},
+        "subfigure_map": {},
         "figure_type": "microstructure_image",
         "recaption": "Recaption B & details",
         "figure_summary": "Summary with <tag> B",
         "confidence": 0.55,
         "needs_manual_review": True,
         "source_refs": ["ref:2"],
+    }
+    record_c = {
+        "paper_id": "paper<1>",
+        "figure_id": "fig_c",
+        "page_no": 9,
+        "image_path": str(image_dir / "fig_c.png"),
+        "caption_text": "Caption <three> & \"quoted\"",
+        "context_text": "Context > three",
+        "panel_labels": [],
+        "subfigure_map": {},
+        "figure_type": "overview",
+        "recaption": "Recaption C & details",
+        "figure_summary": "Summary with <tag> C",
+        "confidence": 0.38,
+        "needs_manual_review": False,
+        "source_refs": ["ref:3"],
     }
     record_a = {
         "paper_id": "paper<1>",
@@ -105,12 +123,12 @@ def test_load_records_and_render_report_html(tmp_path: Path) -> None:
     (artifact_dir / "figures_v1.jsonl").write_text(
         "\n".join(
             json.dumps(record, ensure_ascii=False)
-            for record in [record_b, record_a]
+            for record in [record_a, record_b, record_c]
         )
         + "\n",
         encoding="utf-8",
     )
-    _write_review_csv(artifact_dir / "figures_review.csv", [record_a, record_b])
+    _write_review_csv(artifact_dir / "figures_review.csv", [record_a, record_b, record_c])
 
     manifest = {
         "register_path": "register.csv",
@@ -126,10 +144,11 @@ def test_load_records_and_render_report_html(tmp_path: Path) -> None:
     loaded_records = load_records(artifact_dir)
     loaded_manifest = load_manifest(artifact_dir)
 
-    assert [record["figure_id"] for record in loaded_records] == ["fig_a", "fig_b"]
+    assert [record["figure_id"] for record in loaded_records] == ["fig_a", "fig_b", "fig_c"]
     assert [record["image_path"] for record in loaded_records] == [
         "images/fig_a.png",
         "images/fig_b.png",
+        "images/fig_c.png",
     ]
     assert loaded_manifest == manifest
 
@@ -140,11 +159,13 @@ def test_load_records_and_render_report_html(tmp_path: Path) -> None:
     assert "Auto-pass count" in html
     assert "Manual-review count" in html
     assert "2026-04-23 10:11:12" in html
-    assert html.count('class="figure-card"') == 2
+    assert html.count('class="figure-card"') == 3
+    assert html.count('class="subfigures-section"') == 3
     assert 'data-status="auto-pass"' in html
     assert 'data-status="manual-review"' in html
     assert 'src="images/fig_a.png"' in html
     assert 'src="images/fig_b.png"' in html
+    assert 'src="images/fig_c.png"' in html
     assert "figure_id" in html
     assert "page_no" in html
     assert "figure_type" in html
@@ -153,10 +174,17 @@ def test_load_records_and_render_report_html(tmp_path: Path) -> None:
     assert "caption_text" in html
     assert "recaption" in html
     assert "figure_summary" in html
-    assert "panel_labels" in html
-    assert "subfigure_map" in html
-    assert re.search(r'<span class="summary-label">Figure count</span>\s*<div class="summary-value">2</div>', html)
-    assert re.search(r'<span class="summary-label">Auto-pass count</span>\s*<div class="summary-value">1</div>', html)
+    assert '<div class="field-label">panel_labels</div>' not in html
+    assert '<div class="field-label">subfigure_map</div>' not in html
+    assert "Subfigures" in html
+    assert '<div class="subfigure-row">' in html
+    assert '<span class="subfigure-key">a</span>' in html
+    assert "left &lt;panel&gt;" in html
+    assert '<span class="subfigure-label-chip">b</span>' in html
+    assert "No subfigure data available" in html
+    assert html.index('<div class="field-grid">') < html.index('<section class="subfigures-section"')
+    assert re.search(r'<span class="summary-label">Figure count</span>\s*<div class="summary-value">3</div>', html)
+    assert re.search(r'<span class="summary-label">Auto-pass count</span>\s*<div class="summary-value">2</div>', html)
     assert re.search(r'<span class="summary-label">Manual-review count</span>\s*<div class="summary-value">1</div>', html)
     assert "Caption &lt;one&gt; &amp; &quot;quoted&quot;" in html
     assert "Summary with &lt;tag&gt; A" in html
@@ -165,6 +193,44 @@ def test_load_records_and_render_report_html(tmp_path: Path) -> None:
     output_path = artifact_dir / "report.html"
     write_report_html(output_path, html)
     assert output_path.read_text(encoding="utf-8") == html
+
+
+def test_render_subfigures_section_prefers_map_labels_and_empty_state() -> None:
+    mapped_html = _render_subfigures_section(
+        {
+            "panel_labels": ["a", "b"],
+            "subfigure_map": {"b": "right & panel", "a": "left <panel>"},
+        }
+    )
+    assert '<section class="subfigures-section"' in mapped_html
+    assert '<h3>Subfigures</h3>' in mapped_html
+    assert '<div class="subfigure-map-list">' in mapped_html
+    assert '<span class="subfigure-key">a</span>' in mapped_html
+    assert "left &lt;panel&gt;" in mapped_html
+    assert '<span class="subfigure-key">b</span>' in mapped_html
+    assert "right &amp; panel" in mapped_html
+    assert '<div class="subfigure-label-list">' not in mapped_html
+    assert "No subfigure data available" not in mapped_html
+
+    labels_html = _render_subfigures_section(
+        {
+            "panel_labels": ["(a) octagonal", "(b) kelvin lattices"],
+            "subfigure_map": {},
+        }
+    )
+    assert '<div class="subfigure-label-list">' in labels_html
+    assert '<span class="subfigure-label-chip">(a) octagonal</span>' in labels_html
+    assert '<span class="subfigure-label-chip">(b) kelvin lattices</span>' in labels_html
+    assert "subfigure-map-list" not in labels_html
+
+    empty_html = _render_subfigures_section(
+        {
+            "panel_labels": [],
+            "subfigure_map": {},
+        }
+    )
+    assert '<div class="subfigure-empty">' in empty_html
+    assert "No subfigure data available" in empty_html
 
 
 def test_main_builds_self_contained_report(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
