@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import base64
 import csv
 from functools import lru_cache
 from pathlib import Path
@@ -35,9 +36,9 @@ def _converter() -> DocumentConverter:
         force_backend_text=True,
         generate_page_images=True,
         generate_picture_images=True,
-        do_picture_classification=True,
-        do_picture_description=True,
-        do_chart_extraction=True,
+        do_picture_classification=False,
+        do_picture_description=False,
+        do_chart_extraction=False,
         do_code_enrichment=False,
         do_formula_enrichment=False,
     )
@@ -129,7 +130,42 @@ def _resolve_image_path(picture: dict[str, object]) -> str:
         value = picture.get(key)
         if isinstance(value, str) and value.strip():
             return value.strip()
+    image = picture.get("image")
+    if isinstance(image, dict):
+        uri = image.get("uri")
+        if isinstance(uri, str) and uri.startswith("data:"):
+            raise ValueError("picture image URI must be materialized before resolving path")
     raise ValueError("picture is missing image_path/image_uri/image_file")
+
+
+def _materialize_picture_image(
+    picture: dict[str, object],
+    paper_id: str,
+    figure_id: str,
+    image_output_root: Path,
+) -> str | None:
+    image = picture.get("image")
+    if not isinstance(image, dict):
+        return None
+    uri = image.get("uri")
+    if not isinstance(uri, str) or not uri.startswith("data:"):
+        return None
+    header, _, payload = uri.partition(",")
+    if not payload:
+        return None
+    mimetype = str(image.get("mimetype") or "image/png").strip()
+    suffix = {
+        "image/png": ".png",
+        "image/jpeg": ".jpg",
+        "image/jpg": ".jpg",
+        "image/webp": ".webp",
+    }.get(mimetype, ".png")
+    target_dir = image_output_root / paper_id
+    target_dir.mkdir(parents=True, exist_ok=True)
+    target_path = target_dir / f"{figure_id}{suffix}"
+    if not target_path.exists():
+        target_path.write_bytes(base64.b64decode(payload))
+    return str(target_path)
 
 
 def _export_payload(document: object) -> dict[str, object]:
@@ -148,6 +184,7 @@ def extract_figures(
     source_path: str,
     interpreter: FigureInterpreter,
     review_threshold: float,
+    image_output_root: Path | None = None,
 ) -> list[dict[str, object]]:
     payload = _export_payload(document)
     texts = payload.get("texts", [])
@@ -163,7 +200,14 @@ def extract_figures(
             continue
         figure_id = str(item.get("figure_id") or f"fig_{index:03d}")
         page_no = _resolve_page_no(item)
-        image_path = _resolve_image_path(item)
+        image_path = None
+        try:
+            image_path = _resolve_image_path(item)
+        except ValueError:
+            if image_output_root is not None:
+                image_path = _materialize_picture_image(item, paper_id, figure_id, image_output_root)
+        if not image_path:
+            raise ValueError("picture is missing image_path/image_uri/image_file")
         caption_text = _resolve_caption_text(item, texts)
         context_text = _resolve_context_text(item, caption_text)
         interpretation = interpreter.interpret(
@@ -204,6 +248,7 @@ def build_figure_understanding_corpus(
     rows = _load_register_rows(register_path)
     records: list[dict[str, object]] = []
     paper_ids: list[str] = []
+    image_output_root = output_path.parent / "images"
 
     for row in rows:
         paper_id = str(row.get("paper_id") or "").strip()
@@ -222,6 +267,7 @@ def build_figure_understanding_corpus(
                 source_path=str(pdf_path),
                 interpreter=interpreter,
                 review_threshold=review_threshold,
+                image_output_root=image_output_root,
             )
         )
 
@@ -233,6 +279,7 @@ def build_figure_understanding_corpus(
             "register_path": str(register_path),
             "library_root": str(library_root),
             "output_path": str(output_path),
+            "image_output_root": str(image_output_root),
             "review_path": str(review_path),
             "paper_count": len(paper_ids),
             "figure_count": len(records),

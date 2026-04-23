@@ -100,20 +100,22 @@ def build_figure_record(
     review_threshold: float,
 ) -> dict[str, object]:
     confidence = _coerce_float(interpretation.get("confidence"))
+    caption_text = _optional_text(raw.get("caption_text"))
+    context_text = _optional_text(raw.get("context_text"))
     record = FigureRecord(
         paper_id=str(raw["paper_id"]),
         figure_id=str(raw["figure_id"]),
         page_no=_optional_int(raw.get("page_no")),
         image_path=str(raw["image_path"]),
-        caption_text=_optional_text(raw.get("caption_text")),
-        context_text=_optional_text(raw.get("context_text")),
+        caption_text=caption_text,
+        context_text=context_text,
         panel_labels=normalize_panel_labels(interpretation.get("panel_labels")),
         subfigure_map=_normalize_subfigure_map(interpretation.get("subfigure_map")),
         figure_type=_optional_text(interpretation.get("figure_type")) or "unknown",
         recaption=_optional_text(interpretation.get("recaption")),
         figure_summary=_optional_text(interpretation.get("figure_summary")),
         confidence=confidence,
-        needs_manual_review=confidence < review_threshold,
+        needs_manual_review=confidence < review_threshold or caption_text is None or context_text is None,
         source_refs=_normalize_string_list(interpretation.get("source_refs")),
     )
     return record.to_dict()
