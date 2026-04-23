@@ -9,9 +9,9 @@ from html import escape as html_escape
 from pathlib import Path
 
 
-RECORDS_FILENAME = "figures_v1.jsonl"
+RECORDS_FILENAME = "figure_units_v1.jsonl"
 MANIFEST_FILENAME = "manifest.json"
-REVIEW_FILENAME = "figures_review.csv"
+REVIEW_FILENAME = "figure_units_review.csv"
 
 
 def _read_jsonl_records(path: Path) -> list[dict[str, object]]:
@@ -53,8 +53,8 @@ def _manual_review_flag(value: object) -> bool:
     return parsed
 
 
-def _record_key(paper_id: str, figure_id: str) -> tuple[str, str]:
-    return paper_id.strip(), figure_id.strip()
+def _record_key(paper_id: str, unit_id: str) -> tuple[str, str]:
+    return paper_id.strip(), unit_id.strip()
 
 
 def _normalize_image_path(artifact_dir: Path, paper_id: str, image_path_value: object) -> str:
@@ -91,6 +91,14 @@ def _normalize_image_path(artifact_dir: Path, paper_id: str, image_path_value: o
 def _normalize_record(artifact_dir: Path, record: dict[str, object]) -> dict[str, object]:
     normalized = dict(record)
     paper_id = str(record.get("paper_id") or "").strip()
+    unit_id = str(record.get("unit_id") or "").strip()
+    if not paper_id:
+        raise ValueError("record is missing paper_id")
+    if not unit_id:
+        raise ValueError("record is missing unit_id")
+    normalized["paper_id"] = paper_id
+    normalized["unit_id"] = unit_id
+    normalized["source_figure_id"] = str(record.get("source_figure_id") or "").strip()
     normalized["image_path"] = _normalize_image_path(artifact_dir, paper_id, record.get("image_path"))
     normalized["needs_manual_review"] = _manual_review_flag(record.get("needs_manual_review"))
     return normalized
@@ -100,7 +108,7 @@ def _validate_review_row(
     record: dict[str, object],
     row: dict[str, str],
     review_path: Path,
-    figure_id: str,
+    unit_id: str,
 ) -> None:
     row_status = _review_status(row.get("needs_manual_review"))
     if row_status is None:
@@ -110,7 +118,7 @@ def _validate_review_row(
     record_status = _manual_review_flag(record.get("needs_manual_review"))
     if row_status != record_status:
         raise ValueError(
-            f"needs_manual_review mismatch for {figure_id!r} in {review_path}: "
+            f"needs_manual_review mismatch for {unit_id!r} in {review_path}: "
             f"csv={row_status!r}, jsonl={record_status!r}"
         )
 
@@ -124,15 +132,16 @@ def load_records(artifact_dir: Path) -> list[dict[str, object]]:
     records_by_key: dict[tuple[str, str], dict[str, object]] = {}
     for record in records:
         paper_id = str(record.get("paper_id") or "").strip()
-        figure_id = str(record.get("figure_id") or "").strip()
-        if not paper_id or not figure_id:
+        unit_id = str(record.get("unit_id") or "").strip()
+        source_figure_id = str(record.get("source_figure_id") or "").strip()
+        if not paper_id or not unit_id or not source_figure_id:
             raise ValueError(
-                f"{jsonl_path} contains a record with missing paper_id or figure_id"
+                f"{jsonl_path} contains a record with missing paper_id, source_figure_id, or unit_id"
             )
-        record_key = _record_key(paper_id, figure_id)
+        record_key = _record_key(paper_id, unit_id)
         if record_key in records_by_key:
             raise ValueError(
-                f"{jsonl_path} contains duplicate paper_id/figure_id pair {paper_id!r}/{figure_id!r}"
+                f"{jsonl_path} contains duplicate paper_id/unit_id pair {paper_id!r}/{unit_id!r}"
             )
         records_by_key[record_key] = record
 
@@ -142,22 +151,25 @@ def load_records(artifact_dir: Path) -> list[dict[str, object]]:
 
     for row in review_rows:
         paper_id = str(row.get("paper_id") or "").strip()
-        figure_id = str(row.get("figure_id") or "").strip()
+        unit_id = str(row.get("unit_id") or "").strip()
+        source_figure_id = str(row.get("source_figure_id") or "").strip()
         if not paper_id:
             raise ValueError(f"missing paper_id in {review_path}")
-        if not figure_id:
-            raise ValueError(f"missing figure_id in {review_path}")
-        record_key = _record_key(paper_id, figure_id)
+        if not unit_id:
+            raise ValueError(f"missing unit_id in {review_path}")
+        if not source_figure_id:
+            raise ValueError(f"missing source_figure_id in {review_path}")
+        record_key = _record_key(paper_id, unit_id)
         if record_key not in records_by_key:
             raise ValueError(
-                f"{review_path} references unknown paper_id/figure_id pair {paper_id!r}/{figure_id!r}"
+                f"{review_path} references unknown paper_id/unit_id pair {paper_id!r}/{unit_id!r}"
             )
         if record_key in seen_keys:
             raise ValueError(
-                f"{review_path} contains duplicate paper_id/figure_id pair {paper_id!r}/{figure_id!r}"
+                f"{review_path} contains duplicate paper_id/unit_id pair {paper_id!r}/{unit_id!r}"
             )
         record = dict(records_by_key[record_key])
-        _validate_review_row(record, row, review_path, figure_id)
+        _validate_review_row(record, row, review_path, unit_id)
         ordered_records.append(_normalize_record(artifact_dir, record))
         seen_keys.add(record_key)
         seen_paper_ids.add(paper_id)
@@ -169,8 +181,8 @@ def load_records(artifact_dir: Path) -> list[dict[str, object]]:
     ]
     if extra_keys:
         raise ValueError(
-            f"{jsonl_path} contains paper_id/figure_id pairs not listed in {review_path}: "
-            f"{', '.join(f'{paper_id}/{figure_id}' for paper_id, figure_id in sorted(extra_keys))}"
+            f"{jsonl_path} contains paper_id/unit_id pairs not listed in {review_path}: "
+            f"{', '.join(f'{paper_id}/{unit_id}' for paper_id, unit_id in sorted(extra_keys))}"
         )
 
     if len(seen_paper_ids) > 1:
@@ -208,57 +220,18 @@ def _render_empty_or_items(items: list[str]) -> str:
     ) + "</div>"
 
 
-def _render_subfigure_map(subfigure_map: object) -> str:
-    if not isinstance(subfigure_map, dict) or not subfigure_map:
+def _render_bbox(bbox: object) -> str:
+    if not isinstance(bbox, dict) or not bbox:
         return '<span class="empty-value">N/A</span>'
 
-    rows: list[str] = []
-    for key in sorted(subfigure_map.keys(), key=lambda item: str(item).strip().lower()):
-        label = html_escape(str(key).strip(), quote=True)
-        value = html_escape(str(subfigure_map[key]).strip(), quote=True)
-        rows.append(
-            '<div class="subfigure-row">'
-            f'<span class="subfigure-key">{label}</span>'
-            f'<span class="subfigure-value">{value}</span>'
-            "</div>"
-        )
-    return '<div class="subfigure-map-list">' + "".join(rows) + "</div>"
-
-
-def _render_subfigures_section(record: dict[str, object]) -> str:
-    subfigure_map = record.get("subfigure_map")
-    panel_labels = [
-        str(item).strip()
-        for item in record.get("panel_labels", [])
-        if str(item).strip()
-    ]
-
-    if isinstance(subfigure_map, dict) and subfigure_map:
-        body_html = _render_subfigure_map(subfigure_map)
-    elif panel_labels:
-        body_html = (
-            '<div class="subfigure-label-list">'
-            + "".join(
-                f'<span class="subfigure-label-chip">{html_escape(item, quote=True)}</span>'
-                for item in panel_labels
-            )
-            + "</div>"
-        )
-    else:
-        body_html = (
-            '<div class="subfigure-empty">'
-            f"{html_escape('No subfigure data available', quote=True)}"
-            "</div>"
-        )
-
-    return (
-        '<section class="subfigures-section" aria-label="Subfigures">'
-        '<div class="subfigures-heading">'
-        f"<h3>{html_escape('Subfigures', quote=True)}</h3>"
-        "</div>"
-        f"{body_html}"
-        "</section>"
-    )
+    parts: list[str] = []
+    for key in ("l", "t", "r", "b"):
+        value = bbox.get(key)
+        if isinstance(value, (int, float)):
+            parts.append(f"{key}={value}")
+    if not parts:
+        return '<span class="empty-value">N/A</span>'
+    return html_escape(", ".join(parts), quote=True)
 
 
 def _render_field(label: str, value_html: str) -> str:
@@ -274,33 +247,39 @@ def _status_for_record(record: dict[str, object]) -> str:
     return "manual-review" if _manual_review_flag(record.get("needs_manual_review")) else "auto-pass"
 
 
-def _render_record_card(record: dict[str, object]) -> str:
+def _render_unit_card(record: dict[str, object]) -> str:
     status = _status_for_record(record)
     image_src = html_escape(str(record.get("image_path") or ""), quote=True)
-    figure_id = _escape_text(record.get("figure_id"))
-    card_title = _escape_text(record.get("figure_id"))
+    unit_id = _escape_text(record.get("unit_id"))
+    source_refs = [str(item) for item in record.get("source_refs", []) if str(item).strip()]
 
     return (
         f'<article class="figure-card" data-status="{status}">'
         '<div class="figure-media">'
-        f'<img src="{image_src}" alt="Crop for figure {card_title}">'
+        f'<img src="{image_src}" alt="Crop for unit {unit_id}">'
         "</div>"
         '<div class="figure-content">'
         '<div class="figure-heading">'
-        f"<h2>{card_title}</h2>"
+        f"<h2>{unit_id}</h2>"
         f'<span class="status-badge">{html_escape(status, quote=True)}</span>'
         "</div>"
         '<div class="field-grid">'
-        f"{_render_field('figure_id', figure_id)}"
-        f"{_render_field('page_no', _escape_text(record.get('page_no')))}"
+        f"{_render_field('unit_id', unit_id)}"
+        f"{_render_field('source_figure_id', _escape_text(record.get('source_figure_id')))}"
+        f"{_render_field('unit_index', _escape_text(record.get('unit_index')))}"
+        f"{_render_field('kind', _escape_text(record.get('kind')))}"
+        f"{_render_field('panel_label', _escape_text(record.get('panel_label')))}"
+        f"{_render_field('source_page_no', _escape_text(record.get('source_page_no')))}"
+        f"{_render_field('crop_bbox', _render_bbox(record.get('crop_bbox')))}"
         f"{_render_field('figure_type', _escape_text(record.get('figure_type')))}"
         f"{_render_field('confidence', _escape_text(record.get('confidence')))}"
         f"{_render_field('needs_manual_review', html_escape(str(bool(record.get('needs_manual_review'))).lower(), quote=True))}"
+        f"{_render_field('source_image_path', _escape_text(record.get('source_image_path')))}"
+        f"{_render_field('source_refs', _render_empty_or_items(source_refs))}"
         f"{_render_field('caption_text', _escape_text(record.get('caption_text')))}"
         f"{_render_field('recaption', _escape_text(record.get('recaption')))}"
         f"{_render_field('figure_summary', _escape_text(record.get('figure_summary')))}"
         "</div>"
-        f"{_render_subfigures_section(record)}"
         "</div>"
         "</article>"
     )
@@ -314,14 +293,21 @@ def render_report_html(
 ) -> str:
     auto_pass_count = sum(1 for record in records if not _manual_review_flag(record.get("needs_manual_review")))
     manual_review_count = len(records) - auto_pass_count
-    card_html = "".join(_render_record_card(record) for record in records)
+    source_figure_count = len(
+        {
+            str(record.get("source_figure_id") or "").strip()
+            for record in records
+            if str(record.get("source_figure_id") or "").strip()
+        }
+    )
+    card_html = "".join(_render_unit_card(record) for record in records)
 
     return f"""<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Figure Understanding Report - {html_escape(paper_id, quote=True)}</title>
+  <title>Figure Understanding Unit Report - {html_escape(paper_id, quote=True)}</title>
   <style>
     :root {{
       color-scheme: light;
@@ -511,73 +497,45 @@ def render_report_html(
       overflow-wrap: anywhere;
     }}
 
-    .subfigures-section {{
-      margin-top: 18px;
-      padding: 16px 16px 18px;
-      border: 1px solid rgba(111, 101, 88, 0.18);
-      border-radius: 18px;
-      background: linear-gradient(180deg, rgba(255, 247, 236, 0.96), rgba(248, 242, 233, 0.94));
-      display: grid;
-      gap: 12px;
-    }}
-
-    .subfigures-heading h3 {{
-      margin: 0;
-      font-size: 0.98rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }}
-
-    .subfigure-map-list {{
-      display: grid;
-      gap: 10px;
-    }}
-
-    .subfigure-row {{
-      display: grid;
-      grid-template-columns: max-content minmax(0, 1fr);
-      gap: 12px;
-      align-items: start;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.75);
-      border: 1px solid rgba(221, 212, 198, 0.88);
-    }}
-
-    .subfigure-key {{
-      font-weight: 700;
-      color: var(--ink);
-    }}
-
-    .subfigure-value {{
-      color: var(--ink);
-      overflow-wrap: anywhere;
-    }}
-
-    .subfigure-label-list {{
+    .chip-list {{
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }}
 
-    .subfigure-label-chip {{
+    .chip {{
       display: inline-flex;
       align-items: center;
       padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(32, 86, 59, 0.12);
-      color: var(--ink);
-      border: 1px solid rgba(32, 86, 59, 0.14);
+      background: var(--chip-bg);
       font-size: 0.92rem;
       font-weight: 600;
     }}
 
-    .subfigure-empty {{
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px dashed rgba(111, 101, 88, 0.34);
-      background: rgba(255, 255, 255, 0.58);
+    .map-list {{
+      display: grid;
+      gap: 8px;
+    }}
+
+    .map-row {{
+      display: grid;
+      grid-template-columns: max-content minmax(0, 1fr);
+      gap: 10px;
+      align-items: start;
+    }}
+
+    .map-key {{
+      font-weight: 700;
+      color: var(--ink);
+    }}
+
+    .map-value {{
+      color: var(--ink);
+      overflow-wrap: anywhere;
+    }}
+
+    .empty-value {{
       color: var(--muted);
       font-style: italic;
     }}
@@ -602,8 +560,8 @@ def render_report_html(
   <div class="page">
     <header class="hero">
       <div>
-        <h1>Figure Understanding Report</h1>
-        <p>Static review page for the figure-understanding layer artifacts.</p>
+        <h1>Figure Understanding Unit Report</h1>
+        <p>Static review page for the figure-understanding unit-level artifacts.</p>
       </div>
     </header>
 
@@ -613,7 +571,11 @@ def render_report_html(
         <div class="summary-value">{html_escape(paper_id, quote=True)}</div>
       </div>
       <div class="summary-item">
-        <span class="summary-label">Figure count</span>
+        <span class="summary-label">Source figure count</span>
+        <div class="summary-value">{source_figure_count}</div>
+      </div>
+      <div class="summary-item">
+        <span class="summary-label">Unit count</span>
         <div class="summary-value">{len(records)}</div>
       </div>
       <div class="summary-item">
@@ -663,10 +625,10 @@ def _copy_report_images(artifact_dir: Path, output_dir: Path, records: list[dict
     for record in records:
         image_path_value = str(record.get("image_path") or "").strip()
         if not image_path_value:
-            raise ValueError(f"missing image_path for figure {record.get('figure_id')!r}")
+            raise ValueError(f"missing image_path for unit {record.get('unit_id')!r}")
         source_path = artifact_dir / Path(image_path_value)
         if not source_path.exists():
-            raise FileNotFoundError(f"missing figure crop: {source_path}")
+            raise FileNotFoundError(f"missing unit crop: {source_path}")
         destination_path = output_dir / Path(image_path_value)
         destination_path.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source_path, destination_path)

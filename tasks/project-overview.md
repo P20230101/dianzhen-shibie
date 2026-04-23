@@ -17,31 +17,40 @@ Those files define the product main line. This page only tracks how the reposito
 
 ## Current Phase
 
-- `P0 / M0: 可控开发启动阶段`
-- `Nearest Milestone: 2026-04-21 | M0 可控开发启动验收`
+- `P3 / closeout phase`
+- `Nearest Milestone: 2026-04-23 | P3 closeout active`
 
 ## What The Project Is Doing Now
 
-- Stabilizing the repository governance and dispatch workflow
-- Locking the first usable schema and mapping contract
-- Preparing the first executable development package and branch policy
+- Integrating the current sample-expansion results into the closed repository state
+- Reconciling the phase-facing documentation so P3 reads as a closeout state
+- Freezing the current output set and avoiding new sample-expansion tasks
 
 ## In Scope Now
 
+- Closeout reconciliation of the sample-expansion line
+- Final verification that all completed tasks remain closed
 - Repository governance and dispatch workflow
-- Schema and mapping contract
 - Task decomposition and branch policy
-- Acceptance-ready project overview materials
 
 ## Not In Scope Now
 
-- Full paper ingestion pipeline
-- Full extraction automation
-- Full review tooling
-- Final UI or complete product shell
+- New sample bundles
+- New extraction targets
+- New execution branches for the closed line
+- Reopening completed tasks
 
 ## Current Deliverables
 
+- `scripts/build_pdf_sample_bundle.py`
+- `scripts/promote_p1_review.py`
+- `scripts/project_knowledge_graph.py`
+- `tests/test_build_pdf_sample_bundle.py`
+- `tests/test_promote_p1_review.py`
+- `tests/test_project_knowledge_graph.py`
+- `outputs/p1/extracted/samples_v1.json`
+- `outputs/p1/extracted/evidence_v1.json`
+- `outputs/kg/knowledge_graph.json`
 - `schemas/samples/schema_v1.json`
 - `schemas/evidence/schema_v1.json`
 - `mappings/structure/structure_mapping.csv`
@@ -53,4 +62,5 @@ Those files define the product main line. This page only tracks how the reposito
 
 ## Next Actions
 
-1. Hold new task assignment until `TASK-020` has a unique target and `dispatch/tasks` matches the local implementation state.
+1. Keep `dispatch/tasks` aligned with the closed state.
+2. Do not open any new sample-expansion task from the finished run.

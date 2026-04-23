@@ -24,6 +24,12 @@ def _require_mapping(payload: object, context: str) -> dict[str, object]:
 
 def _normalize_response(payload: object) -> dict[str, object]:
     data = _require_mapping(payload, "figure response")
+    units = data.get("units")
+    if not isinstance(units, list) or not units:
+        raise ValueError("figure response must include a non-empty units list")
+    for index, unit in enumerate(units, start=1):
+        if not isinstance(unit, dict):
+            raise TypeError(f"figure response unit {index} must be a JSON object")
     return data
 
 
@@ -63,37 +69,54 @@ def _prepare_image_bytes(image_path: str) -> bytes:
 
 def _figure_response_schema() -> dict[str, object]:
     return {
-        "name": "figure_response",
+        "name": "figure_unit_response",
         "strict": True,
         "schema": {
             "type": "object",
             "properties": {
-                "figure_type": {"type": "string"},
-                "recaption": {"type": "string"},
-                "figure_summary": {"type": "string"},
-                "panel_labels": {
+                "units": {
                     "type": "array",
-                    "items": {"type": "string"},
-                },
-                "subfigure_map": {
-                    "type": "object",
-                    "additionalProperties": {"type": "string"},
-                },
-                "confidence": {"type": "number"},
-                "source_refs": {
-                    "type": "array",
-                    "items": {"type": "string"},
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "panel_label": {"type": "string"},
+                            "kind": {"type": "string"},
+                            "crop_bbox": {
+                                "type": "object",
+                                "properties": {
+                                    "l": {"type": "number"},
+                                    "t": {"type": "number"},
+                                    "r": {"type": "number"},
+                                    "b": {"type": "number"},
+                                },
+                                "required": ["l", "t", "r", "b"],
+                                "additionalProperties": False,
+                            },
+                            "figure_type": {"type": "string"},
+                            "recaption": {"type": "string"},
+                            "figure_summary": {"type": "string"},
+                            "confidence": {"type": "number"},
+                            "source_refs": {
+                                "type": "array",
+                                "items": {"type": "string"},
+                            },
+                        },
+                        "required": [
+                            "panel_label",
+                            "kind",
+                            "crop_bbox",
+                            "figure_type",
+                            "recaption",
+                            "figure_summary",
+                            "confidence",
+                            "source_refs",
+                        ],
+                        "additionalProperties": False,
+                    },
                 },
             },
-            "required": [
-                "figure_type",
-                "recaption",
-                "figure_summary",
-                "panel_labels",
-                "subfigure_map",
-                "confidence",
-                "source_refs",
-            ],
+            "required": ["units"],
             "additionalProperties": False,
         },
     }
@@ -125,8 +148,9 @@ class VlmFigureInterpreter:
                 {
                     "role": "system",
                     "content": (
-                        "Return a JSON object with figure_type, recaption, figure_summary, "
-                        "panel_labels, subfigure_map, confidence, and source_refs."
+                        "Return a JSON object with a non-empty units array. "
+                        "Each unit must include panel_label, kind, crop_bbox, figure_type, recaption, "
+                        "figure_summary, confidence, and source_refs."
                     ),
                 },
                 {
@@ -176,7 +200,9 @@ class VlmFigureInterpreter:
 
     def _build_prompt(self, caption_text: str | None, context_text: str | None) -> str:
         parts = [
-            "Identify the figure type, panel labels, recaption, and summary.",
+            "Split the figure into independently crop-able units and describe each unit.",
+            "Return one unit object per visible panel or standalone figure region.",
+            "For each unit, provide panel_label, kind, crop_bbox, figure_type, recaption, figure_summary, confidence, and source_refs.",
         ]
         if caption_text:
             parts.append(f"Caption: {caption_text}")
