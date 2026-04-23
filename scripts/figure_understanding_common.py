@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 import csv
 import json
+import re
 from pathlib import Path
 
 
@@ -41,32 +42,62 @@ def _normalize_string_list(value: object) -> list[str]:
     return values
 
 
-def _normalize_subfigure_map(value: object) -> dict[str, str]:
-    if not isinstance(value, dict):
-        return {}
+def _normalize_panel_label(value: object) -> str | None:
+    text = _optional_text(value)
+    if text is None:
+        return None
+    normalized = re.sub(r"[^a-z0-9]+", "_", text.lower()).strip("_")
+    return normalized or None
 
-    normalized: dict[str, str] = {}
-    for key in sorted(value.keys(), key=lambda item: str(item).strip().lower()):
-        label = str(key).strip().lower()
-        if not label:
-            continue
-        text = _optional_text(value.get(key))
-        if text is None:
-            continue
-        normalized[label] = text
+
+def _normalize_crop_bbox(value: object) -> dict[str, int]:
+    if not isinstance(value, dict):
+        raise ValueError("crop_bbox must be a mapping")
+
+    normalized: dict[str, int] = {}
+    for key in ("l", "t", "r", "b"):
+        coordinate = value.get(key)
+        if isinstance(coordinate, bool) or not isinstance(coordinate, (int, float)):
+            raise ValueError(f"crop_bbox[{key!r}] must be numeric")
+        normalized[key] = int(round(float(coordinate)))
+
+    if normalized["r"] <= normalized["l"] or normalized["b"] <= normalized["t"]:
+        raise ValueError("crop_bbox must define a non-empty rectangle")
     return normalized
 
 
+def _normalize_kind(value: object) -> str:
+    text = _optional_text(value)
+    return text.lower() if text is not None else "panel"
+
+
+def _normalize_figure_type(value: object) -> str:
+    text = _optional_text(value)
+    return text.lower() if text is not None else "unknown"
+
+
+def _source_page_no(raw: dict[str, object]) -> int | None:
+    for key in ("source_page_no", "page_no"):
+        value = _optional_int(raw.get(key))
+        if value is not None:
+            return value
+    return None
+
+
 @dataclass(frozen=True)
-class FigureRecord:
+class FigureUnitRecord:
     paper_id: str
-    figure_id: str
-    page_no: int | None
+    source_figure_id: str
+    unit_id: str
+    unit_index: int
+    kind: str
+    panel_label: str | None
+    source_page_no: int | None
+    source_image_path: str
     image_path: str
+    crop_bbox: dict[str, int]
     caption_text: str | None
     context_text: str | None
-    panel_labels: list[str]
-    subfigure_map: dict[str, str]
     figure_type: str
     recaption: str | None
     figure_summary: str | None
@@ -94,7 +125,7 @@ def normalize_panel_labels(value: object) -> list[str]:
     return sorted(labels)
 
 
-def build_figure_record(
+def build_unit_record(
     raw: dict[str, object],
     interpretation: dict[str, object],
     review_threshold: float,
@@ -102,16 +133,41 @@ def build_figure_record(
     confidence = _coerce_float(interpretation.get("confidence"))
     caption_text = _optional_text(raw.get("caption_text"))
     context_text = _optional_text(raw.get("context_text"))
-    record = FigureRecord(
-        paper_id=str(raw["paper_id"]),
-        figure_id=str(raw["figure_id"]),
-        page_no=_optional_int(raw.get("page_no")),
-        image_path=str(raw["image_path"]),
+
+    paper_id = _optional_text(raw.get("paper_id"))
+    source_figure_id = _optional_text(raw.get("source_figure_id") or raw.get("figure_id"))
+    unit_id = _optional_text(raw.get("unit_id"))
+    unit_index = _optional_int(raw.get("unit_index"))
+    source_image_path = _optional_text(raw.get("source_image_path"))
+    image_path = _optional_text(raw.get("image_path"))
+
+    if paper_id is None:
+        raise ValueError("raw unit record is missing paper_id")
+    if source_figure_id is None:
+        raise ValueError("raw unit record is missing source_figure_id")
+    if unit_id is None:
+        raise ValueError("raw unit record is missing unit_id")
+    if unit_index is None:
+        raise ValueError("raw unit record is missing unit_index")
+    if source_image_path is None:
+        raise ValueError("raw unit record is missing source_image_path")
+    if image_path is None:
+        raise ValueError("raw unit record is missing image_path")
+
+    record = FigureUnitRecord(
+        paper_id=paper_id,
+        source_figure_id=source_figure_id,
+        unit_id=unit_id,
+        unit_index=unit_index,
+        kind=_normalize_kind(raw.get("kind")),
+        panel_label=_normalize_panel_label(raw.get("panel_label")),
+        source_page_no=_source_page_no(raw),
+        source_image_path=source_image_path,
+        image_path=image_path,
+        crop_bbox=_normalize_crop_bbox(raw.get("crop_bbox")),
         caption_text=caption_text,
         context_text=context_text,
-        panel_labels=normalize_panel_labels(interpretation.get("panel_labels")),
-        subfigure_map=_normalize_subfigure_map(interpretation.get("subfigure_map")),
-        figure_type=_optional_text(interpretation.get("figure_type")) or "unknown",
+        figure_type=_normalize_figure_type(interpretation.get("figure_type")),
         recaption=_optional_text(interpretation.get("recaption")),
         figure_summary=_optional_text(interpretation.get("figure_summary")),
         confidence=confidence,
@@ -131,8 +187,7 @@ def write_jsonl(records: list[dict[str, object]], path: Path) -> None:
 
 def _review_row(record: dict[str, object]) -> dict[str, object]:
     row = dict(record)
-    row["panel_labels"] = ";".join(str(item) for item in record.get("panel_labels", []))
-    row["subfigure_map"] = json.dumps(record.get("subfigure_map", {}), ensure_ascii=False)
+    row["crop_bbox"] = json.dumps(record.get("crop_bbox", {}), ensure_ascii=False)
     row["source_refs"] = ";".join(str(item) for item in record.get("source_refs", []))
     row["needs_manual_review"] = str(bool(record.get("needs_manual_review"))).lower()
     return row
@@ -142,13 +197,17 @@ def write_review_csv(records: list[dict[str, object]], path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     fieldnames = [
         "paper_id",
-        "figure_id",
-        "page_no",
+        "source_figure_id",
+        "unit_id",
+        "unit_index",
+        "kind",
+        "panel_label",
+        "source_page_no",
+        "source_image_path",
         "image_path",
+        "crop_bbox",
         "caption_text",
         "context_text",
-        "panel_labels",
-        "subfigure_map",
         "figure_type",
         "recaption",
         "figure_summary",

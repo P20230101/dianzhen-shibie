@@ -78,6 +78,36 @@ def test_build_pdf_sample_bundle_rejects_drifted_corpus(tmp_path: Path) -> None:
         ])
 
 
+def test_build_pdf_sample_bundle_supports_jmrt_2021_radial_hybrid_paper(tmp_path: Path) -> None:
+    samples_path = tmp_path / "samples_v1.json"
+    evidence_path = tmp_path / "evidence_v1.json"
+
+    base_samples = read_json(BASE_SAMPLES)
+    base_evidence = read_json(BASE_EVIDENCE)
+    samples_path.write_text(BASE_SAMPLES.read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_path.write_text(BASE_EVIDENCE.read_text(encoding="utf-8"), encoding="utf-8")
+
+    exit_code = build_bundle_main([
+        "--paper-id",
+        "10_1016_j_jmrt_2021_08_092",
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+
+    samples = read_json(samples_path)
+    evidence = read_json(evidence_path)
+    expected_sample = read_json(FIXTURES_DIR / "expected_sample_jmrt_2021.json")
+    expected_evidence = read_json(FIXTURES_DIR / "expected_evidence_jmrt_2021.json")
+
+    assert exit_code == 0
+    assert expected_sample in samples
+    assert all(item in evidence for item in expected_evidence)
+    assert len(samples) == len(base_samples) + 1
+    assert len(evidence) == len(base_evidence) + len(expected_evidence)
+
+
 def test_build_pdf_sample_bundle_supports_addma_gyroid_paper(tmp_path: Path) -> None:
     samples_path = tmp_path / "samples_v1.json"
     evidence_path = tmp_path / "evidence_v1.json"
@@ -310,6 +340,189 @@ def test_build_pdf_sample_bundle_supports_engstruct_2023_metamaterial_paper(tmp_
     evidence = read_json(evidence_path)
     expected_sample = read_json(FIXTURES_DIR / "expected_sample_engstruct_2023.json")
     expected_evidence = read_json(FIXTURES_DIR / "expected_evidence_engstruct_2023.json")
+
+    assert exit_code == 0
+    assert expected_sample in samples
+    assert all(item in evidence for item in expected_evidence)
+    assert len(samples) == len(base_samples) + 1
+    assert len(evidence) == len(base_evidence) + len(expected_evidence)
+
+
+def test_build_pdf_sample_bundle_supports_high_density_honeycomb_paper(tmp_path: Path) -> None:
+    samples_path = tmp_path / "samples_v1.json"
+    evidence_path = tmp_path / "evidence_v1.json"
+
+    base_samples = read_json(BASE_SAMPLES)
+    base_evidence = read_json(BASE_EVIDENCE)
+    samples_path.write_text(BASE_SAMPLES.read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_path.write_text(BASE_EVIDENCE.read_text(encoding="utf-8"), encoding="utf-8")
+
+    exit_code = build_bundle_main([
+        "--paper-id",
+        "pii_s0734_743x_97_00040_7",
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+
+    samples = read_json(samples_path)
+    evidence = read_json(evidence_path)
+    expected_sample = read_json(FIXTURES_DIR / "expected_sample_high_density_honeycomb.json")
+    expected_evidence = read_json(FIXTURES_DIR / "expected_evidence_high_density_honeycomb.json")
+
+    assert exit_code == 0
+    assert expected_sample in samples
+    assert all(item in evidence for item in expected_evidence)
+    assert len(samples) == len(base_samples) + 1
+    assert len(evidence) == len(base_evidence) + len(expected_evidence)
+
+
+def test_build_pdf_sample_bundle_supports_ma18040732_bccz_cross_paper(tmp_path: Path) -> None:
+    samples_path = tmp_path / "samples_v1.json"
+    evidence_path = tmp_path / "evidence_v1.json"
+
+    base_samples = read_json(BASE_SAMPLES)
+    base_evidence = read_json(BASE_EVIDENCE)
+    samples_path.write_text(BASE_SAMPLES.read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_path.write_text(BASE_EVIDENCE.read_text(encoding="utf-8"), encoding="utf-8")
+
+    exit_code = build_bundle_main([
+        "--paper-id",
+        "10_3390_ma18040732",
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+
+    samples = read_json(samples_path)
+    evidence = read_json(evidence_path)
+    expected_sample = read_json(FIXTURES_DIR / "expected_sample_ma18040732.json")
+    expected_evidence = read_json(FIXTURES_DIR / "expected_evidence_ma18040732.json")
+
+    assert exit_code == 0
+    assert expected_sample in samples
+    assert all(item in evidence for item in expected_evidence)
+    assert len(samples) == len(base_samples) + 1
+    assert len(evidence) == len(base_evidence) + len(expected_evidence)
+
+
+def test_build_pdf_sample_bundle_supports_cirpj_2024_octet_paper(tmp_path: Path) -> None:
+    samples_path = tmp_path / "samples_v1.json"
+    evidence_path = tmp_path / "evidence_v1.json"
+
+    base_samples = read_json(BASE_SAMPLES)
+    base_evidence = read_json(BASE_EVIDENCE)
+    samples_path.write_text(BASE_SAMPLES.read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_path.write_text(BASE_EVIDENCE.read_text(encoding="utf-8"), encoding="utf-8")
+
+    exit_code = build_bundle_main([
+        "--paper-id",
+        "10_1016_j_cirpj_2024_06_009",
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+
+    samples = read_json(samples_path)
+    evidence = read_json(evidence_path)
+    expected_sample = read_json(FIXTURES_DIR / "expected_sample_cirpj_2024.json")
+    expected_evidence = read_json(FIXTURES_DIR / "expected_evidence_cirpj_2024.json")
+
+    assert exit_code == 0
+    assert expected_sample in samples
+    assert all(item in evidence for item in expected_evidence)
+    assert len(samples) == len(base_samples) + 1
+    assert len(evidence) == len(base_evidence) + len(expected_evidence)
+
+
+def test_build_pdf_sample_bundle_supports_ijimpeng_2025_hprl_paper(tmp_path: Path) -> None:
+    samples_path = tmp_path / "samples_v1.json"
+    evidence_path = tmp_path / "evidence_v1.json"
+
+    base_samples = read_json(BASE_SAMPLES)
+    base_evidence = read_json(BASE_EVIDENCE)
+    samples_path.write_text(BASE_SAMPLES.read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_path.write_text(BASE_EVIDENCE.read_text(encoding="utf-8"), encoding="utf-8")
+
+    exit_code = build_bundle_main([
+        "--paper-id",
+        "10_1016_j_ijimpeng_2025_105321",
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+
+    samples = read_json(samples_path)
+    evidence = read_json(evidence_path)
+    expected_sample = read_json(FIXTURES_DIR / "expected_sample_ijimpeng_2025.json")
+    expected_evidence = read_json(FIXTURES_DIR / "expected_evidence_ijimpeng_2025.json")
+
+    assert exit_code == 0
+    assert expected_sample in samples
+    assert all(item in evidence for item in expected_evidence)
+    assert len(samples) == len(base_samples) + 1
+    assert len(evidence) == len(base_evidence) + len(expected_evidence)
+
+
+def test_build_pdf_sample_bundle_supports_matdes_2019_bcc_paper(tmp_path: Path) -> None:
+    samples_path = tmp_path / "samples_v1.json"
+    evidence_path = tmp_path / "evidence_v1.json"
+
+    base_samples = read_json(BASE_SAMPLES)
+    base_evidence = read_json(BASE_EVIDENCE)
+    samples_path.write_text(BASE_SAMPLES.read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_path.write_text(BASE_EVIDENCE.read_text(encoding="utf-8"), encoding="utf-8")
+
+    exit_code = build_bundle_main([
+        "--paper-id",
+        "10_1016_j_matdes_2019_108076",
+        "--samples",
+        str(samples_path),
+        "--evidence",
+        str(evidence_path),
+    ])
+
+    samples = read_json(samples_path)
+    evidence = read_json(evidence_path)
+    expected_sample = read_json(FIXTURES_DIR / "expected_sample_matdes_2019.json")
+    expected_evidence = read_json(FIXTURES_DIR / "expected_evidence_matdes_2019.json")
+
+    assert exit_code == 0
+    assert expected_sample in samples
+    assert all(item in evidence for item in expected_evidence)
+    assert len(samples) == len(base_samples) + 1
+    assert len(evidence) == len(base_evidence) + len(expected_evidence)
+
+
+def test_build_pdf_sample_bundle_supports_matdes_2018_octagonal_paper(tmp_path: Path) -> None:
+    samples_path = tmp_path / "samples_v1.json"
+    evidence_path = tmp_path / "evidence_v1.json"
+
+    base_samples = read_json(BASE_SAMPLES)
+    base_evidence = read_json(BASE_EVIDENCE)
+    samples_path.write_text(BASE_SAMPLES.read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_path.write_text(BASE_EVIDENCE.read_text(encoding="utf-8"), encoding="utf-8")
+
+    try:
+        exit_code = build_bundle_main([
+            "--paper-id",
+            "10_1016_j_matdes_2018_05_059",
+            "--samples",
+            str(samples_path),
+            "--evidence",
+            str(evidence_path),
+        ])
+    except SystemExit as exc:
+        exit_code = exc.code if isinstance(exc.code, int) else 1
+
+    samples = read_json(samples_path)
+    evidence = read_json(evidence_path)
+    expected_sample = read_json(FIXTURES_DIR / "expected_sample_matdes_2018.json")
+    expected_evidence = read_json(FIXTURES_DIR / "expected_evidence_matdes_2018.json")
 
     assert exit_code == 0
     assert expected_sample in samples

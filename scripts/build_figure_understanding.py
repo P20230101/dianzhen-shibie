@@ -8,11 +8,13 @@ import re
 from pathlib import Path
 from typing import Callable, Protocol
 
+from PIL import Image
+
 from docling.datamodel.base_models import InputFormat
 from docling.datamodel.pipeline_options import PdfPipelineOptions
 from docling.document_converter import DocumentConverter, PdfFormatOption
 
-from figure_understanding_common import build_figure_record, write_jsonl, write_review_csv
+from figure_understanding_common import build_unit_record, write_jsonl, write_review_csv
 from figure_understanding_vlm import FixtureFigureInterpreter, VlmFigureInterpreter
 from retrieval_kg_common import write_json
 
@@ -20,9 +22,9 @@ from retrieval_kg_common import write_json
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_REGISTER_PATH = ROOT / "data" / "01_raw" / "pdfs" / "paper_register.csv"
 DEFAULT_LIBRARY_ROOT = ROOT / "data" / "01_raw" / "pdfs" / "library"
-DEFAULT_OUTPUT_PATH = ROOT / "data" / "03_figures" / "figures_v1.jsonl"
+DEFAULT_OUTPUT_PATH = ROOT / "data" / "03_figures" / "figure_units_v1.jsonl"
 DEFAULT_MANIFEST_PATH = ROOT / "data" / "03_figures" / "manifest.json"
-DEFAULT_REVIEW_PATH = ROOT / "data" / "03_figures" / "figures_review.csv"
+DEFAULT_REVIEW_PATH = ROOT / "data" / "03_figures" / "figure_units_review.csv"
 CAPTION_LINE_RE = re.compile(r"^(?:Fig\.|Figure)\s*\d+\.")
 
 
@@ -272,9 +274,68 @@ def _materialize_picture_image(
     target_dir = image_output_root / paper_id
     target_dir.mkdir(parents=True, exist_ok=True)
     target_path = target_dir / f"{figure_id}{suffix}"
-    if not target_path.exists():
-        target_path.write_bytes(base64.b64decode(payload))
+    target_path.write_bytes(base64.b64decode(payload))
     return str(target_path)
+
+
+def _normalize_unit_label(value: object) -> str | None:
+    if value is None:
+        return None
+    text = str(value).strip().lower()
+    if not text:
+        return None
+    cleaned = re.sub(r"[^a-z0-9]+", "_", text).strip("_")
+    return cleaned or None
+
+
+def _build_unit_id(source_figure_id: str, panel_label: object, unit_index: int, unit_count: int) -> str:
+    normalized_label = _normalize_unit_label(panel_label)
+    if normalized_label is not None:
+        return f"{source_figure_id}_{normalized_label}"
+    return f"{source_figure_id}_u{unit_index:02d}"
+
+
+def _normalize_crop_bbox(
+    bbox: object,
+    image_width: int,
+    image_height: int,
+) -> dict[str, int]:
+    if not isinstance(bbox, dict):
+        raise ValueError("unit crop_bbox must be a mapping")
+
+    raw_values: dict[str, float] = {}
+    for key in ("l", "t", "r", "b"):
+        value = bbox.get(key)
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
+            raise ValueError(f"unit crop_bbox[{key!r}] must be numeric")
+        raw_values[key] = float(value)
+
+    if all(0.0 <= value <= 1.0 for value in raw_values.values()):
+        scaled = {
+            "l": raw_values["l"] * float(image_width),
+            "t": raw_values["t"] * float(image_height),
+            "r": raw_values["r"] * float(image_width),
+            "b": raw_values["b"] * float(image_height),
+        }
+    else:
+        scaled = dict(raw_values)
+
+    normalized = {
+        "l": int(round(max(0.0, min(scaled["l"], float(image_width))))),
+        "t": int(round(max(0.0, min(scaled["t"], float(image_height))))),
+        "r": int(round(max(0.0, min(scaled["r"], float(image_width))))),
+        "b": int(round(max(0.0, min(scaled["b"], float(image_height))))),
+    }
+    if normalized["r"] <= normalized["l"] or normalized["b"] <= normalized["t"]:
+        raise ValueError("unit crop_bbox must define a non-empty rectangle")
+    return normalized
+
+
+def _write_unit_crop(source_path: Path, target_path: Path, crop_bbox: dict[str, int]) -> None:
+    with Image.open(source_path) as source_image:
+        cropped = source_image.crop((crop_bbox["l"], crop_bbox["t"], crop_bbox["r"], crop_bbox["b"]))
+        target_path.parent.mkdir(parents=True, exist_ok=True)
+        cropped.save(target_path)
 
 
 def _export_payload(document: object) -> dict[str, object]:
@@ -302,6 +363,8 @@ def extract_figures(
         texts = []
     if not isinstance(pictures, list):
         pictures = []
+    if image_output_root is None:
+        raise ValueError("image_output_root is required for unit crop output")
 
     records: list[dict[str, object]] = []
     for index, item in enumerate(pictures, start=1):
@@ -313,8 +376,7 @@ def extract_figures(
         try:
             image_path = _resolve_image_path(item)
         except ValueError:
-            if image_output_root is not None:
-                image_path = _materialize_picture_image(item, paper_id, figure_id, image_output_root)
+            image_path = _materialize_picture_image(item, paper_id, figure_id, image_output_root)
         if not image_path:
             raise ValueError("picture is missing image_path/image_uri/image_file")
         caption_text = _resolve_caption_text(item, texts)
@@ -326,15 +388,37 @@ def extract_figures(
             caption_text=caption_text,
             context_text=context_text,
         )
-        raw = {
-            "paper_id": paper_id,
-            "figure_id": figure_id,
-            "page_no": page_no,
-            "image_path": image_path,
-            "caption_text": caption_text,
-            "context_text": context_text,
-        }
-        records.append(build_figure_record(raw, interpretation, review_threshold))
+        units = interpretation.get("units")
+        if not isinstance(units, list) or not units:
+            raise ValueError("figure interpretation must include a non-empty units list")
+
+        with Image.open(image_path) as source_image:
+            source_width, source_height = source_image.size
+
+        for unit_index, unit in enumerate(units, start=1):
+            if not isinstance(unit, dict):
+                raise TypeError("each unit interpretation must be a JSON object")
+
+            unit_id = _build_unit_id(figure_id, unit.get("panel_label"), unit_index, len(units))
+            crop_bbox = _normalize_crop_bbox(unit.get("crop_bbox"), source_width, source_height)
+            unit_image_path = image_output_root / paper_id / f"{unit_id}.png"
+            _write_unit_crop(Path(image_path), unit_image_path, crop_bbox)
+
+            raw = {
+                "paper_id": paper_id,
+                "source_figure_id": figure_id,
+                "unit_id": unit_id,
+                "unit_index": unit_index,
+                "kind": unit.get("kind"),
+                "panel_label": unit.get("panel_label"),
+                "source_page_no": page_no,
+                "source_image_path": image_path,
+                "image_path": str(unit_image_path),
+                "crop_bbox": crop_bbox,
+                "caption_text": caption_text,
+                "context_text": context_text,
+            }
+            records.append(build_unit_record(raw, unit, review_threshold))
     return records
 
 
@@ -392,9 +476,10 @@ def build_figure_understanding_corpus(
             "output_path": str(output_path),
             "image_output_root": str(image_output_root),
             "review_path": str(review_path),
-            "paper_count": len(paper_ids),
-            "figure_count": len(records),
-            "paper_ids": paper_ids,
+            "paper_count": len(set(paper_ids)),
+            "source_figure_count": len({str(record.get("source_figure_id") or "").strip() for record in records if str(record.get("source_figure_id") or "").strip()}),
+            "unit_count": len(records),
+            "paper_ids": sorted(set(paper_ids)),
         },
     )
     return records
@@ -447,7 +532,7 @@ def main(argv: list[str] | None = None) -> int:
         interpreter=interpreter,
         review_threshold=float(args.review_threshold),
     )
-    print(f"figure records written: {len(records)} -> {args.output}")
+    print(f"figure unit records written: {len(records)} -> {args.output}")
     return 0
 
 
